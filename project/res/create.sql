@@ -7,42 +7,6 @@
 -- SET FOREIGN_KEY_CHECKS=0;
 
 -- ---
--- Table 'persons'
--- 
--- ---
-
-DROP TABLE IF EXISTS `persons`;
-		
-CREATE TABLE `persons` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `first_name` VARCHAR(255) NULL DEFAULT NULL,
-  `last_name` VARCHAR(255) NULL DEFAULT NULL,
-  `username` VARCHAR(255) NULL DEFAULT NULL,
-  `password` CHAR(40) NULL DEFAULT NULL,
-  `date_registration` DATETIME NULL DEFAULT NULL,
-  `last_login` DATETIME NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
--- Table 'movies'
--- 
--- ---
-
-DROP TABLE IF EXISTS `movies`;
-		
-CREATE TABLE `movies` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `name` VARCHAR(255) NULL DEFAULT NULL,
-  `banner` VARCHAR(255) NULL DEFAULT NULL,
-  `release_date` DATE NULL DEFAULT NULL,
-  `rent_amount` DOUBLE NULL DEFAULT NULL,
-  `nb_available` INTEGER NULL DEFAULT NULL,
-  `category_id` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
--- ---
 -- Table 'rentals'
 -- 
 -- ---
@@ -93,6 +57,44 @@ CREATE TABLE `accounts` (
   `outstanding_movies` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+-- ---
+-- Table 'persons'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `persons`;
+		
+CREATE TABLE `persons` (
+  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `first_name` VARCHAR(255) NULL DEFAULT NULL,
+  `last_name` VARCHAR(255) NULL DEFAULT NULL,
+  `username` VARCHAR(255) NULL DEFAULT NULL,
+  `password` CHAR(40) NULL DEFAULT NULL,
+  `date_registration` DATETIME NULL DEFAULT NULL,
+  `last_login` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'movies'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `movies`;
+		
+CREATE TABLE `movies` (
+  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `banner` VARCHAR(255) NULL DEFAULT NULL,
+  `release_date` DATE NULL DEFAULT NULL,
+  `rent_amount` DOUBLE NULL DEFAULT NULL,
+  `nb_available` INTEGER NULL DEFAULT NULL,
+  `category_id` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
 
 -- ---
 -- Table 'categories'

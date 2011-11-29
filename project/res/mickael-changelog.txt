@@ -4,7 +4,7 @@ BUGS
 
 SHORT-TERM
 =====
-
+* Correct the "problem" where I can't get the User account info (premium/simple)
 
 LONG-TERM
 =====
