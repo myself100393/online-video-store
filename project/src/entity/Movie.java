@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Movie {
 
-	private int id;
-	private String name;
-	private String banner;
-	private Date releaseDate;
-	private double rentAmount;
-	private int nbAvailable;
+	private int id = 0;
+	private String name = "";
+	private String banner = "";
+	private Date releaseDate = new Date();
+	private double rentAmount = 0.0;
+	private int nbAvailable = 0;
 	
 	public Movie() {}
 	
