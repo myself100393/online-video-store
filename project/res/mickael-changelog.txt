@@ -1,0 +1,18 @@
+BUGS
+=====
+* The "movie" model doesn't have a `category_id` field -> default is 1
+
+SHORT-TERM
+=====
+
+
+LONG-TERM
+=====
+
+
+CHANGELOG
+====
+2011-11-26	Added simple tests for the MovieManager
+2011-11-26	Implement the CRUD operation on movies
+2011-11-26	Write some simple test for the DbConnection
+2011-11-26	Added the MovieManager class
