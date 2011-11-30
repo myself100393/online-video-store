@@ -38,5 +38,24 @@ public class ServicesImpl implements Services {
 	public Bill generateBill(int personId, int month, int year) {
 		return movieManager.generateBill(personId, month, year);
 	}
+	
+	
+	
+	@override
+	public PersonInfo displayPerson(int personId) {
+		return movieManager.displayPerson(personId);
+		
+	}
+	
+	@override
+	public MovieInfo displayMovie(int movieId) {
+		return movieManager.displayMovie(movieId);
+	}
+	
+	@override
+	public Person[] listAllPersons(int type) {
+		
+		return movieManager.listAllPersons(type);
+	}
 
 }
