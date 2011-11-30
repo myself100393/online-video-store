@@ -39,27 +39,5 @@ public interface Services {
 	 */
 	public Bill generateBill(int personId, int month, int year);
 	
-	/**
-	 * Display a user's info
-	 * 
-	 * @param personId
-	 * 
-	 */
-	public PersonInfo displayPerson(int personId);
 	
-	/**
-	 * Display a movie's info
-	 * 
-	 * @param movieId
-	 * 
-	 */
-	public MovieInfo displayMovie(int movieId);
-	
-	/**
-	 * List all users
-	 * 
-	 * @param type
-	 */
-	public Person[] listAllPersons(int type);
-
 }
