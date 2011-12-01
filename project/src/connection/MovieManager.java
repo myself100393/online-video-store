@@ -344,9 +344,9 @@ public class MovieManager {
 	
 		try {	
 			// Get all persons from db
-			String sql = "SELECT * FROM persons p JOIN accounts a ON p.id = a.person_id";
+			String sql = "SELECT * FROM persons p JOIN accounts a ON p.id = a.person_id where type=?";
 			PreparedStatement prepare = conn.prepareStatement(sql);
-			
+			prepare.setInt(1, type);
 			ResultSet rs = prepare.executeQuery();
 			
 			while (rs.next()) {
