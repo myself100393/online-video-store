@@ -4,6 +4,9 @@ import javax.jws.WebService;
 
 import team6.entity.Bill;
 import team6.entity.Movie;
+import team6.entity.MovieInfo;
+import team6.entity.Person;
+import team6.entity.PersonInfo;
 
 @WebService
 public class ServicesImpl implements Services {
@@ -39,6 +42,28 @@ public class ServicesImpl implements Services {
 		return movieManager.generateBill(personId, month, year);
 	}
 	
+	@Override
+	public PersonInfo displayPerson(int personId) {
+		/**This space is left for validation and manipulation of 
+		input values entered by the user as a part of the server side validation*/
+		return movieManager.displayPerson(personId);
+	}
+	
+	@Override
+	public MovieInfo displayMovie(int movieId) {
+		
+		/**This space is left for validation and manipulation of 
+		input values entered by the user as a part of the server side validation*/
+		return movieManager.displayMovie(movieId);
+	}
+	
+	@Override
+	public Person[] listAllPersons(int type) {
+		
+		/**This space is left for validation and manipulation of 
+		input values entered by the user as a part of the server side validation*/
+		return movieManager.listAllPersons(type);
+	}
 
 
 }
