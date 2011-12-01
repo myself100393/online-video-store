@@ -2,6 +2,9 @@ package team6.connection;
 
 import team6.entity.Bill;
 import team6.entity.Movie;
+import team6.entity.MovieInfo;
+import team6.entity.Person;
+import team6.entity.PersonInfo;
 
 public interface Services {
 
@@ -39,5 +42,29 @@ public interface Services {
 	 */
 	public Bill generateBill(int personId, int month, int year);
 	
+	/**
+	 * For this personId, generate PersonInfo
+	 * 
+	 * @param personId
+	 * @return PersonInfo, with all information (person, rented movies, actual rented movies) for this personId
+	 */
+	public PersonInfo displayPerson(int personId);
+	
+	/**
+	 * For this movieId, generate MovieInfo
+	 * 
+	 * @param movieId
+	 * @return MovieInfo, with all information (movie, persons) for this permovieIdsonId
+	 */
+	public MovieInfo displayMovie(int movieId);
+	
+	/**
+	 * For this type, generate array of persons
+	 * 
+	 * @param type
+	 * @return Person[], with all information (person) for this type
+	 */
+	public Person[] listAllPersons(int type);
+
 	
 }
