@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import team6.entity.Address;
 import team6.entity.Bill;
 import team6.entity.Movie;
 import team6.entity.MovieInfo;
@@ -369,6 +370,199 @@ public class MovieManager {
 		Person[] arrPersons = new Person[persons.size()];
 		arrPersons = persons.toArray(arrPersons);
 		return arrPersons;
+	}
+
+	public Person[] findPersons(String firstName, String lastName, Address address, int type, int issuedMovie) {
+		ArrayList<Person> persons = new ArrayList<Person>(); 
+		
+		Person[] arrPersons = new Person[persons.size()];
+		arrPersons = persons.toArray(arrPersons);
+		return arrPersons;
+	}
+
+	
+	public String logon(String user, String hashPassword) {
+		
+		String result = null;
+		Person person = findPerson(user);
+		try {
+			if (person != null) {
+				String sql = "Select * from persons where username like '?' and password like MD5('?')";
+				PreparedStatement prepare = conn.prepareStatement(sql);
+				prepare.setString(1, user);
+				prepare.setString(2, person.getPassword());
+				ResultSet rs = prepare.executeQuery();
+			
+				if (rs.first()) {
+					prepare.close();
+					sql = "Update persons set last_login = Now() where id = ?";
+					prepare.setInt(1, person.getId());
+					
+					// update last_login for this person
+					prepare.executeUpdate(sql);
+					
+					result = "Login successful and updated last login time.\n";
+					
+				} else {
+					result = "Username and password do not match.\n";
+				}
+				
+			
+			
+			} else result = "Username does not exist.\n";
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = "Error logon.\n";
+		}
+		
+		return result;
+		
+	}
+	
+	public Person findPerson(String username) {
+		Person person = null;
+		try {
+			String sql = "SELECT * FROM persons WHERE username like '?'";
+			PreparedStatement prepare = conn.prepareStatement(sql);
+			prepare.setString(1, username);
+			ResultSet rs = prepare.executeQuery();
+			if (rs.first()) {
+				person = new Person();
+				person.setId(rs.getInt("id"));
+				person.setFirstName(rs.getString("first_name"));
+				person.setLastName(rs.getString("last_name"));
+				person.setUsername(rs.getString("username"));
+				person.setPassword(rs.getString("password"));
+				person.setDateRegistration(new java.util.Date(rs.getDate("date_registration").getTime()));
+				person.setLastLogin(new java.util.Date(rs.getDate("last_login").getTime()));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return person;
+	}
+	
+	public String signUp(Person person, int accountType, String ssn) {
+		// Check if there isn't already a person with the same username in the db
+		
+		String result = null;
+		
+		if (find(person.getUsername()) != null) {
+			result = "Username already exists.\n";
+		}
+		
+		try {
+			String password = person.getPassword();
+			String sql = "INSERT INTO persons (first_name, last_name, date_registration, last_login, username,  password ) VALUES (?, ?, ?, ?, ?, md5(" + password + "))";
+			PreparedStatement prepare = conn.prepareStatement(sql);
+
+			prepare.setString(1, person.getFirstName());
+			prepare.setString(2, person.getLastName());
+			prepare.setDate(3, new java.sql.Date(person.getDateRegistration().getTime()));
+			prepare.setDate(4, new java.sql.Date(person.getLastLogin().getTime()));
+			prepare.setString(5, person.getUsername());
+			//prepare.setString(6, person.getPassword());
+		
+			prepare.executeUpdate();
+			
+			prepare.close();
+			
+			// now create the account for the person
+			sql = "INSERT INTO accounts (person_id, ssn, type ) VALUES (?, ?, ?,)";
+			prepare = conn.prepareStatement(sql);
+
+			prepare.setInt(1, person.getId());
+			prepare.setString(2, ssn);
+			prepare.setInt(3, 1);
+			prepare.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = "Error creating username and account.\n";
+		}
+		
+		
+		result = "Username and account created.\n";
+		
+		return result;
+	}
+	
+	public String logOut(int personId) {
+		return "You are now logged out.\n";
+	}
+
+	public String updatePerson(Person person, int accountType, String ssn) {
+		String result = null;
+		
+		if (find(person.getUsername()) != null) {
+			
+		
+			try {
+				String password = person.getPassword();
+				String sql = "update persons set first_name=?, last_name=?, date_registration=?, last_login=?, username=?,  password=md5(password) where id=?";
+				PreparedStatement prepare = conn.prepareStatement(sql);
+	
+				prepare.setString(1, person.getFirstName());
+				prepare.setString(2, person.getLastName());
+				prepare.setDate(3, new java.sql.Date(person.getDateRegistration().getTime()));
+				prepare.setDate(4, new java.sql.Date(person.getLastLogin().getTime()));
+				prepare.setString(5, person.getUsername());
+				prepare.setInt(6, person.getId());
+			
+				prepare.executeUpdate();
+				
+				prepare.close();
+				
+				// now create the account for the person
+				sql = "udpate accounts set ssn=?, type=? where person_id=?";
+				prepare = conn.prepareStatement(sql);
+	
+				
+				prepare.setString(1, ssn);
+				prepare.setInt(2, accountType);
+				prepare.setInt(3, person.getId());
+				prepare.executeUpdate();
+	
+			} catch (SQLException e) {
+				e.printStackTrace();
+				result = "Error updating username and account.\n";
+			}
+		
+		} else result = "Username does not exist.\n";
+		
+		result = "Username and account updated.\n";
+		
+		return result;
+	}
+	
+	public String deletePerson(int personId) {
+		//delete person from persons table
+		String result = null;
+		
+		try {
+			String sql = "DELETE FROM persons WHERE id = ?";
+			PreparedStatement prepare = conn.prepareStatement(sql);
+			prepare.setInt(1, personId);
+			prepare.executeUpdate();
+			
+			prepare.close();
+			
+			sql = "DELETE FROM accounts WHERE person_id = ?";
+			prepare = conn.prepareStatement(sql);
+			prepare.setInt(1, personId);
+			prepare.executeUpdate();
+			
+			result = "Person and account deleted.\n";
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = "Error deleting this person.\n";
+		}
+		return result;
+		
+		//delete account with person_i from db
+		
 	}
 
 }
