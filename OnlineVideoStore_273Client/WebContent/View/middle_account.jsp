@@ -4,10 +4,12 @@
  				<%@ page import="java.util.LinkedHashMap" %> 				 
  				<%@ page import="video.util.CountryHelper" %> 
  				<%@ page import="video.util.StateHelper" %> 				
+ 				<%@ page import="video.util.MovieSearchHelper" %> 
  				<%@ page import="video.dto.Account;" %>
  				<%
  					LinkedHashMap<String,String> countries =  (LinkedHashMap<String,String>)CountryHelper.countries;
 					LinkedHashMap<String,String> states =  (LinkedHashMap<String,String>)StateHelper.states;
+					LinkedHashMap<String,String> movies =  (LinkedHashMap<String,String>)MovieSearchHelper.states;
 		 			
  			
  				
@@ -35,6 +37,12 @@
  				 		int userType = 0;
  				 		int accountId = 0; 
  				 		String userTypeStr = "";
+ 				 		int movieId = 0;
+ 				 		String banner = "";
+ 				 		String name = "";
+ 				 		boolean availability = false;
+ 				 		int rentAmount = 0;
+ 				 		
  				 		if(account!=null){
  				 			 bal = account.getBalance();
  				 			 fee = account.getMonthlyFee();
@@ -53,7 +61,7 @@
  				 	}
  				 		
  	 				Address address = (Address)request.getAttribute("address"); 
- 	 				String city ="" , country ="", state ="", st ="" , zip = "";			
+ 	 				String city ="" , country ="", state ="", st ="" , zip = "",movie="";			
  	 				 	
  	 				if(address!=null){					
  	 					city = address.getCity();
@@ -218,71 +226,61 @@
 
 						</div>
 						<div id="tabs-4">
+			   				   	<br/>
+			   				   	<p>	   		  					
+			   					<h2 class="accountX">Movie ID:</h2>
+			     				<input id="movieId" name="movieId" size="20" minlength="5" maxlength="5" value="<%=movieId%>" />
+								<p/>
+								   				   	
+			   				   	<br/>
+			   				   	<p>   					
+			   					<h2 class="accountX">Name:</h2>
+			     				<input id="name" name="name" size="30"  minlength="1" maxlength="30" value="<%=name%>" />
+			  					<p/>
+			  					 				   	
+			   				   	<br/>
+			   				   	<p>   					  				 
+			     				<h2 class="accountX">Banner :</h2>
+			     				<input id="banner" name="banner" size="30" minlength="4" maxlength="20" value="<%=banner%>" />
+			  					<p/>
+			  					 				   	
+			   				   	<br/>
+			   				   	<p>   				 	
+								<h2 class="accountX">Release Date:</h2>
+			   					<select class="required" id="date" name="date">
+			     					<option value="">Please Select</option>
+			 					  <%
+			 					  	for (String key : movies.keySet()) { 						  
+			 					  		String selectedMovieAttr="";
+			 						  	if(key.equals(movie)){
+			 						  		selectedMovieAttr="selected=\"selected\"";			  		
+			 						  	}	
+			 							out.println("<option "+selectedMovieAttr+" value=\""+key+"\">"+movies.get(key)+"</option>"); 			 
+			 						}
+			 					  %> 	
+			 					  </select>	
+			 					<p/>
 						   	   	<br/>
+
+			   				   	<br/>
+			   				   	<p>   				 	
+								<h2 class="accountX">Rent Amount:</h2>
+				            	<input name="rentAmount" id="rentAmount"  size="15" minlength="1" maxlength="10" value="<%=rentAmount%>" />
+			   					<p/>
+						   	   	<br/>
+
 			   				   	<p>	          	
-			 		     		<h2 class="accountX">Street:<em>*</em></h2>
-			     				<input id="st" name="st" size="30" class="required" minlength="4" maxlength="30" value="<%=st%>" />
-					            <input type="submit" name="submit" value="Start" class="bt_login" id="SearchMovie" />
+			 		     		<h2 class="accountX">Availability :</h2>
+			     				<input class ="checkbox" name="availability" id="availability" type ="checkbox"<%=availability%> value="<%=availability%>">     			 	
+			 					  				
+					            <input type="submit" name="submit" value=" Start Searching " class="bt_login" id="SearchMovie" />
 					            <input type="hidden" name="FunctionCall" value="Logon">
 			 					<p/>  		
-			 							   	
-			   				   	<br/>
-			   				   	<p> 		   		  
-			       				<h2 class="accountX">city:<em>*</em></h2>   
-			       				<input id="city" name="city" size="30" class="required" minlength="4" maxlength="30" value="<%=city%>" />
-			 					<p/>		    				
 			   				   	
-			   				   	<br/>
-			   				   	<p>	
-			      				<h2 class="accountX">State:<em>*</em></h2>
-			     				<select class="required" id="state" name="state">
-			     					<option value="">Please Select</option>
-			     					<option value="xx">NOT LISTED</option>     								
-			 					  <%
-			 					  	for (String key : states.keySet()) { 						  
-			 					  		String selectedState="";
-			 						  	if(key.equals(state)){
-			 						  		selectedState="selected=\"selected\"";			  		
-			 						  	}	
-			 							out.println("<option "+selectedState+" value=\""+key+"\">"+states.get(key)+"</option>"); 			 
-			 						}
-			 					  %> 						
-								</select>
-			 					<p/>
-			 					  				   	
-			   				   	<br/>
-			   				   	<p>					
-			   					<h2 class="accountX">Country:<em>*</em></h2>   					
-			     				<select class="required" id="country" name="country">
-			     					<option value="">Please Select</option>     								
-			 					  <%
-			 					  	for (String key : countries.keySet()) { 						  
-			 					  		String selected="";
-			 						  	if(key.equals(country)){
-			 						  		selected="selected=\"selected\"";			  		
-			 						  	}	
-			 							out.println("<option "+selected+" value=\""+key+"\">"+countries.get(key)+"</option>"); 			 
-			 						}
-			 					  %> 						
-								</select>
-								<p/>
-													  										
-			   				   	
-			   				   	<br/>
-			   				   	<p>	 
-								<h2 class="accountX">Zip:<em>*</em></h2>
-			     				<input id="zip" name="zip" size="30" class="required" minlength="5" maxlength="10" value="<%=zip%>" />
-			 					<p/>  
-
-
 						</div>
 					</div>
   	 	
-					
-
- 									   	
-			
-   				
+  				
 					
 					<input type="hidden" name="FunctionCall" value="UpdateUser">
 					<input type="hidden" name="accountId" value="<%=accountId%>">

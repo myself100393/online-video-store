@@ -33,7 +33,8 @@
 			$(document).ready( function() {
 				$('#example').dataTable( {
 					"bJQueryUI": true,
-					"sPaginationType": "full_numbers"
+					//"sPaginationType": "full_numbers",
+						"aaSorting": [ [0,'asc'], [1,'asc'] ]
 				} );
 			} );
 		</script>
