@@ -697,6 +697,19 @@
 		}
 	};
 	
+	$(document).ready(function() {
+		/* Build the DataTable with third column using our custom sort functions */
+		$('#example').dataTable( {
+			"aaSorting": [ [0,'asc'], [1,'asc'] ],
+			"aoColumns": [
+				null,
+				null,
+				{ "sType": 'string-case' },
+				null,
+				null
+			]
+		} );
+	} );
 	
 	/*
 	 * Variable: aTypes

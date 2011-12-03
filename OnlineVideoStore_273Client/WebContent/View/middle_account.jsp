@@ -78,6 +78,9 @@
 							<li><a href="#tabs-1">User</a></li>
 							<li><a href="#tabs-2">Account</a></li>
 							<li><a href="#tabs-3">Address</a></li>
+							<li><a href="#tabs-4">Movie Search/Renting </a></li>
+							<li><a href="#tabs-5">Movie Return</a></li>
+							<li><a href="#tabs-6">Movie Listing</a></li>
 						</ul>
 						<div id="tabs-1">
 						
@@ -162,6 +165,65 @@
 			   				   	<p>	          	
 			 		     		<h2 class="accountX">Street:<em>*</em></h2>
 			     				<input id="st" name="st" size="30" class="required" minlength="4" maxlength="30" value="<%=st%>" />
+			 					<p/>  		
+			 							   	
+			   				   	<br/>
+			   				   	<p> 		   		  
+			       				<h2 class="accountX">city:<em>*</em></h2>   
+			       				<input id="city" name="city" size="30" class="required" minlength="4" maxlength="30" value="<%=city%>" />
+			 					<p/>		    				
+			   				   	
+			   				   	<br/>
+			   				   	<p>	
+			      				<h2 class="accountX">State:<em>*</em></h2>
+			     				<select class="required" id="state" name="state">
+			     					<option value="">Please Select</option>
+			     					<option value="xx">NOT LISTED</option>     								
+			 					  <%
+			 					  	for (String key : states.keySet()) { 						  
+			 					  		String selectedState="";
+			 						  	if(key.equals(state)){
+			 						  		selectedState="selected=\"selected\"";			  		
+			 						  	}	
+			 							out.println("<option "+selectedState+" value=\""+key+"\">"+states.get(key)+"</option>"); 			 
+			 						}
+			 					  %> 						
+								</select>
+			 					<p/>
+			 					  				   	
+			   				   	<br/>
+			   				   	<p>					
+			   					<h2 class="accountX">Country:<em>*</em></h2>   					
+			     				<select class="required" id="country" name="country">
+			     					<option value="">Please Select</option>     								
+			 					  <%
+			 					  	for (String key : countries.keySet()) { 						  
+			 					  		String selected="";
+			 						  	if(key.equals(country)){
+			 						  		selected="selected=\"selected\"";			  		
+			 						  	}	
+			 							out.println("<option "+selected+" value=\""+key+"\">"+countries.get(key)+"</option>"); 			 
+			 						}
+			 					  %> 						
+								</select>
+								<p/>
+													  										
+			   				   	
+			   				   	<br/>
+			   				   	<p>	 
+								<h2 class="accountX">Zip:<em>*</em></h2>
+			     				<input id="zip" name="zip" size="30" class="required" minlength="5" maxlength="10" value="<%=zip%>" />
+			 					<p/>  
+
+
+						</div>
+						<div id="tabs-4">
+						   	   	<br/>
+			   				   	<p>	          	
+			 		     		<h2 class="accountX">Street:<em>*</em></h2>
+			     				<input id="st" name="st" size="30" class="required" minlength="4" maxlength="30" value="<%=st%>" />
+					            <input type="submit" name="submit" value="Start" class="bt_login" id="SearchMovie" />
+					            <input type="hidden" name="FunctionCall" value="Logon">
 			 					<p/>  		
 			 							   	
 			   				   	<br/>

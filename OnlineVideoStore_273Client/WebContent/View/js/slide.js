@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
- 
+
 
  
 		
@@ -27,9 +27,9 @@ $(document).ready(function() {
 	$("#advertForm").validate();
 	 
 	
-	$('#productList').dataTable();
+ 
 	
 
-
+	$('#jQList').dataTable();
 		
 });
