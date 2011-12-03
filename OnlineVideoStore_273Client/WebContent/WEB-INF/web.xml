@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>OnlineVideoStore_273Client</display-name>
+  <welcome-file-list>
+    <welcome-file>/View/SignIn.jsp</welcome-file>
+  </welcome-file-list>
+  
+
+  
+  <servlet>
+    <description></description>
+    <display-name>index</display-name>
+    <servlet-name>index</servlet-name>
+    <servlet-class>Servlets.IndexLet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/View/Index</url-pattern>
+  </servlet-mapping>
+  
+
+
+
+  
+   <servlet>
+    <description></description>
+    <display-name>account</display-name>
+    <servlet-name>account</servlet-name>
+    <servlet-class>Servlets.AccountLet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+    <servlet-name>account</servlet-name>
+    <url-pattern>/View/Account</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+    <description></description>
+    <display-name>admin</display-name>
+    <servlet-name>admin</servlet-name>
+    <servlet-class>Servlets.AdminLet</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+    <servlet-name>admin</servlet-name>
+    <url-pattern>/View/Admin</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+</web-app>
