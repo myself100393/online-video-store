@@ -5,12 +5,19 @@
  				<%@ page import="java.util.LinkedHashMap" %> 				 
  				<%@ page import="video.util.CountryHelper" %> 
  				<%@ page import="video.util.StateHelper" %> 				
+ 				<%@ page import="video.util.MovieSearchHelper" %> 				
  				<%@ page import="video.dto.Account;" %>
  				
  			 
  				<%
- 				 
- 				
+ 				    String movie="";
+			 		int movieId = 0;
+			 		String banner = "";
+			 		String name = "";
+			 		boolean availability = false;
+			 		int rentAmount = 0;
+                    
+					LinkedHashMap<String,String> movies =  (LinkedHashMap<String,String>)MovieSearchHelper.states;
  				
  				
  				
@@ -26,12 +33,180 @@
 					 				
 					 <div id="tabs">
 						<ul>
-							<li><a href="#tabs-1">User</a></li>
-							<li><a href="#tabs-2">Account</a></li>
-							<li><a href="#tabs-3">Address</a></li>
+							<li><a href="#tabs-1">Create Movie</a></li>
+							<li><a href="#tabs-2">Movie Searching</a></li>
+							<li><a href="#tabs-3">Movie Listing</a></li>
+							<li><a href="#tabs-4">Customer Searching</a></li>
+							<li><a href="#tabs-5">Customer Listing</a></li>
+							<li><a href="#tabs-6">Bill Generating</a></li>
 						</ul>
 						<div id="tabs-1">
 						
+
+						<%					
+							 
+/*
+							//Person[] personList = (Person[])request.getAttribute("personList");
+							Person[] personList = new Person[100];
+							
+							
+							//how to fake the front end, just to initilaze date
+							for(int i=0; i < 100; i++){						
+
+		
+								Person p = personList[i] = new Person();
+								
+								String a = UUID.randomUUID().toString().replace("-", 
+
+"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+
+"").replace("8", "").replace("9", "");
+								String b = UUID.randomUUID().toString().replace("-", 
+
+"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+
+"").replace("8", "").replace("9", "");
+								String c = UUID.randomUUID().toString().replace("-", 
+
+"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+
+"").replace("8", "").replace("9", "");
+								
+								
+								p.setId(i+1);
+								p.setFirstName(a);
+								p.setLastName(b);
+								p.setUsername(c);						
+
+		
+							}
+						 */
+						%>  							
+			<form id="adminForm" action="admin" method="post">
+				<input id='btnP' type="hidden" name="buttonPressed" value="" />	
+				<input type="hidden" name="FunctionCall" value="deletePerson" />
+										
+			
+				<table cellpadding="0" cellspacing="0" border="0" class="display" id="jQList">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>User Name</th>
+						<th>Delete</th>		
+					</tr>
+				</thead>
+				<tbody>
+				
+					<% 
+			
+/*					 	if(personList!=null){
+					 		
+					 		boolean isOdd = true;
+							String evenOdd = "odd";
+							
+							int j=1;
+			
+							// you should be loop all your data out here
+					 		for(Person p:personList){
+					 		
+					 			int id = p.getId();
+			 		 			String fname = p.getFirstName();
+					 			String lname = p.getLastName();
+								String uname = p.getUsername();
+								// other attributes here...............		
+								 
+			 					out.println("<tr class=\""+ ((isOdd)?"odd":"even") +" gradeA\">");
+								out.println("	<td>"+fname+"</td>");
+								out.println("	<td>"+lname+"</td>");
+								out.println("	<td>"+uname+"</td>");								
+								out.println("	<td class=\"center\">");		
+								// Ok, onclikc means when you click on the button, then it calls the javascript function 
+								// to change the hidden value ( the person id), then the servlet knows which person to delete!!
+								out.println("		<input type=\"submit\" name=\"submit\" value=\"Delete\" onclick=\"changeHiddenValue('"+id+"');\"  class=\"bt_advert\" />");
+								out.println("	</td>");
+								out.println("</tr>"); 
+								//toggle					
+								isOdd=!isOdd;
+ 					 		}
+					 	}  */	
+					%>	
+					
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>User Name</th>
+						<th>Delete</th>	
+					</tr>
+				</tfoot>
+			</table>
+			</form>
+						
+					</td>
+				</tr>
+			</table>
+					
+   				   							
+						</div>
+						
+						<div id="tabs-2">
+						
+		   				   	<br/>
+			   				   	<p>	   		  					
+			   					<h2 class="accountX">Movie ID:</h2>
+			     				<input id="movieId" name="movieId" size="20" minlength="5" maxlength="5" value="<%=movieId%>" />
+								<p/>
+								   				   	
+			   				   	<br/>
+			   				   	<p>   					
+			   					<h2 class="accountX">Name:</h2>
+			     				<input id="name" name="name" size="30"  minlength="1" maxlength="30" value="<%=name%>" />
+			  					<p/>
+			  					 				   	
+			   				   	<br/>
+			   				   	<p>   					  				 
+			     				<h2 class="accountX">Banner :</h2>
+			     				<input id="banner" name="banner" size="30" minlength="4" maxlength="20" value="<%=banner%>" />
+			  					<p/>
+			  					 				   	
+			   				   	<br/>
+			   				   	<p>   				 	
+								<h2 class="accountX">Release Date:</h2>
+			   					<select class="required" id="date" name="date">
+			     					<option value="">Please Select</option>
+			 					  <%
+			 					  	for (String key : movies.keySet()) { 						  
+			 					  		String selectedMovieAttr="";
+			 						  	if(key.equals(movie)){
+			 						  		selectedMovieAttr="selected=\"selected\"";			  		
+			 						  	}	
+			 							out.println("<option "+selectedMovieAttr+" value=\""+key+"\">"+movies.get(key)+"</option>"); 			 
+			 						}
+			 					  %> 	
+			 					  </select>	
+			 					<p/>
+						   	   	<br/>
+
+			   				   	<br/>
+			   				   	<p>   				 	
+								<h2 class="accountX">Rent Amount:</h2>
+				            	<input name="rentAmount" id="rentAmount"  size="15" minlength="1" maxlength="10" value="<%=rentAmount%>" />
+			   					<p/>
+						   	   	<br/>
+
+			   				   	<p>	          	
+			 		     		<h2 class="accountX">Availability :</h2>
+			     				<input class ="checkbox" name="availability" id="availability" type ="checkbox"<%=availability%> value="<%=availability%>">     			 	
+			 					  				
+					            <input type="submit" name="submit" value=" Start Searching " class="bt_login" id="SearchMovie" />
+					            <input type="hidden" name="FunctionCall" value="Logon">
+			 					<p/>  		
+			   				   	
+			   						
+						</div>
+						<div id="tabs-3">
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="example" style="width:940px">
 	<thead>
 		<tr>
@@ -455,125 +630,8 @@
 		</tr>
 	</tbody>
 </table>
-
-						<%					
-							 
-/*
-							//Person[] personList = (Person[])request.getAttribute("personList");
-							Person[] personList = new Person[100];
-							
-							
-							//how to fake the front end, just to initilaze date
-							for(int i=0; i < 100; i++){						
-
-		
-								Person p = personList[i] = new Person();
-								
-								String a = UUID.randomUUID().toString().replace("-", 
-
-"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
-
-"").replace("8", "").replace("9", "");
-								String b = UUID.randomUUID().toString().replace("-", 
-
-"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
-
-"").replace("8", "").replace("9", "");
-								String c = UUID.randomUUID().toString().replace("-", 
-
-"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
-
-"").replace("8", "").replace("9", "");
-								
-								
-								p.setId(i+1);
-								p.setFirstName(a);
-								p.setLastName(b);
-								p.setUsername(c);						
-
-		
-							}
-						 */
-						%>  							
-			<form id="adminForm" action="admin" method="post">
-				<input id='btnP' type="hidden" name="buttonPressed" value="" />	
-				<input type="hidden" name="FunctionCall" value="deletePerson" />
-										
-			
-				<table cellpadding="0" cellspacing="0" border="0" class="display" id="jQList">
-				<thead>
-					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>User Name</th>
-						<th>Delete</th>		
-					</tr>
-				</thead>
-				<tbody>
-				
-					<% 
-			
-/*					 	if(personList!=null){
-					 		
-					 		boolean isOdd = true;
-							String evenOdd = "odd";
-							
-							int j=1;
-			
-							// you should be loop all your data out here
-					 		for(Person p:personList){
-					 		
-					 			int id = p.getId();
-			 		 			String fname = p.getFirstName();
-					 			String lname = p.getLastName();
-								String uname = p.getUsername();
-								// other attributes here...............		
-								 
-			 					out.println("<tr class=\""+ ((isOdd)?"odd":"even") +" gradeA\">");
-								out.println("	<td>"+fname+"</td>");
-								out.println("	<td>"+lname+"</td>");
-								out.println("	<td>"+uname+"</td>");								
-								out.println("	<td class=\"center\">");		
-								// Ok, onclikc means when you click on the button, then it calls the javascript function 
-								// to change the hidden value ( the person id), then the servlet knows which person to delete!!
-								out.println("		<input type=\"submit\" name=\"submit\" value=\"Delete\" onclick=\"changeHiddenValue('"+id+"');\"  class=\"bt_advert\" />");
-								out.println("	</td>");
-								out.println("</tr>"); 
-								//toggle					
-								isOdd=!isOdd;
- 					 		}
-					 	}  */	
-					%>	
-					
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>User Name</th>
-						<th>Delete</th>	
-					</tr>
-				</tfoot>
-			</table>
-			</form>
-						
-					</td>
-				</tr>
-			</table>
-					
-   				   							
-						</div>
-						<div id="tabs-2">
-						
-						   
-			   
-						
- 						
-						</div>
-						<div id="tabs-3">
 				 
 
-						</div>
 					</div>
   	 	
  
