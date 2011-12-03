@@ -1,8 +1,5 @@
 package video.connection;
 
-import java.util.LinkedHashMap;
-import java.util.Vector;
-
 import javax.jws.WebService;
 
 import video.dto.Account;
