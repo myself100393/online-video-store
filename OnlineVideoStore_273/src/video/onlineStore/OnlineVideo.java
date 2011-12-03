@@ -509,6 +509,169 @@ public class OnlineVideo {
 	
 	 
 	
+	
+	// for admin
+	public PersonInfo displayPerson(int personId) {
+			
+			PersonInfo personInfo = new PersonInfo();
+			try {
+				// Get the person from db
+				String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id WHERE p.id = ?";
+				PreparedStatement prepare = db.con.prepareStatement(sql);
+				prepare.setInt(1, personId);
+				ResultSet rs = prepare.executeQuery();
+				rs.first();
+				
+				Person person = new Person();
+				person.setId(rs.getInt("id"));
+				person.setRegistration(rs.getString("date_registration"));
+				person.setFirstName(rs.getString("first_name"));
+				person.setLast_login(rs.getString("last_login"));
+				person.setLastName(rs.getString("last_name"));
+				person.setPassword(rs.getString("password"));
+				person.setUsername(rs.getString("username"));
+			//	person.setSsn(rs.getString("ssn"));
+				
+				personInfo.setPerson(person);
+				rs.close();
+				prepare.close();
+				
+				// Get the rented movies for this user
+				sql = "SELECT * "
+						+ "FROM rental r JOIN movie m ON r.movie_id = m.id "
+						+ "WHERE r.person_ = ?";
+				
+				prepare = db.con.prepareStatement(sql);
+		
+						
+				prepare.setInt(1, personId);
+				
+				rs = prepare.executeQuery();
+				
+				ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
+				ArrayList<Movie> returnedMovies = new ArrayList<Movie>();
+				
+				while (rs.next()) {
+					Movie movie = new Movie();
+					movie.setId(rs.getInt("movie_id"));
+					movie.setName(rs.getString("name"));
+					movie.setBanner(rs.getString("banner"));
+					movie.setReleaseDate(new java.util.Date(rs.getDate("release_date").getTime()));
+					movie.setRentAmount(rs.getDouble("rent_amount"));
+					movie.setNbAvailable(rs.getInt("nb_available"));
+					
+					if (rs.getString("status").equalsIgnoreCase("returned")) {
+						returnedMovies.add(movie);
+					} else if (rs.getString("status").equalsIgnoreCase("rented")) {
+						rentedMovies.add(movie);
+					}
+				}
+				
+				personInfo.setListActualRentMovie(rentedMovies);
+				personInfo.setListRentMovie(returnedMovies);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return personInfo;
+			
+		}
+		
+		// for admin
+		public MovieInfo displayMovie(int movieId) {
+			
+			MovieInfo movieInfo = new MovieInfo();
+			
+			Movie movie = null;
+			try {
+				String sql = "SELECT * FROM movie WHERE id = ?";
+				PreparedStatement prepare = db.con.prepareStatement(sql);
+				prepare.setInt(1, movieId);
+				ResultSet rs = prepare.executeQuery();
+				if (rs.first()) {
+					movie = new Movie();
+					movie.setId(rs.getInt("id"));
+					movie.setName(rs.getString("name"));
+					movie.setBanner(rs.getString("banner"));
+					movie.setNbAvailable(rs.getInt("nb_available"));
+					movie.setRentAmount(rs.getDouble("rent_amount"));
+					movie.setReleaseDate(new java.util.Date(rs.getDate("release_date").getTime()));
+					
+					movieInfo.setMovie(movie);
+					
+					rs.close();
+					prepare.close();
+					
+					// Get the persons who rented  this movie
+					sql = "select * from rental r, persons p,  account a "
+							+ "where r.person_id=p.id and p.id=a.person_id and r.movie_id=?";
+					
+					prepare = db.con.prepareStatement(sql);
+			
+							
+					prepare.setInt(1, movieId);
+					
+					rs = prepare.executeQuery();
+					
+					ArrayList<Person> rentPersons = new ArrayList<Person>();
+					
+					while (rs.next()) {
+						Person person = new Person();
+						person.setId(rs.getInt("id_persons"));
+						person.setRegistration(rs.getString("date_registration"));
+						person.setFirstName(rs.getString("first_name"));
+						person.setLast_login(rs.getString("last_login"));
+						person.setLastName(rs.getString("last_name"));
+						person.setPassword(rs.getString("password"));
+						person.setUsername(rs.getString("username"));
+					//	person.setSsn(rs.getString("ssn"));
+						
+						rentPersons.add(person);
+										
+					}
+					
+					movieInfo.setListPerson(rentPersons);
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return movieInfo;
+		}
+		
+		// for admin
+		public Person[] listAllPersons(int type) {
+			ArrayList<Person> persons = new ArrayList<Person>(); 
+		
+			try {	
+				// Get all persons from db
+				String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where type=?";
+				PreparedStatement prepare = db.con.prepareStatement(sql);
+				prepare.setInt(1, type);
+				ResultSet rs = prepare.executeQuery();
+				
+				while (rs.next()) {
+					Person person = new Person();
+					person.setId(rs.getInt("id"));
+					person.setRegistration(rs.getString("date_registration"));
+					person.setFirstName(rs.getString("first_name"));
+					person.setLast_login(rs.getString("last_login"));
+					person.setLastName(rs.getString("last_name"));
+					person.setPassword(rs.getString("password"));
+					person.setUsername(rs.getString("username"));
+				//	person.setSsn(rs.getString("ssn"));
+					
+					persons.add(person);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			Person[] arrPersons = new Person[persons.size()];
+			arrPersons = persons.toArray(arrPersons);
+			return arrPersons;
+		}
 	 
 }
  
