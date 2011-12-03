@@ -1,0 +1,114 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="D:\School\SJSU\CMPE273 Ent Dist Systems\WorkSpac2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\OnlineVideoStore_273\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="Service" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="getAddress" qname="ns1:getAddress" returnQName="ns1:getAddressReturn" returnType="ns2:Address" soapAction="" xmlns:ns1="http://connection.video" xmlns:ns2="http://dto.video" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:userId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns3:operation>
+  <ns1:operation name="logout" qname="ns3:logout" returnQName="ns3:logoutReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:userId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="deletePerson" qname="ns4:deletePerson" returnQName="ns4:deletePersonReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:personId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="getPerson" qname="ns5:getPerson" returnQName="ns5:getPersonReturn" returnType="ns6:Person" soapAction="" xmlns:ns5="http://connection.video" xmlns:ns6="http://dto.video">
+   <ns1:parameter qname="ns5:username" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getAccount" qname="ns7:getAccount" returnQName="ns7:getAccountReturn" returnType="ns8:Account" soapAction="" xmlns:ns7="http://connection.video" xmlns:ns8="http://dto.video">
+   <ns1:parameter qname="ns7:userId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="logon" qname="ns9:logon" returnQName="ns9:logonReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:username" type="xsd:string"/>
+   <ns1:parameter qname="ns9:pwd" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="findMovies" qname="ns10:findMovies" returnQName="ns10:findMoviesReturn" returnType="ns11:Movie" soapAction="" xmlns:ns10="http://connection.video" xmlns:ns11="http://dto.video">
+   <ns1:parameter qname="ns10:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:banner" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:release" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:rentalPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:category" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:isAvailable" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="listMovies" qname="ns12:listMovies" returnQName="ns12:listMoviesReturn" returnType="ns13:Movie" soapAction="" xmlns:ns12="http://connection.video" xmlns:ns13="http://dto.video"/>
+  <ns1:operation name="issueMovie" qname="ns14:issueMovie" returnQName="ns14:issueMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:movieId" type="xsd:int"/>
+   <ns1:parameter qname="ns14:personId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="submitMovie" qname="ns15:submitMovie" returnQName="ns15:submitMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:movieId" type="xsd:int"/>
+   <ns1:parameter qname="ns15:personId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="signUp" qname="ns16:signUp" returnQName="ns16:signUpReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:person" type="ns17:Person" xmlns:ns17="http://dto.video"/>
+   <ns1:parameter qname="ns16:accountType" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="updatePersonAccount" qname="ns18:updatePersonAccount" returnQName="ns18:updatePersonAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:person" type="ns19:Person" xmlns:ns19="http://dto.video"/>
+   <ns1:parameter qname="ns18:account" type="ns20:Account" xmlns:ns20="http://dto.video"/>
+   <ns1:parameter qname="ns18:address" type="ns21:Address" xmlns:ns21="http://dto.video"/>
+  </ns1:operation>
+  <ns1:operation name="isUsernameExisted" qname="ns22:isUsernameExisted" returnQName="ns22:isUsernameExistedReturn" returnType="xsd:boolean" soapAction="" xmlns:ns22="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:username" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="deletePerson findMovies isUsernameExisted issueMovie signUp getAccount getPerson listMovies updatePersonAccount logout logon getAddress submitMovie"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Service"/>
+  <ns1:parameter name="className" value="video.connection.Service"/>
+  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="schemaQualified" value="http://dto.video,http://connection.video"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://connection.video"/>
+  <ns1:parameter name="wsdlServiceElement" value="ServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns23:Address" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:video.dto.Address" xmlns:ns23="http://dto.video"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns24:Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:video.dto.Person" xmlns:ns24="http://dto.video"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns25:Movie" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:video.dto.Movie" xmlns:ns25="http://dto.video"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns26:Account" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:video.dto.Account" xmlns:ns26="http://dto.video"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
