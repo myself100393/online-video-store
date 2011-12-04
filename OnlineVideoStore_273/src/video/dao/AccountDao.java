@@ -486,7 +486,7 @@ public class AccountDao {
     }
 
 
-	public List<Account> searchByUserId(Connection conn, int userId) {
+	public List<Account> searchByUserId(Connection conn, long userId) {
         ArrayList<Account> searchResults = new ArrayList<Account>();
         
         if (userId >0){

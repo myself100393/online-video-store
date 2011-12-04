@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class PersonInfo {
 	
 	private Person person;
-	private ArrayList<Movie> listActualRentMovie;
-	private ArrayList<Movie> listRentMovie;
+	private Movie[] listActualRentMovie;
+	private Movie[] listRentMovie;
 
 	public PersonInfo() {}
 	
-	public PersonInfo(Person person, ArrayList<Movie> listActualRentMovie, ArrayList<Movie> listRentMovie) {
+	public PersonInfo(Person person, Movie[] listActualRentMovie, Movie[] listRentMovie) {
 		this.person = person;
-		//this.listActualRentMovie = listActualRentMovie;
-		//this.listRentMovie = listRentMovie;
+		this.listActualRentMovie = listActualRentMovie;
+		this.listRentMovie = listRentMovie;
 	}
 
 	public Person getPerson() {
@@ -24,19 +24,19 @@ public class PersonInfo {
 		this.person = person;
 	}
 
-	public ArrayList<Movie> getListActualRentMovie() {
+	public Movie[] getListActualRentMovie() {
 		return listActualRentMovie;
 	}
 
-	public void setListActualRentMovie(ArrayList<Movie> listActualRentMovie) {
+	public void setListActualRentMovie(Movie[] listActualRentMovie) {
 		this.listActualRentMovie = listActualRentMovie;
 	}
 
-	public ArrayList<Movie> getListRentMovie() {
+	public Movie[] getListRentMovie() {
 		return listRentMovie;
 	}
 
-	public void setListRentMovie(ArrayList<Movie> listRentMovie) {
+	public void setListRentMovie(Movie[] listRentMovie) {
 		this.listRentMovie = listRentMovie;
 	}
 	

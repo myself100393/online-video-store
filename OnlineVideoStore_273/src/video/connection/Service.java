@@ -5,23 +5,25 @@ import javax.jws.WebService;
 
 import video.dto.Address;
 import video.dto.Movie;
+import video.dto.MovieInfo;
 import video.dto.Person;
 import video.dto.Account;
+import video.dto.PersonInfo;
 import video.onlineStore.OnlineVideo;
 import video.util.Validator;
 
 @WebService
 public class Service {
 	
-
+ 
 OnlineVideo omp = new OnlineVideo();
 
 
 	
-	public Movie[] findMovies(String name, String banner, Date release,
+	public Movie[] findMovies(long id,String name, String banner, String release,
 			Double rentalPrice, int category, boolean isAvailable) {
 		//SearchMovieManager smm = new SearchMovieManager();
-		return omp.findMovies(name, banner, release, rentalPrice, category, isAvailable);
+		return omp.findMovies(id,name, banner, release, rentalPrice, category, isAvailable);
 	}
 
 	
@@ -90,13 +92,13 @@ OnlineVideo omp = new OnlineVideo();
  
 		
 	
-	public Account getAccount(int userId){		
+	public Account getAccount(long userId){		
 		return omp.getAccount(userId);
 	}
 	
 	
 	
-	public Address getAddress(int userId){		
+	public Address getAddress(long userId){		
 		return omp.getAddress(userId);
 	}
 	
@@ -161,18 +163,22 @@ OnlineVideo omp = new OnlineVideo();
 	public String deletePerson(int personId){		
 		return omp.deletePerson(personId);		
 	}
-/*	
 	
-	public List<Person> findPersons(String firstName, String lastName, Address address, int type, int issuedMovie){		
-		return omp.findPerson(firstName,lastName,address,type,issuedMovie);
+	
+	public Person[] find_Persons(long id, String firstName, String lastName, String username, Date registration,Date last_Login){		
+		return omp.find_Persons(id,firstName,lastName,username,registration,last_Login);
 	}
 
 	
 	public PersonInfo displayPerson(int personId) {
 		// TODO Auto-generated method stub
-		return null;
+		return omp.displayPerson(personId);
 	}
-*/
+
+	public MovieInfo displayMovie(int movieId) {
+		// TODO Auto-generated method stub
+		return omp.displayMovie(movieId);
+	}
 
 	
 	

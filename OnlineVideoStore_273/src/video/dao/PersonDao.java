@@ -542,8 +542,8 @@ public class PersonDao {
                    valueObject.setLastName(result.getString("last_name")); 
                    valueObject.setUsername(result.getString("username")); 
                    valueObject.setPassword(result.getString("password")); 
-                   valueObject.setRegistration(result.getString("date_registration")); 
-                   valueObject.setLast_login(result.getString("last_login")); 
+                   valueObject.setRegistration(result.getDate("date_registration")); 
+                   valueObject.setLast_login(result.getDate("last_login")); 
 
               } else {
                     //System.out.println("Person Object Not Found!");
@@ -582,8 +582,8 @@ public class PersonDao {
                    temp.setLastName(result.getString("last_name")); 
                    temp.setUsername(result.getString("username")); 
                    temp.setPassword(result.getString("password")); 
-                   temp.setRegistration(result.getString("date_registration")); 
-                   temp.setLast_login(result.getString("last_login")); 
+                   temp.setRegistration(result.getDate("date_registration")); 
+                   temp.setLast_login(result.getDate("last_login")); 
 
                    searchResults.add(temp);
               }
