@@ -53,7 +53,7 @@ public class AddressDao {
 
           try {
                stmt = conn.prepareStatement(sql);
-               stmt.setInt(1, valueObject.getId()); 
+               stmt.setLong(1, valueObject.getId()); 
 
                singleQuery(conn, stmt, valueObject);
 
@@ -107,7 +107,7 @@ public class AddressDao {
                + "state, country, zip) VALUES (?, ?, ?, ?, ?, ?) ";
                stmt = conn.prepareStatement(sql);
 
-               stmt.setInt(1, valueObject.getPersonId()); 
+               stmt.setLong(1, valueObject.getPersonId()); 
                stmt.setString(2, valueObject.getStreet()); 
                stmt.setString(3, valueObject.getCity()); 
                stmt.setString(4, valueObject.getState()); 
@@ -175,14 +175,14 @@ public class AddressDao {
 
           try {
               stmt = conn.prepareStatement(sql);
-              stmt.setInt(1, valueObject.getPersonId()); 
+              stmt.setLong(1, valueObject.getPersonId()); 
               stmt.setString(2, valueObject.getStreet()); 
               stmt.setString(3, valueObject.getCity()); 
               stmt.setString(4, valueObject.getState()); 
               stmt.setString(5, valueObject.getCountry()); 
               stmt.setString(6, valueObject.getZip()); 
 
-              stmt.setInt(7, valueObject.getId()); 
+              stmt.setLong(7, valueObject.getId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {
@@ -225,7 +225,7 @@ public class AddressDao {
 
           try {
               stmt = conn.prepareStatement(sql);
-              stmt.setInt(1, valueObject.getId()); 
+              stmt.setLong(1, valueObject.getId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {

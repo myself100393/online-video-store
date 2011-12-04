@@ -93,7 +93,7 @@ public class PersonDao {
 
           try {
                stmt = conn.prepareStatement(sql);
-               stmt.setInt(1, valueObject.getId()); 
+               stmt.setLong(1, valueObject.getId()); 
 
                singleQuery(conn, stmt, valueObject);
 
@@ -232,7 +232,7 @@ public class PersonDao {
               stmt.setString(3, valueObject.getUsername()); 
               stmt.setString(4, valueObject.getPassword());            
           	  stmt.setDate(5,  new java.sql.Date(System.currentTimeMillis()) ); 
-          	  stmt.setInt(6,  valueObject.getId() );
+          	  stmt.setLong(6,  valueObject.getId() );
           	  
           	  
               int rowcount = databaseUpdate(conn, stmt);
@@ -277,7 +277,7 @@ public class PersonDao {
 
           try {
               stmt = conn.prepareStatement(sql);
-              stmt.setInt(1, valueObject.getId()); 
+              stmt.setLong(1, valueObject.getId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {

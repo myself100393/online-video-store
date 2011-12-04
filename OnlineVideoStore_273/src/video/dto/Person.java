@@ -16,7 +16,7 @@ public class Person implements Serializable {
 	/** 
      * This data is directly mapped to the columns of database table.
      */
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String username;
@@ -26,17 +26,17 @@ public class Person implements Serializable {
 
     public Person () {}
 
-    public Person (int id) {
+    public Person (long id) {
           this.id = id;
     }
 
 
     /** Get- and Set-methods  **/
 
-    public int getId() {
+    public long getId() {
           return this.id;
     }
-    public void setId(int idIn) {
+    public void setId(long idIn) {
           this.id = idIn;
     }
 

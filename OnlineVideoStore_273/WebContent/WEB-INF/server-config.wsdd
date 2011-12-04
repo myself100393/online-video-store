@@ -32,46 +32,46 @@
   <ns1:operation name="deletePerson" qname="ns4:deletePerson" returnQName="ns4:deletePersonReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns4:personId" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="getPerson" qname="ns5:getPerson" returnQName="ns5:getPersonReturn" returnType="ns6:Person" soapAction="" xmlns:ns5="http://connection.video" xmlns:ns6="http://dto.video">
-   <ns1:parameter qname="ns5:username" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="findMovies" qname="ns5:findMovies" returnQName="ns5:findMoviesReturn" returnType="ns6:Movie" soapAction="" xmlns:ns5="http://connection.video" xmlns:ns6="http://dto.video">
+   <ns1:parameter qname="ns5:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:banner" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:release" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:rentalPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:category" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:isAvailable" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:operation name="getAccount" qname="ns7:getAccount" returnQName="ns7:getAccountReturn" returnType="ns8:Account" soapAction="" xmlns:ns7="http://connection.video" xmlns:ns8="http://dto.video">
    <ns1:parameter qname="ns7:userId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="logon" qname="ns9:logon" returnQName="ns9:logonReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns9:username" type="xsd:string"/>
-   <ns1:parameter qname="ns9:pwd" type="xsd:string"/>
+  <ns1:operation name="listMovies" qname="ns9:listMovies" returnQName="ns9:listMoviesReturn" returnType="ns10:Movie" soapAction="" xmlns:ns10="http://dto.video" xmlns:ns9="http://connection.video"/>
+  <ns1:operation name="issueMovie" qname="ns11:issueMovie" returnQName="ns11:issueMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:movieId" type="xsd:int"/>
+   <ns1:parameter qname="ns11:personId" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="findMovies" qname="ns10:findMovies" returnQName="ns10:findMoviesReturn" returnType="ns11:Movie" soapAction="" xmlns:ns10="http://connection.video" xmlns:ns11="http://dto.video">
-   <ns1:parameter qname="ns10:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns10:banner" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns10:release" type="xsd:dateTime" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns10:rentalPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns10:category" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns10:isAvailable" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="submitMovie" qname="ns12:submitMovie" returnQName="ns12:submitMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:movieId" type="xsd:int"/>
+   <ns1:parameter qname="ns12:personId" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="listMovies" qname="ns12:listMovies" returnQName="ns12:listMoviesReturn" returnType="ns13:Movie" soapAction="" xmlns:ns12="http://connection.video" xmlns:ns13="http://dto.video"/>
-  <ns1:operation name="issueMovie" qname="ns14:issueMovie" returnQName="ns14:issueMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns14:movieId" type="xsd:int"/>
-   <ns1:parameter qname="ns14:personId" type="xsd:int"/>
+  <ns1:operation name="getPerson" qname="ns13:getPerson" returnQName="ns13:getPersonReturn" returnType="ns14:Person" soapAction="" xmlns:ns13="http://connection.video" xmlns:ns14="http://dto.video">
+   <ns1:parameter qname="ns13:username" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="submitMovie" qname="ns15:submitMovie" returnQName="ns15:submitMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns15:movieId" type="xsd:int"/>
-   <ns1:parameter qname="ns15:personId" type="xsd:int"/>
+  <ns1:operation name="signUp" qname="ns15:signUp" returnQName="ns15:signUpReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:person" type="ns16:Person" xmlns:ns16="http://dto.video"/>
+   <ns1:parameter qname="ns15:accountType" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="signUp" qname="ns16:signUp" returnQName="ns16:signUpReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns16:person" type="ns17:Person" xmlns:ns17="http://dto.video"/>
-   <ns1:parameter qname="ns16:accountType" type="xsd:int"/>
+  <ns1:operation name="logon" qname="ns17:logon" returnQName="ns17:logonReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:username" type="xsd:string"/>
+   <ns1:parameter qname="ns17:pwd" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="updatePersonAccount" qname="ns18:updatePersonAccount" returnQName="ns18:updatePersonAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns18:person" type="ns19:Person" xmlns:ns19="http://dto.video"/>
-   <ns1:parameter qname="ns18:account" type="ns20:Account" xmlns:ns20="http://dto.video"/>
-   <ns1:parameter qname="ns18:address" type="ns21:Address" xmlns:ns21="http://dto.video"/>
+  <ns1:operation name="isUsernameExisted" qname="ns18:isUsernameExisted" returnQName="ns18:isUsernameExistedReturn" returnType="xsd:boolean" soapAction="" xmlns:ns18="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:username" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="isUsernameExisted" qname="ns22:isUsernameExisted" returnQName="ns22:isUsernameExistedReturn" returnType="xsd:boolean" soapAction="" xmlns:ns22="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns22:username" type="xsd:string"/>
+  <ns1:operation name="updatePersonAccount" qname="ns19:updatePersonAccount" returnQName="ns19:updatePersonAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://connection.video" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:person" type="ns20:Person" xmlns:ns20="http://dto.video"/>
+   <ns1:parameter qname="ns19:account" type="ns21:Account" xmlns:ns21="http://dto.video"/>
+   <ns1:parameter qname="ns19:address" type="ns22:Address" xmlns:ns22="http://dto.video"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="deletePerson findMovies isUsernameExisted issueMovie signUp getAccount getPerson listMovies updatePersonAccount logout logon getAddress submitMovie"/>
+  <ns1:parameter name="allowedMethods" value="deletePerson findMovies isUsernameExisted issueMovie signUp getAccount listMovies getPerson updatePersonAccount logout logon getAddress submitMovie"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Service"/>
   <ns1:parameter name="className" value="video.connection.Service"/>

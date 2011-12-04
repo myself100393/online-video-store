@@ -16,8 +16,8 @@ public class Address implements Serializable {
 	/** 
      * This data is directly mapped to the DB address table.
      */
-    private int id;
-    private int personId;
+    private long id;
+    private long personId;
     private String street;
     private String city;
     private String state;
@@ -48,17 +48,17 @@ public class Address implements Serializable {
      * Get- and Set-methods
      */
 
-    public int getId() {
+    public long getId() {
           return this.id;
     }
-    public void setId(int idIn) {
+    public void setId(long idIn) {
           this.id = idIn;
     }
 
-    public int getPersonId() {
+    public long getPersonId() {
           return this.personId;
     }
-    public void setPersonId(int personIdIn) {
+    public void setPersonId(long personIdIn) {
           this.personId = personIdIn;
     }
 
