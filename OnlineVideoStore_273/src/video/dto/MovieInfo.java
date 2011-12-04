@@ -1,17 +1,18 @@
 package video.dto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MovieInfo {
 
 	private Movie movie;
-	private ArrayList<Person> listPerson;
+	private Person[] listPerson;
 	
 	public MovieInfo() {}
 	
-	public MovieInfo(Movie movie, ArrayList<Person> listPerson) {
+	public MovieInfo(Movie movie, Person[] listPerson) {
 		this.movie = movie;
-		this.listPerson = listPerson;
+		//this.listPerson = listPerson;
 	}
 
 	public Movie getMovie() {
@@ -22,11 +23,18 @@ public class MovieInfo {
 		this.movie = movie;
 	}
 
-	public ArrayList<Person> getListPerson() {
+	public Person[] getListPerson() {
 		return listPerson;
 	}
 
-	public void setListPerson(ArrayList<Person> listPerson) {
+	public void setListPerson(Person[] listPerson) {
 		this.listPerson = listPerson;
 	}
+
+	@Override
+	public String toString() {
+		return "MovieInfo [movie=" + movie + ", listPerson="
+				+ Arrays.toString(listPerson) + "]";
+	}
+	
 }

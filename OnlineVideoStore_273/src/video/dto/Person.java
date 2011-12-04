@@ -1,7 +1,7 @@
 package video.dto;
 
 import java.io.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
  
 
@@ -21,8 +21,8 @@ public class Person implements Serializable {
     private String lastName;
     private String username;
     private String password;
-    private String registration;
-    private String last_login;
+    private Date registration;
+    private Date last_login;
 
     public Person () {}
 
@@ -68,17 +68,17 @@ public class Person implements Serializable {
           this.password = passwordIn;
     }
 
-    public String getRegistration() {
+    public Date getRegistration() {
           return this.registration;
     }
-    public void setRegistration(String registrationIn) {
+    public void setRegistration(Date registrationIn) {
           this.registration = registrationIn;
     }
 
-    public String getLast_login() {
+    public Date getLast_login() {
           return this.last_login;
     }
-    public void setLast_login(String last_loginIn) {
+    public void setLast_login(Date last_loginIn) {
           this.last_login = last_loginIn;
     }
 
@@ -131,12 +131,12 @@ public class Person implements Serializable {
      * setAll allows to set all variables in one method call. 
      */
 
-    public void setAll(int id,
+    public void setAll(long id,
     					String firstName,
     					String lastName,
     					String username,
     					String password,
-    					String last_login) {
+    					Date last_login) {
           this.id = id;
           this.firstName = firstName;
           this.lastName = lastName;

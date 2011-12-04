@@ -476,7 +476,7 @@ public class AddressDao {
           return (List)searchResults;
     }
     
-	public List<Address> searchByUserId(Connection conn, int userId) {
+	public List<Address> searchByUserId(Connection conn, long userId) {
         ArrayList<Address> searchResults = new ArrayList<Address>();
         
         if (userId >0){

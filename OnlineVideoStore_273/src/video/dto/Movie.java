@@ -4,16 +4,17 @@ import java.util.Date;
 
 public class Movie {
 
-	private int id;
+	private long id;
 	private String name;
 	private String banner;
-	private Date releaseDate;
+	private String releaseDate;
 	private double rentAmount;
 	private int nbAvailable;
 	
 	public Movie() {}
 	
-	public Movie(String name, String banner, Date releaseDate, double rentAmount, int nbAvailable) {
+	public Movie(long id,String name, String banner, String releaseDate, double rentAmount, int nbAvailable) {
+		this.id = id;
 		this.name = name;
 		this.banner = banner;
 		this.releaseDate = releaseDate;
@@ -21,11 +22,11 @@ public class Movie {
 		this.nbAvailable = nbAvailable;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -45,11 +46,11 @@ public class Movie {
 		this.banner = banner;
 	}
 
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
@@ -68,4 +69,12 @@ public class Movie {
 	public void setNbAvailable(int nbAvailable) {
 		this.nbAvailable = nbAvailable;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", name=" + name + ", banner=" + banner
+				+ ", releaseDate=" + releaseDate + ", rentAmount=" + rentAmount
+				+ ", nbAvailable=" + nbAvailable + "]";
+	}
+	
 }
