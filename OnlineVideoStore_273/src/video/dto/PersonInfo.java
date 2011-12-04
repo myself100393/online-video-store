@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class PersonInfo {
 	
 	private Person person;
-	//private ArrayList<Movie> listActualRentMovie;
-	//private ArrayList<Movie> listRentMovie;
+	private ArrayList<Movie> listActualRentMovie;
+	private ArrayList<Movie> listRentMovie;
 
 	public PersonInfo() {}
 	
@@ -23,7 +23,7 @@ public class PersonInfo {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-/*
+
 	public ArrayList<Movie> getListActualRentMovie() {
 		return listActualRentMovie;
 	}
@@ -39,5 +39,5 @@ public class PersonInfo {
 	public void setListRentMovie(ArrayList<Movie> listRentMovie) {
 		this.listRentMovie = listRentMovie;
 	}
-	*/
+	
 }

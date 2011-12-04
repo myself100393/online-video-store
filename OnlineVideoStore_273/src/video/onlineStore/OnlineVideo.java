@@ -19,7 +19,9 @@ import video.dao.PersonDao;
 import video.dto.Account;
 import video.dto.Address;
 import video.dto.Movie;
+import video.dto.MovieInfo;
 import video.dto.Person;
+import video.dto.PersonInfo;
 import video.exceptions.NotFoundException;
 
 
@@ -40,7 +42,7 @@ public class OnlineVideo {
 			}			
 			
 			boolean isCreate = dao.create(db.con, person);			
-			int personId = person.getId();
+			long personId = person.getId();
 			
 			
 			//Create Account
@@ -53,7 +55,7 @@ public class OnlineVideo {
 			//Create Address
 			AddressDao add_dao = new AddressDao();
 			Address address = add_dao.createValueObject();
-			address.setPersonId(personId);	
+			address.setPersonId(personId);
 			address.setStreet("");
 			address.setCity("");
 			address.setState("");
@@ -392,7 +394,7 @@ public class OnlineVideo {
 	}
 	
 	// status=rented
-	// vérifier en fonction du type de compte combien de films ils ont emprunté
+	// vé–žifier en fonction du type de compte combien de films ils ont empruntï¿½
 	// premium = 10
 	// simple member = 2
 	public String issueMovie(int movieId, int personId) {
