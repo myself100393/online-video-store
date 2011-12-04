@@ -1,7 +1,5 @@
 package video.dto;
 
-import java.util.Date;
-
 public class Movie {
 
 	private long id;
@@ -13,8 +11,7 @@ public class Movie {
 	
 	public Movie() {}
 	
-	public Movie(long id,String name, String banner, String releaseDate, double rentAmount, int nbAvailable) {
-		this.id = id;
+	public Movie(String name, String banner, String releaseDate, double rentAmount, int nbAvailable) {
 		this.name = name;
 		this.banner = banner;
 		this.releaseDate = releaseDate;

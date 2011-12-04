@@ -387,7 +387,9 @@ public class OnlineVideo {
 			String query = "SELECT * FROM movie ORDER BY name ASC";
 			ResultSet r = s.executeQuery(query);
 			while (r.next()) {
-				arraylistmovie.add(new Movie(r.getLong("id"),r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available"))));
+				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
+				m.setId(r.getLong("id"));
+				arraylistmovie.add(m);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -483,7 +485,9 @@ public class OnlineVideo {
 			ResultSet r = s.executeQuery(query);
 			System.out.println("3rd....");
 			while (r.next()) {
-				arraylistmovie.add(new Movie(r.getLong("id"),r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available"))));				
+				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
+				m.setId(r.getLong("id"));
+				arraylistmovie.add(m);				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
