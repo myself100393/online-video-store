@@ -10,15 +10,15 @@ package video.dto;
 public class Person  implements java.io.Serializable {
     private java.lang.String firstName;
 
-    private int id;
+    private long id;
 
     private java.lang.String lastName;
 
-    private java.lang.String last_login;
+    private java.util.Calendar last_login;
 
     private java.lang.String password;
 
-    private java.lang.String registration;
+    private java.util.Calendar registration;
 
     private java.lang.String username;
 
@@ -27,11 +27,11 @@ public class Person  implements java.io.Serializable {
 
     public Person(
            java.lang.String firstName,
-           int id,
+           long id,
            java.lang.String lastName,
-           java.lang.String last_login,
+           java.util.Calendar last_login,
            java.lang.String password,
-           java.lang.String registration,
+           java.util.Calendar registration,
            java.lang.String username) {
            this.firstName = firstName;
            this.id = id;
@@ -68,7 +68,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @return id
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -78,7 +78,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @param id
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -108,7 +108,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @return last_login
      */
-    public java.lang.String getLast_login() {
+    public java.util.Calendar getLast_login() {
         return last_login;
     }
 
@@ -118,7 +118,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @param last_login
      */
-    public void setLast_login(java.lang.String last_login) {
+    public void setLast_login(java.util.Calendar last_login) {
         this.last_login = last_login;
     }
 
@@ -148,7 +148,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @return registration
      */
-    public java.lang.String getRegistration() {
+    public java.util.Calendar getRegistration() {
         return registration;
     }
 
@@ -158,7 +158,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @param registration
      */
-    public void setRegistration(java.lang.String registration) {
+    public void setRegistration(java.util.Calendar registration) {
         this.registration = registration;
     }
 
@@ -227,7 +227,7 @@ public class Person  implements java.io.Serializable {
         if (getFirstName() != null) {
             _hashCode += getFirstName().hashCode();
         }
-        _hashCode += getId();
+        _hashCode += new Long(getId()).hashCode();
         if (getLastName() != null) {
             _hashCode += getLastName().hashCode();
         }
@@ -262,7 +262,7 @@ public class Person  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("id");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -274,7 +274,7 @@ public class Person  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("last_login");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "last_login"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -286,7 +286,7 @@ public class Person  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("registration");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "registration"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();

@@ -10,13 +10,13 @@ package video.dto;
 public class Movie  implements java.io.Serializable {
     private java.lang.String banner;
 
-    private int id;
+    private long id;
 
     private java.lang.String name;
 
     private int nbAvailable;
 
-    private java.util.Calendar releaseDate;
+    private java.lang.String releaseDate;
 
     private double rentAmount;
 
@@ -25,10 +25,10 @@ public class Movie  implements java.io.Serializable {
 
     public Movie(
            java.lang.String banner,
-           int id,
+           long id,
            java.lang.String name,
            int nbAvailable,
-           java.util.Calendar releaseDate,
+           java.lang.String releaseDate,
            double rentAmount) {
            this.banner = banner;
            this.id = id;
@@ -64,7 +64,7 @@ public class Movie  implements java.io.Serializable {
      * 
      * @return id
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -74,7 +74,7 @@ public class Movie  implements java.io.Serializable {
      * 
      * @param id
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -124,7 +124,7 @@ public class Movie  implements java.io.Serializable {
      * 
      * @return releaseDate
      */
-    public java.util.Calendar getReleaseDate() {
+    public java.lang.String getReleaseDate() {
         return releaseDate;
     }
 
@@ -134,7 +134,7 @@ public class Movie  implements java.io.Serializable {
      * 
      * @param releaseDate
      */
-    public void setReleaseDate(java.util.Calendar releaseDate) {
+    public void setReleaseDate(java.lang.String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -196,7 +196,7 @@ public class Movie  implements java.io.Serializable {
         if (getBanner() != null) {
             _hashCode += getBanner().hashCode();
         }
-        _hashCode += getId();
+        _hashCode += new Long(getId()).hashCode();
         if (getName() != null) {
             _hashCode += getName().hashCode();
         }
@@ -224,7 +224,7 @@ public class Movie  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("id");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -242,7 +242,7 @@ public class Movie  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("releaseDate");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "releaseDate"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
