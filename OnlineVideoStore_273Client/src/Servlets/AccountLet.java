@@ -50,7 +50,7 @@ public class AccountLet extends HttpServlet {
 		 	
 			Person person = proxy.getPerson(loggedInUser);			 
 
-			if(person!=null){				
+			if(person!=null){				 
 				Account account = proxy.getAccount(person.getId());
 				Address address = proxy.getAddress(person.getId());
 				

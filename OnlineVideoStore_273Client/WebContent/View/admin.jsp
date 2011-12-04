@@ -28,8 +28,9 @@
 	<script src="js/validate.js" type="text/javascript"></script>
 	<!-- Validate -->
 	<script src="js/jquery.validate.js" type="text/javascript"></script>
+	<!-- DataTable -->
+    <script src="js/jquery.jeditable.mini.js" type="text/javascript"></script>
     <script src="js/jquery.dataTables.js" type="text/javascript"></script>
-   <script src="js/jquery.jeditable.mini.js" type="text/javascript"></script>
 			<script type="text/javascript" charset="utf-8">
 			/* Formating function for row details */
 			function fnFormatDetails ( oTable, nTr )
@@ -52,24 +53,22 @@
 			    nCloneTd.innerHTML = '<img src="images/details_open.png">';
 			    nCloneTd.className = "center";
 			     
-			    $('#example thead tr').each( function () {
+			    $('#jQTable_Movie thead tr').each( function () {
 			        this.insertBefore( nCloneTh, this.childNodes[0] );
 			    } );
 			     
-			    $('#example tbody tr').each( function () {
+			    $('#jQTable_Movie tbody tr').each( function () {
 			        this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
 			    } );
 			     
 			    /* Init DataTables */
-				var oTable = $('#example').dataTable( {
+				var oTable = $('#jQTable_Movie').dataTable( {
 					"bJQueryUI": true,
 					//"sPaginationType": "full_numbers",
-					"aoColumnDefs": [
-            { "bSortable": false, "aTargets": [ 0 ] }
-                    ],
+					"aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0 ] }],
 						"aaSorting": [ [0,'asc'], [1,'asc'] ],
 						"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-				"fnDrawCallback": function() {
+				    "fnDrawCallback": function() {
 		            alert( 'DataTables has redrawn the table' );
 		        }
 				} );
@@ -77,7 +76,7 @@
 			     * Note that the indicator for showing which row is open is not controlled by DataTables,
 			     * rather it is done here
 			     */
-			    $('#example tbody td img').live('click', function () {
+			    $('#jQTable_Movie tbody td img').live('click', function () {
 			        var nTr = this.parentNode.parentNode;
 			        if ( this.src.match('details_close') )
 			        {

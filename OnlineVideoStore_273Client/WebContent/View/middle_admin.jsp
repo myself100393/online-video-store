@@ -1,1064 +1,466 @@
- 				<%@ page import="video.dto.Person" %>
- 				<%@ page import="video.dto.Address" %>
- 				<%@ page import="java.util.Locale" %>
- 				<%@ page import="java.util.UUID" %>
- 				<%@ page import="java.util.LinkedHashMap" %> 				 
- 				<%@ page import="video.util.CountryHelper" %> 
- 				<%@ page import="video.util.StateHelper" %> 				
- 				<%@ page import="video.util.MovieSearchHelper" %> 				
- 				<%@ page import="video.dto.Account;" %>
- 				
- 			 
- 				<%
- 				    String movie="";
-			 		int movieId = 0;
-			 		String banner = "";
-			 		String name = "";
-			 		boolean availability = false;
-			 		int rentAmount = 0;
-                    
-					LinkedHashMap<String,String> movies =  (LinkedHashMap<String,String>)MovieSearchHelper.states;
- 				
- 				
- 				
- 				%>
+
+<%@ page import="video.dto.Person"%>
+<%@ page import="video.dto.Address"%>
+<%@ page import="java.util.Locale"%>
+<%@ page import="java.util.UUID"%>
+<%@ page import="java.util.LinkedHashMap"%>
+<%@ page import="video.util.CountryHelper"%>
+<%@ page import="video.util.StateHelper"%>
+<%@ page import="video.util.MovieSearchHelper"%>
+<%@ page import="video.dto.Account;"%>
 
 
-	 		<div class="rright">			
-				<!-- Register Form -->
-				<form id="adminForm" action="Admin" method="post">
-					<h1>Your Account Info</h1>	
-					
-					
-					 				
-					 <div id="tabs">
-						<ul>
-							<li><a href="#tabs-1">Create Movie</a></li>
-							<li><a href="#tabs-2">Movie Searching</a></li>
-							<li><a href="#tabs-3">Movie Listing</a></li>
-							<li><a href="#tabs-4">Customer Searching</a></li>
-							<li><a href="#tabs-5">Customer Listing</a></li>
-							<li><a href="#tabs-6">Bill Generating</a></li>
-						</ul>
-						<div id="tabs-1">
-						
+<%
+	String movie = "";
+	int movieId = 0;
+	String banner = "";
+	String name = "";
+	boolean availability = false;
+	int rentAmount = 0;
 
-						<%					
-							 
-/*
-							//Person[] personList = (Person[])request.getAttribute("personList");
-							Person[] personList = new Person[100];
-							
-							
-							//how to fake the front end, just to initilaze date
-							for(int i=0; i < 100; i++){						
+	LinkedHashMap<String, String> movies = (LinkedHashMap<String, String>) MovieSearchHelper.states;
+%>
 
-		
-								Person p = personList[i] = new Person();
-								
-								String a = UUID.randomUUID().toString().replace("-", 
 
-"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+<div class="rright">
+	<!-- Register Form -->
+	<form id="adminForm" action="Admin" method="post">
+		<h1>Your Account Info</h1>
 
-"").replace("8", "").replace("9", "");
-								String b = UUID.randomUUID().toString().replace("-", 
 
-"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
 
-"").replace("8", "").replace("9", "");
-								String c = UUID.randomUUID().toString().replace("-", 
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Create Movie</a>
+				</li>
+				<li><a href="#tabs-2">Movie Searching</a>
+				</li>
+				<li><a href="#tabs-3">Movie Listing</a>
+				</li>
+				<li><a href="#tabs-4">Customer Searching</a>
+				</li>
+				<li><a href="#tabs-5">Customer Listing</a>
+				</li>
+				<li><a href="#tabs-6">Bill Generating</a>
+				</li>
+			</ul>
+			<div id="tabs-1">
 
-"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+				<br />
+				<p>
+				<h2 class="accountX">Name:</h2>
+				<input id="name" name="name" size="30" minlength="1" maxlength="30"
+					value="<%=name%>" />
+				<p />
 
-"").replace("8", "").replace("9", "");
-								
-								
-								p.setId(i+1);
-								p.setFirstName(a);
-								p.setLastName(b);
-								p.setUsername(c);						
+				<br />
+				<p>
+				<h2 class="accountX">Banner :</h2>
+				<input id="banner" name="banner" size="30" minlength="4"
+					maxlength="20" value="<%=banner%>" />
+				<p />
 
-		
+				<br />
+				<p>
+				<h2 class="accountX">Release Date:</h2>
+				<select class="required" id="date" name="date">
+					<option value="">Please Select</option>
+					<%
+						for (String key : movies.keySet()) {
+							String selectedMovieAttr = "";
+							if (key.equals(movie)) {
+								selectedMovieAttr = "selected=\"selected\"";
 							}
-						 */
-						%>  							
-			<form id="adminForm" action="admin" method="post">
-				<input id='btnP' type="hidden" name="buttonPressed" value="" />	
-				<input type="hidden" name="FunctionCall" value="deletePerson" />
-										
-			
-				<table cellpadding="0" cellspacing="0" border="0" class="display" id="jQList">
-				<thead>
-					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>User Name</th>
-						<th>Delete</th>		
-					</tr>
-				</thead>
-				<tbody>
-				
-					<% 
-			
-/*					 	if(personList!=null){
-					 		
-					 		boolean isOdd = true;
-							String evenOdd = "odd";
-							
-							int j=1;
-			
-							// you should be loop all your data out here
-					 		for(Person p:personList){
-					 		
-					 			int id = p.getId();
-			 		 			String fname = p.getFirstName();
-					 			String lname = p.getLastName();
-								String uname = p.getUsername();
-								// other attributes here...............		
-								 
-			 					out.println("<tr class=\""+ ((isOdd)?"odd":"even") +" gradeA\">");
-								out.println("	<td>"+fname+"</td>");
-								out.println("	<td>"+lname+"</td>");
-								out.println("	<td>"+uname+"</td>");								
-								out.println("	<td class=\"center\">");		
-								// Ok, onclikc means when you click on the button, then it calls the javascript function 
-								// to change the hidden value ( the person id), then the servlet knows which person to delete!!
-								out.println("		<input type=\"submit\" name=\"submit\" value=\"Delete\" onclick=\"changeHiddenValue('"+id+"');\"  class=\"bt_advert\" />");
-								out.println("	</td>");
-								out.println("</tr>"); 
-								//toggle					
-								isOdd=!isOdd;
- 					 		}
-					 	}  */	
-					%>	
-					
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>User Name</th>
-						<th>Delete</th>	
-					</tr>
-				</tfoot>
-			</table>
-			</form>
-						
-					</td>
-				</tr>
-			</table>
-					
-   				   							
-						</div>
-						
-						<div id="tabs-2">
-						
-		   				   	<br/>
-			   				   	<p>	   		  					
-			   					<h2 class="accountX">Movie ID:</h2>
-			     				<input id="movieId" name="movieId" size="20" minlength="5" maxlength="5" value="<%=movieId%>" />
-								<p/>
-								   				   	
-			   				   	<br/>
-			   				   	<p>   					
-			   					<h2 class="accountX">Name:</h2>
-			     				<input id="name" name="name" size="30"  minlength="1" maxlength="30" value="<%=name%>" />
-			  					<p/>
-			  					 				   	
-			   				   	<br/>
-			   				   	<p>   					  				 
-			     				<h2 class="accountX">Banner :</h2>
-			     				<input id="banner" name="banner" size="30" minlength="4" maxlength="20" value="<%=banner%>" />
-			  					<p/>
-			  					 				   	
-			   				   	<br/>
-			   				   	<p>   				 	
-								<h2 class="accountX">Release Date:</h2>
-			   					<select class="required" id="date" name="date">
-			     					<option value="">Please Select</option>
-			 					  <%
-			 					  	for (String key : movies.keySet()) { 						  
-			 					  		String selectedMovieAttr="";
-			 						  	if(key.equals(movie)){
-			 						  		selectedMovieAttr="selected=\"selected\"";			  		
-			 						  	}	
-			 							out.println("<option "+selectedMovieAttr+" value=\""+key+"\">"+movies.get(key)+"</option>"); 			 
-			 						}
-			 					  %> 	
-			 					  </select>	
-			 					<p/>
-						   	   	<br/>
+							out.println("<option " + selectedMovieAttr + " value=\"" + key
+									+ "\">" + movies.get(key) + "</option>");
+						}
+					%>
+				</select>
+				<p />
+				<br /> <br />
+				<p>
+				<h2 class="accountX">Rent Amount:</h2>
+				<input name="rentAmount" id="rentAmount" size="10" minlength="1"
+					maxlength="10" value="<%=rentAmount%>" />
+				<p />
+				<br /> <br />
+				<p>
+				<h2 class="accountX">Number of Available Movie :</h2>
+				<input name="availability" id="availability" size="10" minlength="1"
+					maxlength="10" value="<%=""%>" /> 
+					<input type="submit"
+					name="submit" value=" Submit " class="bt_login" id="CreateMovie" />
+				<input type="hidden" name="FunctionCall" value="Logon">
+				<p />
 
-			   				   	<br/>
-			   				   	<p>   				 	
-								<h2 class="accountX">Rent Amount:</h2>
-				            	<input name="rentAmount" id="rentAmount"  size="15" minlength="1" maxlength="10" value="<%=rentAmount%>" />
-			   					<p/>
-						   	   	<br/>
+				<%
+					//Person[] personList = (Person[])request.getAttribute("personList");
+					Person[] personList = new Person[100];
 
-			   				   	<p>	          	
-			 		     		<h2 class="accountX">Availability :</h2>
-			     				<input class ="checkbox" name="availability" id="availability" type ="checkbox"<%=availability%> value="<%=availability%>">     			 	
-			 					  				
-					            <input type="submit" name="submit" value=" Start Searching " class="bt_login" id="SearchMovie" />
-					            <input type="hidden" name="FunctionCall" value="Logon">
-			 					<p/>  		
-			   				   	
-			   						
-						</div>
-						<div id="tabs-3">
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" style="width:940px">
-	<thead>
-		<tr>
-			<th>Rendering engine</th>
-			<th>Browser</th>
-			<th>Platform(s)</th>
-			<th>Engine version</th>
-			<th>CSS grade</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr class="gradeX">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 4.0</td>
-			<td>Win 95+</td>
-			<td class="center">4</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.0</td>
-			<td>Win 95+</td>
-			<td class="center">5</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.5</td>
-			<td>Win 95+</td>
-			<td class="center">5.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 6</td>
-			<td>Win 98+</td>
-			<td class="center">6</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>Internet Explorer 7</td>
-			<td>Win XP SP2+</td>
-			<td class="center">7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>AOL browser (AOL desktop)</td>
-			<td>Win XP</td>
-			<td class="center">6</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 1.0</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 1.5</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 2.0</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 3.0</td>
-			<td>Win 2k+ / OSX.3+</td>
-			<td class="center">1.9</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Camino 1.0</td>
-			<td>OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Camino 1.5</td>
-			<td>OSX.3+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Netscape 7.2</td>
-			<td>Win 95+ / Mac OS 8.6-9.2</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Netscape Browser 8</td>
-			<td>Win 98SE+</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Netscape Navigator 9</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.0</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.1</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.2</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.2</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.3</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.3</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.4</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.4</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.5</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.6</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.6</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.7</td>
-			<td>Win 98+ / OSX.1+</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.8</td>
-			<td>Win 98+ / OSX.1+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Seamonkey 1.1</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Epiphany 2.20</td>
-			<td>Gnome</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 1.2</td>
-			<td>OSX.3</td>
-			<td class="center">125.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 1.3</td>
-			<td>OSX.3</td>
-			<td class="center">312.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 2.0</td>
-			<td>OSX.4+</td>
-			<td class="center">419.3</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 3.0</td>
-			<td>OSX.4+</td>
-			<td class="center">522.1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Google Chrome 1.0</td>
-			<td>Win XP+</td>
-			<td class="center">525</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>OmniWeb 5.5</td>
-			<td>OSX.4+</td>
-			<td class="center">420</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>iPod Touch / iPhone</td>
-			<td>iPod</td>
-			<td class="center">420.1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>S60</td>
-			<td>S60</td>
-			<td class="center">413</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 7.0</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 7.5</td>
-			<td>Win 95+ / OSX.2+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 8.0</td>
-			<td>Win 95+ / OSX.2+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 8.5</td>
-			<td>Win 95+ / OSX.2+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 9.0</td>
-			<td>Win 95+ / OSX.3+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 9.2</td>
-			<td>Win 88+ / OSX.3+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 9.5</td>
-			<td>Win 88+ / OSX.3+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera for Wii</td>
-			<td>Wii</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Nokia N800</td>
-			<td>N800</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Nintendo DS browser</td>
-			<td>Nintendo DS</td>
-			<td class="center">8.5</td>
-			<td class="center">C/A<sup>1</sup></td>
-		</tr>
-		<tr class="gradeC">
-			<td>KHTML</td>
-			<td>Konqureror 3.1</td>
-			<td>KDE 3.1</td>
-			<td class="center">3.1</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>KHTML</td>
-			<td>Konqureror 3.3</td>
-			<td>KDE 3.3</td>
-			<td class="center">3.3</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>KHTML</td>
-			<td>Konqureror 3.5</td>
-			<td>KDE 3.5</td>
-			<td class="center">3.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Tasman</td>
-			<td>Internet Explorer 4.5</td>
-			<td>Mac OS 8-9</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Tasman</td>
-			<td>Internet Explorer 5.1</td>
-			<td>Mac OS 7.6-9</td>
-			<td class="center">1</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Tasman</td>
-			<td>Internet Explorer 5.2</td>
-			<td>Mac OS 8-X</td>
-			<td class="center">1</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Misc</td>
-			<td>NetFront 3.1</td>
-			<td>Embedded devices</td>
-			<td class="center">-</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Misc</td>
-			<td>NetFront 3.4</td>
-			<td>Embedded devices</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Misc</td>
-			<td>Dillo 0.8</td>
-			<td>Embedded devices</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Misc</td>
-			<td>Links</td>
-			<td>Text only</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Misc</td>
-			<td>Lynx</td>
-			<td>Text only</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Misc</td>
-			<td>IE Mobile</td>
-			<td>Windows Mobile 6</td>
-			<td class="center">-</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Misc</td>
-			<td>PSP browser</td>
-			<td>PSP</td>
-			<td class="center">-</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeU">
-			<td>Other browsers</td>
-			<td>All others</td>
-			<td>-</td>
-			<td class="center">-</td>
-			<td class="center">U</td>
-		</tr>
-	</tbody>
-</table>
-				</div>
-  	 	
-  	 	<div id="tabs-5">
-  	 	<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" style="width:940px">
-	<thead>
-		<tr>
-			<th>Rendering engine</th>
-			<th>Browser</th>
-			<th>Platform(s)</th>
-			<th>Engine version</th>
-			<th>CSS grade</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr class="gradeX">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 4.0</td>
-			<td>Win 95+</td>
-			<td class="center">4</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.0</td>
-			<td>Win 95+</td>
-			<td class="center">5</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 5.5</td>
-			<td>Win 95+</td>
-			<td class="center">5.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>Internet
-				 Explorer 6</td>
-			<td>Win 98+</td>
-			<td class="center">6</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>Internet Explorer 7</td>
-			<td>Win XP SP2+</td>
-			<td class="center">7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Trident</td>
-			<td>AOL browser (AOL desktop)</td>
-			<td>Win XP</td>
-			<td class="center">6</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 1.0</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 1.5</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 2.0</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Firefox 3.0</td>
-			<td>Win 2k+ / OSX.3+</td>
-			<td class="center">1.9</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Camino 1.0</td>
-			<td>OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Camino 1.5</td>
-			<td>OSX.3+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Netscape 7.2</td>
-			<td>Win 95+ / Mac OS 8.6-9.2</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Netscape Browser 8</td>
-			<td>Win 98SE+</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Netscape Navigator 9</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.0</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.1</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.2</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.2</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.3</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.3</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.4</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.4</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.5</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.6</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">1.6</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.7</td>
-			<td>Win 98+ / OSX.1+</td>
-			<td class="center">1.7</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Mozilla 1.8</td>
-			<td>Win 98+ / OSX.1+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Seamonkey 1.1</td>
-			<td>Win 98+ / OSX.2+</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Gecko</td>
-			<td>Epiphany 2.20</td>
-			<td>Gnome</td>
-			<td class="center">1.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 1.2</td>
-			<td>OSX.3</td>
-			<td class="center">125.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 1.3</td>
-			<td>OSX.3</td>
-			<td class="center">312.8</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 2.0</td>
-			<td>OSX.4+</td>
-			<td class="center">419.3</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Safari 3.0</td>
-			<td>OSX.4+</td>
-			<td class="center">522.1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>Google Chrome 1.0</td>
-			<td>Win XP+</td>
-			<td class="center">525</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>OmniWeb 5.5</td>
-			<td>OSX.4+</td>
-			<td class="center">420</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>iPod Touch / iPhone</td>
-			<td>iPod</td>
-			<td class="center">420.1</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Webkit</td>
-			<td>S60</td>
-			<td>S60</td>
-			<td class="center">413</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 7.0</td>
-			<td>Win 95+ / OSX.1+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 7.5</td>
-			<td>Win 95+ / OSX.2+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 8.0</td>
-			<td>Win 95+ / OSX.2+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 8.5</td>
-			<td>Win 95+ / OSX.2+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 9.0</td>
-			<td>Win 95+ / OSX.3+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 9.2</td>
-			<td>Win 88+ / OSX.3+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera 9.5</td>
-			<td>Win 88+ / OSX.3+</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Opera for Wii</td>
-			<td>Wii</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Nokia N800</td>
-			<td>N800</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Presto</td>
-			<td>Nintendo DS browser</td>
-			<td>Nintendo DS</td>
-			<td class="center">8.5</td>
-			<td class="center">C/A<sup>1</sup></td>
-		</tr>
-		<tr class="gradeC">
-			<td>KHTML</td>
-			<td>Konqureror 3.1</td>
-			<td>KDE 3.1</td>
-			<td class="center">3.1</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>KHTML</td>
-			<td>Konqureror 3.3</td>
-			<td>KDE 3.3</td>
-			<td class="center">3.3</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeA">
-			<td>KHTML</td>
-			<td>Konqureror 3.5</td>
-			<td>KDE 3.5</td>
-			<td class="center">3.5</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Tasman</td>
-			<td>Internet Explorer 4.5</td>
-			<td>Mac OS 8-9</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Tasman</td>
-			<td>Internet Explorer 5.1</td>
-			<td>Mac OS 7.6-9</td>
-			<td class="center">1</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Tasman</td>
-			<td>Internet Explorer 5.2</td>
-			<td>Mac OS 8-X</td>
-			<td class="center">1</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Misc</td>
-			<td>NetFront 3.1</td>
-			<td>Embedded devices</td>
-			<td class="center">-</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeA">
-			<td>Misc</td>
-			<td>NetFront 3.4</td>
-			<td>Embedded devices</td>
-			<td class="center">-</td>
-			<td class="center">A</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Misc</td>
-			<td>Dillo 0.8</td>
-			<td>Embedded devices</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Misc</td>
-			<td>Links</td>
-			<td>Text only</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeX">
-			<td>Misc</td>
-			<td>Lynx</td>
-			<td>Text only</td>
-			<td class="center">-</td>
-			<td class="center">X</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Misc</td>
-			<td>IE Mobile</td>
-			<td>Windows Mobile 6</td>
-			<td class="center">-</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeC">
-			<td>Misc</td>
-			<td>PSP browser</td>
-			<td>PSP</td>
-			<td class="center">-</td>
-			<td class="center">C</td>
-		</tr>
-		<tr class="gradeU">
-			<td>Other browsers</td>
-			<td>All others</td>
-			<td>-</td>
-			<td class="center">-</td>
-			<td class="center">U</td>
-		</tr>
-	</tbody>
-</table>
-  	 	</div>
- 
-					<br/>
+					//how to fake the front end, just to initilaze date
+					for (int i = 0; i < 100; i++) {
+
+						Person p = personList[i] = new Person();
+
+						String a = UUID.randomUUID().toString().replace("-",
+
+						"").replace("1", "").replace("2", "").replace("3", "")
+								.replace("4", "").replace("5", "").replace("6", "")
+								.replace("7",
+
+								"").replace("8", "").replace("9", "");
+						String b = UUID.randomUUID().toString();
+						/*String b = UUID.randomUUID().toString().replace("-", 
+
+						"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+
+						"").replace("8", "").replace("9", "");*/
+						String c = UUID.randomUUID().toString().replace("-",
+
+						"").replace("1", "").replace("2", "").replace("3", "")
+								.replace("4", "").replace("5", "").replace("6", "")
+								.replace("7",
+
+								"").replace("8", "").replace("9", "");
+						long id = (long) (Math.random() * 1000.0);
+
+						p.setFirstName(a);
+						p.setLastName(b);
+						p.setUsername(c);
+						//p.setRegistration();
+						//p.setLast_login();
+					}
+				%>
+				<form id="adminForm" action="admin" method="post">
+					<input id='btnP' type="hidden" name="buttonPressed" value="" /> <input
+						type="hidden" name="FunctionCall" value="deletePerson" />
+
+
+					<table cellpadding="0" cellspacing="0" border="0" class="display"
+						id="jQList">
+						<thead>
+							<tr>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>User Name</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<%
+								if (personList != null) {
+
+									boolean isOdd = true;
+									String evenOdd = "odd";
+
+									int j = 1;
+
+									// you should be loop all your data out here
+									for (Person p : personList) {
+
+										long id = p.getId();
+										String fname = p.getFirstName();
+										String lname = p.getLastName();
+										String uname = p.getUsername();
+										// other attributes here...............		
+
+										out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+												+ " gradeA\">");
+										out.println("	<td>" + fname + "</td>");
+										out.println("	<td>" + lname + "</td>");
+										out.println("	<td>" + uname + "</td>");
+										out.println("	<td class=\"center\">");
+										// Ok, onclikc means when you click on the button, then it calls the javascript function 
+										// to change the hidden value ( the person id), then the servlet knows which person to delete!!
+										out.println("		<input type=\"submit\" name=\"submit\" value=\"Delete\" onclick=\"changeHiddenValue('"
+												+ id + "');\"  class=\"bt_advert\" />");
+										out.println("	</td>");
+										out.println("</tr>");
+										//toggle					
+										isOdd = !isOdd;
+									}
+								}
+							%>
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>User Name</th>
+								<th>Delete</th>
+							</tr>
+						</tfoot>
+					</table>
 				</form>
+
+				</td>
+				</tr>
+				</table>
+
+
 			</div>
- 
+
+			<div id="tabs-2">
+
+				<br />
+				<p>
+				<h2 class="accountX">Movie ID:</h2>
+				<input id="movieId" name="movieId" size="20" minlength="5"
+					maxlength="5" value="<%=movieId%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">Name:</h2>
+				<input id="name" name="name" size="30" minlength="1" maxlength="30"
+					value="<%=name%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">Banner :</h2>
+				<input id="banner" name="banner" size="30" minlength="4"
+					maxlength="20" value="<%=banner%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">Release Date:</h2>
+				<select class="required" id="date" name="date">
+					<option value="">Please Select</option>
+					<%
+						for (String key : movies.keySet()) {
+							String selectedMovieAttr = "";
+							if (key.equals(movie)) {
+								selectedMovieAttr = "selected=\"selected\"";
+							}
+							out.println("<option " + selectedMovieAttr + " value=\"" + key
+									+ "\">" + movies.get(key) + "</option>");
+						}
+					%>
+				</select>
+				<p />
+				<br /> <br />
+				<p>
+				<h2 class="accountX">Rent Amount:</h2>
+				<input name="rentAmount" id="rentAmount" size="15" minlength="1"
+					maxlength="10" value="<%=rentAmount%>" />
+				<p />
+				<br />
+
+				<p>
+				<h2 class="accountX">Availability :</h2>
+				<input class="checkbox" name="availability" id="availability"
+					type="checkbox" <%=availability%> value="<%=availability%>">
+
+				<input type="submit" name="submit" value=" Start Searching "
+					class="bt_login" id="SearchMovie" /> <input type="hidden"
+					name="FunctionCall" value="Logon">
+				<p />
+
+
+			</div>
+			<div id="tabs-3">
+				<table cellpadding="0" cellspacing="0" border="0" class="display"
+					id="jQTable_Movie" style="width: 940px">
+					<thead>
+						<tr>
+							<th>Movie ID</th>
+							<th>Name</th>
+							<th>Banner</th>
+							<th>Release Date</th>
+							<th>Rent Amount</th>
+							<th>Availability</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="yes">
+							<td>01234</td>
+							<td>Rise of the Planet of the Apes</td>
+							<td>Monkey Story</td>
+							<td>2011</td>
+							<td>10</td>
+							<td class="yes">Yes</td>
+						</tr>
+						<tr class="yes">
+							<td>45345</td>
+							<td>Awake</td>
+							<td>Holloween Movie</td>
+							<td>2010</td>
+							<td>10</td>
+							<td class="yes">Yes</td>
+						</tr>
+						<tr class="yes">
+							<td>56456</td>
+							<td>Smurf</td>
+							<td>Animation</td>
+							<td>2011</td>
+							<td>10</td>
+							<td class="yes">Yes</td>
+						</tr>
+						<tr class="yes">
+							<td>56576</td>
+							<td>American Captain</td>
+							<td>Marvel</td>
+							<td>2011</td>
+							<td>5</td>
+							<td class="yes">Yes</td>
+						</tr>
+						<tr class="no">
+							<td>01234</td>
+							<td>Resident Evil V</td>
+							<td>Game,Action</td>
+							<td>2013</td>
+							<td>0</td>
+							<td class="no">No</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+			<div id="tabs-4">
+				<br />
+				<p>
+				<h2 class="accountX">Customer ID :</h2>
+				<input id="cus_id" name="cus_id" size="30" minlength="4"
+					maxlength="20" value="<%="0"%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">First Name:</h2>
+				<input id="first_name" name="first_name" size="30" minlength="1" maxlength="30"
+					value="<%=""%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">Last Name :</h2>
+				<input id="last_name" name="last_name" size="30" minlength="1"
+					maxlength="20" value="<%=""%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">User Name :</h2>
+				<input id="username" name="username" size="30" minlength="1"
+					maxlength="20" value="<%=""%>" />
+				<p />
+
+				<br />
+				<p>
+				<h2 class="accountX">Registration Date:</h2>
+				<input name="reg_date" id="reg_date" size="15" minlength="1"
+					maxlength="10" value="<%="YYYY-MM-DD"%>" />
+				<p />
+				<br /> <br />
+				<p>
+				<h2 class="accountX">Last Log in Date :</h2>
+				<input name="last_login" id="last_login" size="15" minlength="1"
+					maxlength="10" value="<%="YYYY-MM-DD"%>" /> 
+				<input type="submit" name="submit" value=" Start Searching " class="bt_login" id="SearchCustomer" />
+				<input type="hidden" name="FunctionCall" value="Logon">
+				<p />
+			</div>
+
+			<div id="tabs-5">
+				<table cellpadding="0" cellspacing="0" border="0" class="display"
+					id="jQTable_Customer" style="width: 940px">
+					<thead>
+						<tr>
+							<th>Rendering engine</th>
+							<th>Browser</th>
+							<th>Platform(s)</th>
+							<th>Engine version</th>
+							<th>CSS grade</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="gradeX">
+							<td>Trident</td>
+							<td>Internet Explorer 4.0</td>
+							<td>Win 95+</td>
+							<td class="center">4</td>
+							<td class="center">X</td>
+						</tr>
+						<tr class="gradeC">
+							<td>Trident</td>
+							<td>Internet Explorer 5.0</td>
+							<td>Win 95+</td>
+							<td class="center">5</td>
+							<td class="center">C</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Trident</td>
+							<td>Internet Explorer 5.5</td>
+							<td>Win 95+</td>
+							<td class="center">5.5</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Trident</td>
+							<td>Internet Explorer 6</td>
+							<td>Win 98+</td>
+							<td class="center">6</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Trident</td>
+							<td>Internet Explorer 7</td>
+							<td>Win XP SP2+</td>
+							<td class="center">7</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Trident</td>
+							<td>AOL browser (AOL desktop)</td>
+							<td>Win XP</td>
+							<td class="center">6</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Gecko</td>
+							<td>Firefox 1.0</td>
+							<td>Win 98+ / OSX.2+</td>
+							<td class="center">1.7</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Gecko</td>
+							<td>Firefox 1.5</td>
+							<td>Win 98+ / OSX.2+</td>
+							<td class="center">1.8</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Gecko</td>
+							<td>Firefox 2.0</td>
+							<td>Win 98+ / OSX.2+</td>
+							<td class="center">1.8</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Gecko</td>
+							<td>Firefox 3.0</td>
+							<td>Win 2k+ / OSX.3+</td>
+							<td class="center">1.9</td>
+							<td class="center">A</td>
+						</tr>
+						<tr class="gradeA">
+							<td>Gecko</td>
+							<td>Camino 1.0</td>
+							<td>OSX.2+</td>
+							<td class="center">1.8</td>
+							<td class="center">A</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+			<br />
+	</form>
+</div>
