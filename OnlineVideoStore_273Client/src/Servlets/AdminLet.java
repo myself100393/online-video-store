@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import video.dto.Account;
 import video.dto.Address;
+import video.dto.Movie;
 import video.dto.Person;
 
 
@@ -192,8 +193,42 @@ public class AdminLet extends HttpServlet {
 				}
 					 		
 			}//end if(function.equals("UpdateUser")
-			 				 		
- 
+			
+		 	//List Movie
+		 	if(function.equals("ListMovie")){
+			    Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("ListMovie")
+		 	
+		 	//Update Movie
+		 	if(function.equals("UpdateMovie")){
+			    //Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("UpdateMovie")
+		 	
+		 	//Create Movie
+		 	if(function.equals("CreateMovie")){
+			    //Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("CreateMovie")
+		 	
+		 	//Search Movies
+		 	if(function.equals("SearchMovie")){
+			    //Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("SearchMovie")
+		 	
+		 	//Search Customers
+		 	if(function.equals("SearchCustomer")){
+			    //Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("SearchCustomer")
+		 	
+		 	//List Customer 
+		 	if(function.equals("ListCustomer")){
+			    //Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("ListCustomer")
+		 	
+		 	//Generate Bill
+		 	if(function.equals("GenerateBill")){
+			    //Movie[] movieList = proxy.listMovies();				 		
+		 	}//end if(function.equals("GenerateBill")
+		 	
 		 	doGet(request, response);
 		 }
 		 catch (Exception e){			 
