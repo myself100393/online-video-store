@@ -31,18 +31,12 @@
 
 		<div id="tabs">
 			<ul>
-				<li><a href="#tabs-1">Create Movie</a>
-				</li>
-				<li><a href="#tabs-2">Movie Searching</a>
-				</li>
-				<li><a href="#tabs-3">Movie Listing</a>
-				</li>
-				<li><a href="#tabs-4">Customer Searching</a>
-				</li>
-				<li><a href="#tabs-5">Customer Listing</a>
-				</li>
-				<li><a href="#tabs-6">Bill Generating</a>
-				</li>
+				<li><a href="#tabs-1">Create Movie</a></li>
+				<li><a href="#tabs-2">Movie Searching</a></li>
+				<li><a href="#tabs-3">Movie Listing</a></li>
+				<li><a href="#tabs-4">Customer Searching</a></li>
+				<li><a href="#tabs-5">Customer Listing</a></li>
+				<li><a href="#tabs-6">Bill Generating</a></li>
 			</ul>
 			<div id="tabs-1">
 
@@ -87,123 +81,15 @@
 				<p>
 				<h2 class="accountX">Number of Available Movie :</h2>
 				<input name="availability" id="availability" size="10" minlength="1"
-					maxlength="10" value="<%=""%>" /> 
-					<input type="submit"
+					maxlength="10" value="<%=""%>" /> <input type="submit"
 					name="submit" value=" Submit " class="bt_login" id="CreateMovie" />
 				<input type="hidden" name="FunctionCall" value="Logon">
 				<p />
-
-				<%
-					//Person[] personList = (Person[])request.getAttribute("personList");
-					Person[] personList = new Person[100];
-
-					//how to fake the front end, just to initilaze date
-					for (int i = 0; i < 100; i++) {
-
-						Person p = personList[i] = new Person();
-
-						String a = UUID.randomUUID().toString().replace("-",
-
-						"").replace("1", "").replace("2", "").replace("3", "")
-								.replace("4", "").replace("5", "").replace("6", "")
-								.replace("7",
-
-								"").replace("8", "").replace("9", "");
-						String b = UUID.randomUUID().toString();
-						/*String b = UUID.randomUUID().toString().replace("-", 
-
-						"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
-
-						"").replace("8", "").replace("9", "");*/
-						String c = UUID.randomUUID().toString().replace("-",
-
-						"").replace("1", "").replace("2", "").replace("3", "")
-								.replace("4", "").replace("5", "").replace("6", "")
-								.replace("7",
-
-								"").replace("8", "").replace("9", "");
-						long id = (long) (Math.random() * 1000.0);
-
-						p.setFirstName(a);
-						p.setLastName(b);
-						p.setUsername(c);
-						//p.setRegistration();
-						//p.setLast_login();
-					}
-				%>
-				<form id="adminForm" action="admin" method="post">
-					<input id='btnP' type="hidden" name="buttonPressed" value="" /> <input
-						type="hidden" name="FunctionCall" value="deletePerson" />
-
-
-					<table cellpadding="0" cellspacing="0" border="0" class="display"
-						id="jQList">
-						<thead>
-							<tr>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>User Name</th>
-								<th>Delete</th>
-							</tr>
-						</thead>
-						<tbody>
-
-							<%
-								if (personList != null) {
-
-									boolean isOdd = true;
-									String evenOdd = "odd";
-
-									int j = 1;
-
-									// you should be loop all your data out here
-									for (Person p : personList) {
-
-										long id = p.getId();
-										String fname = p.getFirstName();
-										String lname = p.getLastName();
-										String uname = p.getUsername();
-										// other attributes here...............		
-
-										out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
-												+ " gradeA\">");
-										out.println("	<td>" + fname + "</td>");
-										out.println("	<td>" + lname + "</td>");
-										out.println("	<td>" + uname + "</td>");
-										out.println("	<td class=\"center\">");
-										// Ok, onclikc means when you click on the button, then it calls the javascript function 
-										// to change the hidden value ( the person id), then the servlet knows which person to delete!!
-										out.println("		<input type=\"submit\" name=\"submit\" value=\"Delete\" onclick=\"changeHiddenValue('"
-												+ id + "');\"  class=\"bt_advert\" />");
-										out.println("	</td>");
-										out.println("</tr>");
-										//toggle					
-										isOdd = !isOdd;
-									}
-								}
-							%>
-
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>User Name</th>
-								<th>Delete</th>
-							</tr>
-						</tfoot>
-					</table>
-				</form>
-
-				</td>
-				</tr>
-				</table>
 
 
 			</div>
 
 			<div id="tabs-2">
-
 				<br />
 				<p>
 				<h2 class="accountX">Movie ID:</h2>
@@ -263,6 +149,7 @@
 
 			</div>
 			<div id="tabs-3">
+
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
 					id="jQTable_Movie" style="width: 940px">
 					<thead>
@@ -273,9 +160,84 @@
 							<th>Release Date</th>
 							<th>Rent Amount</th>
 							<th>Availability</th>
+							<th>Option</th>
 						</tr>
 					</thead>
 					<tbody>
+						<%
+							//Person[] personList = (Person[])request.getAttribute("personList");
+							Person[] personList = new Person[100];
+
+							//how to fake the front end, just to initilaze date
+							for (int i = 0; i < 100; i++) {
+
+								Person p = personList[i] = new Person();
+
+								String a = UUID.randomUUID().toString().replace("-",
+
+								"").replace("1", "").replace("2", "").replace("3", "")
+										.replace("4", "").replace("5", "").replace("6", "")
+										.replace("7",
+
+										"").replace("8", "").replace("9", "");
+								String b = UUID.randomUUID().toString();
+								/*String b = UUID.randomUUID().toString().replace("-", 
+
+								"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
+
+								"").replace("8", "").replace("9", "");*/
+								String c = UUID.randomUUID().toString().replace("-",
+
+								"").replace("1", "").replace("2", "").replace("3", "")
+										.replace("4", "").replace("5", "").replace("6", "")
+										.replace("7",
+
+										"").replace("8", "").replace("9", "");
+								long id = (long) (Math.random() * 1000.0);
+
+								p.setFirstName(a);
+								p.setLastName(b);
+								p.setUsername(c);
+								//p.setRegistration();
+								//p.setLast_login();
+							}
+						%>
+						<%
+							/*			if (personList != null) {
+
+											boolean isOdd = true;
+											String evenOdd = "odd";
+
+											int j = 1;   */
+
+							// you should be loop all your data out here
+							/*		for (Person p : personList) {
+
+										long id = p.getId();
+										String fname = p.getFirstName();
+										String lname = p.getLastName();
+										String uname = p.getUsername();   */
+							// other attributes here...............		
+
+							/*		out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+											+ " gradeA\">");
+									out.println("	<td>" + fname + "</td>");
+									out.println("	<td>" + lname + "</td>");
+									out.println("	<td>" + uname + "</td>");
+									out.println("	<td class=\"center\">");  */
+							// Ok, onclikc means when you click on the button, then it calls the javascript function 
+							// to change the hidden value ( the person id), then the servlet knows which person to delete!!
+							/*		out.println("		<input type=\"submit\" name=\"submit\" value=\"Rent\" onclick=\"changeHiddenValue('"
+											+ id + "');\"  class=\"bt_advert\" />");
+									out.println("	</td>");
+									out.println("</tr>");     */
+							//toggle					
+							//		isOdd = !isOdd;
+							//		}
+							//	}
+						%>
+
+
 						<tr class="yes">
 							<td>01234</td>
 							<td>Rise of the Planet of the Apes</td>
@@ -283,6 +245,13 @@
 							<td>2011</td>
 							<td>10</td>
 							<td class="yes">Yes</td>
+
+							<td><input id='btnP' type="hidden" name="buttonPressed"
+								value="" /> <input type="hidden" name="FunctionCall"
+								value="deletePerson" /> <input type="submit" name="submit"
+								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+							</td>
+
 						</tr>
 						<tr class="yes">
 							<td>45345</td>
@@ -291,6 +260,12 @@
 							<td>2010</td>
 							<td>10</td>
 							<td class="yes">Yes</td>
+							<td><input id='btnP' type="hidden" name="buttonPressed"
+								value="" /> <input type="hidden" name="FunctionCall"
+								value="deletePerson" /> <input type="submit" name="submit"
+								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+							</td>
+
 						</tr>
 						<tr class="yes">
 							<td>56456</td>
@@ -299,6 +274,12 @@
 							<td>2011</td>
 							<td>10</td>
 							<td class="yes">Yes</td>
+							<td><input id='btnP' type="hidden" name="buttonPressed"
+								value="" /> <input type="hidden" name="FunctionCall"
+								value="deletePerson" /> <input type="submit" name="submit"
+								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+							</td>
+
 						</tr>
 						<tr class="yes">
 							<td>56576</td>
@@ -307,6 +288,12 @@
 							<td>2011</td>
 							<td>5</td>
 							<td class="yes">Yes</td>
+							<td><input id='btnP' type="hidden" name="buttonPressed"
+								value="" /> <input type="hidden" name="FunctionCall"
+								value="deletePerson" /> <input type="submit" name="submit"
+								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+							</td>
+
 						</tr>
 						<tr class="no">
 							<td>01234</td>
@@ -315,10 +302,17 @@
 							<td>2013</td>
 							<td>0</td>
 							<td class="no">No</td>
+							<td><input id='btnP' type="hidden" name="buttonPressed"
+								value="" /> <input type="hidden" name="FunctionCall"
+								value="deletePerson" /> <input type="submit" name="submit"
+								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+							</td>
+
 						</tr>
 
 					</tbody>
 				</table>
+
 			</div>
 
 			<div id="tabs-4">
@@ -332,8 +326,8 @@
 				<br />
 				<p>
 				<h2 class="accountX">First Name:</h2>
-				<input id="first_name" name="first_name" size="30" minlength="1" maxlength="30"
-					value="<%=""%>" />
+				<input id="first_name" name="first_name" size="30" minlength="1"
+					maxlength="30" value="<%=""%>" />
 				<p />
 
 				<br />
@@ -360,9 +354,10 @@
 				<p>
 				<h2 class="accountX">Last Log in Date :</h2>
 				<input name="last_login" id="last_login" size="15" minlength="1"
-					maxlength="10" value="<%="YYYY-MM-DD"%>" /> 
-				<input type="submit" name="submit" value=" Start Searching " class="bt_login" id="SearchCustomer" />
-				<input type="hidden" name="FunctionCall" value="Logon">
+					maxlength="10" value="<%="YYYY-MM-DD"%>" /> <input type="submit"
+					name="submit" value=" Start Searching " class="bt_login"
+					id="SearchCustomer" /> <input type="hidden" name="FunctionCall"
+					value="Logon">
 				<p />
 			</div>
 
@@ -371,11 +366,12 @@
 					id="jQTable_Customer" style="width: 940px">
 					<thead>
 						<tr>
-							<th>Rendering engine</th>
-							<th>Browser</th>
-							<th>Platform(s)</th>
-							<th>Engine version</th>
-							<th>CSS grade</th>
+							<th>Customer ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>User Name</th>
+							<th>Date of Registration</th>
+							<th>Last Time Login</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -460,7 +456,16 @@
 					</tbody>
 				</table>
 			</div>
-
+			<div id="tabs-6">
+				<br />
+				<p>
+				<h2 class="accountX">Generate Bill for Premium Member</h2>
+				<input type="submit" name="submit"
+					value=" Start Generation Process " class="bt_login"
+					id="SearchMovie" /> <input type="hidden" name="FunctionCall"
+					value="Logon">
+				<p />
+			</div>
 			<br />
 	</form>
 </div>
