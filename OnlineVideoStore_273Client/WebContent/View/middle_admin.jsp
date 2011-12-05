@@ -249,7 +249,7 @@
 							<td><input id='btnP' type="hidden" name="buttonPressed"
 								value="" /> <input type="hidden" name="FunctionCall"
 								value="deletePerson" /> <input type="submit" name="submit"
-								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
 							</td>
 
 						</tr>
@@ -263,7 +263,7 @@
 							<td><input id='btnP' type="hidden" name="buttonPressed"
 								value="" /> <input type="hidden" name="FunctionCall"
 								value="deletePerson" /> <input type="submit" name="submit"
-								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
 							</td>
 
 						</tr>
@@ -277,7 +277,7 @@
 							<td><input id='btnP' type="hidden" name="buttonPressed"
 								value="" /> <input type="hidden" name="FunctionCall"
 								value="deletePerson" /> <input type="submit" name="submit"
-								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
 							</td>
 
 						</tr>
@@ -291,7 +291,7 @@
 							<td><input id='btnP' type="hidden" name="buttonPressed"
 								value="" /> <input type="hidden" name="FunctionCall"
 								value="deletePerson" /> <input type="submit" name="submit"
-								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
 							</td>
 
 						</tr>
@@ -305,7 +305,7 @@
 							<td><input id='btnP' type="hidden" name="buttonPressed"
 								value="" /> <input type="hidden" name="FunctionCall"
 								value="deletePerson" /> <input type="submit" name="submit"
-								value="Rent" onclick="changeHiddenValue(id)" class="bt_advert" />
+								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
 							</td>
 
 						</tr>
@@ -363,7 +363,7 @@
 
 			<div id="tabs-5">
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
-					id="jQTable_Customer" style="width: 940px">
+					id="example" style="width: 940px">
 					<thead>
 						<tr>
 							<th>Customer ID</th>
@@ -371,7 +371,7 @@
 							<th>Last Name</th>
 							<th>User Name</th>
 							<th>Date of Registration</th>
-							<th>Last Time Login</th>
+							<!-- <th>Last Time Login</th>--->
 						</tr>
 					</thead>
 					<tbody>
