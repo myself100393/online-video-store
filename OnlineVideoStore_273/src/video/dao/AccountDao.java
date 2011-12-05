@@ -69,7 +69,7 @@ public class AccountDao {
 
           try {
                stmt = conn.prepareStatement(sql);
-               stmt.setLong(1, valueObject.getId()); 
+               stmt.setInt(1, valueObject.getId()); 
 
                singleQuery(conn, stmt, valueObject);
 
@@ -122,8 +122,8 @@ public class AccountDao {
                sql = "INSERT INTO account ( person_id, ssn, type, "
                + "balance, monthly_fee, outstanding_movies) VALUES (?, ?, ?, ?, ?, ?) ";
                stmt = conn.prepareStatement(sql);
-               
-               stmt.setLong(1, valueObject.getPersonId()); 
+
+               stmt.setInt(1, valueObject.getPersonId()); 
                stmt.setString(2, valueObject.getSsn()); 
                stmt.setInt(3, valueObject.getUserType()); 
                stmt.setDouble(4, valueObject.getBalance()); 
@@ -191,14 +191,14 @@ public class AccountDao {
 
           try {
               stmt = conn.prepareStatement(sql);
-              stmt.setLong(1, valueObject.getPersonId()); 
+              stmt.setInt(1, valueObject.getPersonId()); 
               stmt.setString(2, valueObject.getSsn()); 
               stmt.setInt(3, valueObject.getUserType()); 
               stmt.setDouble(4, valueObject.getBalance()); 
               stmt.setDouble(5, valueObject.getMonthlyFee()); 
               stmt.setInt(6, valueObject.getOutstandingMovies()); 
 
-              stmt.setLong(7, valueObject.getId()); 
+              stmt.setInt(7, valueObject.getId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {
@@ -240,7 +240,7 @@ public class AccountDao {
 
           try {
               stmt = conn.prepareStatement(sql);
-              stmt.setLong(1, valueObject.getId()); 
+              stmt.setInt(1, valueObject.getId()); 
 
               int rowcount = databaseUpdate(conn, stmt);
               if (rowcount == 0) {
@@ -486,7 +486,7 @@ public class AccountDao {
     }
 
 
-	public List<Account> searchByUserId(Connection conn, long userId) {
+	public List<Account> searchByUserId(Connection conn, int userId) {
         ArrayList<Account> searchResults = new ArrayList<Account>();
         
         if (userId >0){
