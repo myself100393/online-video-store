@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import video.dto.Account;
 import video.dto.Address;
+import video.dto.Movie;
 import video.dto.Person;
 
 
@@ -49,8 +50,9 @@ public class AccountLet extends HttpServlet {
 		 	
 		 	
 			Person person = proxy.getPerson(loggedInUser);			 
-
-			if(person!=null){				 
+			Movie[] movieList = proxy.listMovies();
+			
+			if(person!=null && movieList!=null){				 
 				Account account = proxy.getAccount(person.getId());
 				Address address = proxy.getAddress(person.getId());
 				
@@ -63,6 +65,7 @@ public class AccountLet extends HttpServlet {
 				request.setAttribute("account", account);
 				request.setAttribute("address", address);
 				
+				request.setAttribute("movieList", movieList);
 
 				
 				
@@ -193,7 +196,15 @@ public class AccountLet extends HttpServlet {
 					 		
 			}//end if(function.equals("UpdateUser")
 			 				 		
- 
+			//Movie Renting
+		 	if(function.equals("rentMovie")){
+		 		String movieId_Str = request.getParameter("buttonPressed");
+		 		int movieId = Integer.parseInt(movieId_Str);
+				Person person = proxy.getPerson(loggedInUser);
+				String result = proxy.issueMovie(movieId, person.getId());
+		 		
+		 	}
+		 	
 		 	doGet(request, response);
 		 }
 		 catch (Exception e){			 

@@ -328,29 +328,44 @@ table.display tr.odd.row_selected td {
 /* For the standard odd/even */
 tr.odd td.sorting_1 {
 	background-color: #D3D6FF;
+	color:#2F4F4F;
 }
 
 tr.odd td.sorting_2 {
 	background-color: #DADCFF;
+	color:#2F4F4F;
 }
 
 tr.odd td.sorting_3 {
 	background-color: #E0E2FF;
+	color:#2F4F4F;
 }
 
 tr.even td.sorting_1 {
 	background-color: #EAEBFF;
+	color:#2F4F4F;
 }
 
 tr.even td.sorting_2 {
 	background-color: #F2F3FF;
+	color:#2F4F4F;
 }
 
 tr.even td.sorting_3 {
 	background-color: #F9F9FF;
+	color:#2F4F4F;
 }
 
 
+tr.odd td.mycolor {
+    background-color: #DADCFF;
+    color: #2F4F4F;
+}
+
+tr.even td.mycolor {
+    background-color: #DADCFF;
+    color: #2F4F4F;
+}
 /* For the Conditional-CSS grading rows */
 /*
  	Colour calculations (based off the main row colours)
@@ -367,6 +382,7 @@ tr.odd.gradeA td.sorting_1 {
 
 tr.odd.gradeA td.sorting_2 {
 	background-color: #d1ffd1;
+	color:#000000;
 }
 
 tr.odd.gradeA td.sorting_3 {
@@ -379,6 +395,7 @@ tr.even.gradeA td.sorting_1 {
 
 tr.even.gradeA td.sorting_2 {
 	background-color: #e2ffe2;
+	color:#000000;
 }
 
 tr.even.gradeA td.sorting_3 {
@@ -494,6 +511,7 @@ tr.even.gradeU td.sorting_3 {
 }
 
 .ex_highlight_row #example tr.odd:hover td.sorting_2 {
+	color:#000000;
 	background-color: #E0FF84;
 }
 

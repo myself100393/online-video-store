@@ -1,5 +1,6 @@
 
 <%@ page import="video.dto.Person"%>
+<%@ page import="video.dto.Movie"%>
 <%@ page import="video.dto.Address"%>
 <%@ page import="java.util.Locale"%>
 <%@ page import="java.util.UUID"%>
@@ -164,44 +165,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-							//Person[] personList = (Person[])request.getAttribute("personList");
-							Person[] personList = new Person[100];
-
-							//how to fake the front end, just to initilaze date
-							for (int i = 0; i < 100; i++) {
-
-								Person p = personList[i] = new Person();
-
-								String a = UUID.randomUUID().toString().replace("-",
-
-								"").replace("1", "").replace("2", "").replace("3", "")
-										.replace("4", "").replace("5", "").replace("6", "")
-										.replace("7",
-
-										"").replace("8", "").replace("9", "");
-								String b = UUID.randomUUID().toString();
-								/*String b = UUID.randomUUID().toString().replace("-", 
-
-								"").replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", 
-
-								"").replace("8", "").replace("9", "");*/
-								String c = UUID.randomUUID().toString().replace("-",
-
-								"").replace("1", "").replace("2", "").replace("3", "")
-										.replace("4", "").replace("5", "").replace("6", "")
-										.replace("7",
-
-										"").replace("8", "").replace("9", "");
-								long id = (long) (Math.random() * 1000.0);
-
-								p.setFirstName(a);
-								p.setLastName(b);
-								p.setUsername(c);
-								//p.setRegistration();
-								//p.setLast_login();
-							}
-						%>
 						<%
 							/*			if (personList != null) {
 

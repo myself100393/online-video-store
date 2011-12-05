@@ -1,7 +1,10 @@
 
 <%@ page import="video.dto.Person"%>
+<%@ page import="video.dto.Movie"%>
 <%@ page import="video.dto.Address"%>
 <%@ page import="java.util.Locale"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page import="java.util.LinkedHashMap"%>
 <%@ page import="video.util.CountryHelper"%>
 <%@ page import="video.util.StateHelper"%>
@@ -33,10 +36,10 @@
 	double bal = 0;
 	double fee = 0;
 	int outstand = 0;
-	long userId = 0;
+	int userId = 0;
 	String ssn = "";
 	int userType = 0;
-	long accountId = 0;
+	int accountId = 0;
 	String userTypeStr = "";
 	int movieId = 0;
 	String banner = "";
@@ -49,8 +52,10 @@
 		fee = account.getMonthlyFee();
 		outstand = account.getOutstandingMovies();
 		userId = account.getPersonId();
+		System.out.println(userId);
 		ssn = ((ssn = account.getSsn()) == null) ? "" : ssn;
 		userType = account.getUserType();
+		System.out.println(userType);
 		accountId = account.getId();
 
 		//(1 = simple member; 2 = premium member)
@@ -71,6 +76,8 @@
 		st = address.getStreet();
 		zip = address.getZip();
 	}
+
+	Movie[] movieList = (Movie[]) request.getAttribute("movieList");
 %>
 
 
@@ -124,6 +131,13 @@
 				<input id="lname" name="lname" size="30" class="required"
 					minlength="1" value="<%=lastN%>" />
 				<p />
+				<input type="hidden" name="FunctionCall" value="UpdateUser">
+				<input type="hidden" name="accountId" value="<%=accountId%>">
+				<input type="hidden" name="userId" value="<%=userId%>"> <br />
+				<p>
+					<input type="submit" name="submit" value="Update Account"
+						class="bt_advert" />
+				</p>
 
 			</div>
 			<div id="tabs-2">
@@ -200,6 +214,13 @@
 				<input class="checkbox" name=userType id="userType" type="checkbox"
 					<%=userTypeStr%> value="<%=userType%>" />
 				<p />
+				<input type="hidden" name="FunctionCall" value="UpdateUser">
+				<input type="hidden" name="accountId" value="<%=accountId%>">
+				<input type="hidden" name="userId" value="<%=userId%>"> <br />
+				<p>
+					<input type="submit" name="submit" value="Update Account"
+						class="bt_advert" />
+				</p>
 
 
 
@@ -273,6 +294,13 @@
 				<input id="zip" name="zip" size="30" class="required" minlength="5"
 					maxlength="10" value="<%=zip%>" />
 				<p />
+				<input type="hidden" name="FunctionCall" value="UpdateUser">
+				<input type="hidden" name="accountId" value="<%=accountId%>">
+				<input type="hidden" name="userId" value="<%=userId%>"> <br />
+				<p>
+					<input type="submit" name="submit" value="Update Account"
+						class="bt_advert" />
+				</p>
 
 
 			</div>
@@ -334,198 +362,83 @@
 				<p />
 
 			</div>
-
-			<div id="tabs-4"></div>
-
-			<div id="tabs-5">
-				<table cellpadding="0" cellspacing="0" border="0" class="display"
-					id="example" style="width: 940px">
-					<thead>
-						<tr>
-							<th>Movie ID</th>
-							<th>Name</th>
-							<th>Banner</th>
-							<th>Release Date</th>
-							<th>Rent Amount</th>
-							<th>Rent Status</th>
-							<th>Option</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="yes">
-							<td>01234</td>
-							<td>Rise of the Planet of the Apes</td>
-							<td>Monkey Story</td>
-							<td>2011</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Return " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="yes">
-							<td>45345</td>
-							<td>Awake</td>
-							<td>Holloween Movie</td>
-							<td>2010</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Return " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="yes">
-							<td>56456</td>
-							<td>Smurf</td>
-							<td>Animation</td>
-							<td>2011</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Return " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="yes">
-							<td>56576</td>
-							<td>American Captain</td>
-							<td>Marvel</td>
-							<td>2011</td>
-							<td>5</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Return " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="no">
-							<td>01234</td>
-							<td>Resident Evil V</td>
-							<td>Game,Action</td>
-							<td>2013</td>
-							<td>0</td>
-							<td class="no">No</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Return " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
+			<div id="tabs-5"></div>
 			<div id="tabs-6">
-				<table cellpadding="0" cellspacing="0" border="0" class="display"
-					id="jQTable_Movie" style="width: 940px">
-					<thead>
-						<tr>
-							<th>Movie ID</th>
-							<th>Name</th>
-							<th>Banner</th>
-							<th>Release Date</th>
-							<th>Rent Amount</th>
-							<th>Availability</th>
-							<th>Option</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="yes">
-							<td>01234</td>
-							<td>Rise of the Planet of the Apes</td>
-							<td>Monkey Story</td>
-							<td>2011</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
+				<form id="adminForm" action="admin" method="post">
+					<input id='btnP' type="hidden" name="buttonPressed" value="" /> <input
+						type="hidden" name="FunctionCall" value="rentMovie" />
 
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Rent " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
+					<table cellpadding="0" cellspacing="0" border="0" class="display"
+						id="example">
+						<thead>
+							<tr>
+								<th>Movie ID</th>
+								<th>Name</th>
+								<th>Banner</th>
+								<th>Release Date</th>
+								<th>Rent Amount</th>
+								<th>Available Number</th>
+								<th>Option</th>
+							</tr>
+						</thead>
+						<tbody>
 
-						</tr>
-						<tr class="yes">
-							<td>45345</td>
-							<td>Awake</td>
-							<td>Holloween Movie</td>
-							<td>2010</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Rent " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
+							<%
+								if (movieList != null) {
 
-						</tr>
-						<tr class="yes">
-							<td>56456</td>
-							<td>Smurf</td>
-							<td>Animation</td>
-							<td>2011</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Rent " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
+									boolean isOdd = true;
+									String evenOdd = "odd";
 
-						</tr>
-						<tr class="yes">
-							<td>56576</td>
-							<td>American Captain</td>
-							<td>Marvel</td>
-							<td>2011</td>
-							<td>5</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Rent " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
+									int j = 1;
 
-						</tr>
-						<tr class="no">
-							<td>01234</td>
-							<td>Resident Evil V</td>
-							<td>Game,Action</td>
-							<td>2013</td>
-							<td>0</td>
-							<td class="no">No</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value=" Rent " onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
+									// you should be loop all your data out here
+									for (Movie p : movieList) {
 
-						</tr>
+										long id = p.getId();
+										String moviName = p.getName();
+										String movieBanner = p.getBanner();						
+										Calendar releaseDate_Calendar = p.getReleaseDate();
+										Double movieRentAmount = p.getRentAmount();
+										int nb_Aailable = p.getNbAvailable();
+										// other attributes here...............		
 
-					</tbody>
-				</table>
+										out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+												+ " gradeA\">");
+										out.println("	<td class=mycolor>" + id + "</td>");
+										out.println("	<td class=mycolor>" + moviName + "</td>");
+										out.println("	<td class=mycolor>" + movieBanner + "</td>");
+										out.println("	<td class=mycolor>" + releaseDate_Calendar.get(Calendar.YEAR) + "</td>");
+										out.println("	<td class=mycolor>" + movieRentAmount + "</td>");
+										out.println("	<td class=mycolor>" + nb_Aailable + "</td>");
+										out.println("	<td class=\"center\">");
+										// Ok, onclikc means when you click on the button, then it calls the javascript function 
+										// to change the hidden value ( the person id), then the servlet knows which person to delete!!
+										out.println("		<input type=\"submit\" name=\"submit\" value=\" Rent \" onclick=\"changeHiddenValue('"
+												+ id + "');\"  class=\"bt_advert\" />");
+										out.println("	</td>");
+										out.println("</tr>");
+										//toggle					
+										isOdd = !isOdd;
+									}
+								}
+							%>
 
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>Movie ID</th>
+								<th>Name</th>
+								<th>Banner</th>
+								<th>Release Date</th>
+								<th>Rent Amount</th>
+								<th>Available Number</th>
+								<th>Option</th>
+							</tr>
+						</tfoot>
+					</table>
+				</form>
 			</div>
 
-			<input type="hidden" name="FunctionCall" value="UpdateUser">
-			<input type="hidden" name="accountId" value="<%=accountId%>">
-			<input type="hidden" name="userId" value="<%=userId%>"> <br />
-			<p>
-				<input type="submit" name="submit" value="Update Account"
-					class="bt_advert" />
-			</p>
 			<br />
 	</form>
 </div>

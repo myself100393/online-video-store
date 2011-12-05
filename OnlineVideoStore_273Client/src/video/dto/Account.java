@@ -10,13 +10,13 @@ package video.dto;
 public class Account  implements java.io.Serializable {
     private double balance;
 
-    private long id;
+    private int id;
 
     private double monthlyFee;
 
     private int outstandingMovies;
 
-    private long personId;
+    private int personId;
 
     private java.lang.String ssn;
 
@@ -27,10 +27,10 @@ public class Account  implements java.io.Serializable {
 
     public Account(
            double balance,
-           long id,
+           int id,
            double monthlyFee,
            int outstandingMovies,
-           long personId,
+           int personId,
            java.lang.String ssn,
            int userType) {
            this.balance = balance;
@@ -68,7 +68,7 @@ public class Account  implements java.io.Serializable {
      * 
      * @return id
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -78,7 +78,7 @@ public class Account  implements java.io.Serializable {
      * 
      * @param id
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -128,7 +128,7 @@ public class Account  implements java.io.Serializable {
      * 
      * @return personId
      */
-    public long getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
@@ -138,7 +138,7 @@ public class Account  implements java.io.Serializable {
      * 
      * @param personId
      */
-    public void setPersonId(long personId) {
+    public void setPersonId(int personId) {
         this.personId = personId;
     }
 
@@ -215,10 +215,10 @@ public class Account  implements java.io.Serializable {
         __hashCodeCalc = true;
         int _hashCode = 1;
         _hashCode += new Double(getBalance()).hashCode();
-        _hashCode += new Long(getId()).hashCode();
+        _hashCode += getId();
         _hashCode += new Double(getMonthlyFee()).hashCode();
         _hashCode += getOutstandingMovies();
-        _hashCode += new Long(getPersonId()).hashCode();
+        _hashCode += getPersonId();
         if (getSsn() != null) {
             _hashCode += getSsn().hashCode();
         }
@@ -242,7 +242,7 @@ public class Account  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("id");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -260,7 +260,7 @@ public class Account  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("personId");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "personId"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
