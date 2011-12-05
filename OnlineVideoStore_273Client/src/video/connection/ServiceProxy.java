@@ -56,16 +56,28 @@ public class ServiceProxy implements video.connection.Service {
     return service.logout(userId);
   }
   
-  public java.lang.String updatePersonAccount(video.dto.Person person, video.dto.Account account, video.dto.Address address) throws java.rmi.RemoteException{
+  public video.dto.Person[] find_Persons(long id, java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.util.Calendar registration, java.util.Calendar last_Login) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
-    return service.updatePersonAccount(person, account, address);
+    return service.find_Persons(id, firstName, lastName, username, registration, last_Login);
   }
   
-  public boolean isUsernameExisted(java.lang.String username) throws java.rmi.RemoteException{
+  public java.lang.String deletePerson(int personId) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
-    return service.isUsernameExisted(username);
+    return service.deletePerson(personId);
+  }
+  
+  public video.dto.MovieInfo displayMovie(int movieId) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.displayMovie(movieId);
+  }
+  
+  public video.dto.Movie[] findMovies(long id, java.lang.String name, java.lang.String banner, java.lang.String release, double rentalPrice, int category, boolean isAvailable) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.findMovies(id, name, banner, release, rentalPrice, category, isAvailable);
   }
   
   public video.dto.Movie[] listMovies() throws java.rmi.RemoteException{
@@ -86,16 +98,16 @@ public class ServiceProxy implements video.connection.Service {
     return service.submitMovie(movieId, personId);
   }
   
+  public video.dto.Account getAccount(long userId) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.getAccount(userId);
+  }
+  
   public java.lang.String signUp(video.dto.Person person, int accountType) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
     return service.signUp(person, accountType);
-  }
-  
-  public java.lang.String logon(java.lang.String username, java.lang.String pwd) throws java.rmi.RemoteException{
-    if (service == null)
-      _initServiceProxy();
-    return service.logon(username, pwd);
   }
   
   public video.dto.Person getPerson(java.lang.String username) throws java.rmi.RemoteException{
@@ -104,16 +116,16 @@ public class ServiceProxy implements video.connection.Service {
     return service.getPerson(username);
   }
   
-  public video.dto.Account getAccount(long userId) throws java.rmi.RemoteException{
+  public java.lang.String logon(java.lang.String username, java.lang.String pwd) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
-    return service.getAccount(userId);
+    return service.logon(username, pwd);
   }
   
-  public java.lang.String deletePerson(int personId) throws java.rmi.RemoteException{
+  public boolean isUsernameExisted(java.lang.String username) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
-    return service.deletePerson(personId);
+    return service.isUsernameExisted(username);
   }
   
   public video.dto.PersonInfo displayPerson(int personId) throws java.rmi.RemoteException{
@@ -122,22 +134,10 @@ public class ServiceProxy implements video.connection.Service {
     return service.displayPerson(personId);
   }
   
-  public video.dto.Person[] find_Persons(long id, java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.util.Calendar registration, java.util.Calendar last_Login) throws java.rmi.RemoteException{
+  public java.lang.String updatePersonAccount(video.dto.Person person, video.dto.Account account, video.dto.Address address) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
-    return service.find_Persons(id, firstName, lastName, username, registration, last_Login);
-  }
-  
-  public video.dto.MovieInfo displayMovie(int movieId) throws java.rmi.RemoteException{
-    if (service == null)
-      _initServiceProxy();
-    return service.displayMovie(movieId);
-  }
-  
-  public video.dto.Movie[] findMovies(long id, java.lang.String name, java.lang.String banner, java.lang.String release, double rentalPrice, int category, boolean isAvailable) throws java.rmi.RemoteException{
-    if (service == null)
-      _initServiceProxy();
-    return service.findMovies(id, name, banner, release, rentalPrice, category, isAvailable);
+    return service.updatePersonAccount(person, account, address);
   }
   
   

@@ -47,6 +47,49 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _operations[1] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("find_Persons");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "id"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "firstName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "lastName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "registration"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "last_Login"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "Person"));
+        oper.setReturnClass(video.dto.Person[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "find_PersonsReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[2] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("deletePerson");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "personId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        oper.setReturnClass(java.lang.String.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "deletePersonReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[3] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("displayMovie");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "movieId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "MovieInfo"));
+        oper.setReturnClass(video.dto.MovieInfo.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "displayMovieReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[4] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("findMovies");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "id"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
@@ -65,43 +108,6 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "Movie"));
         oper.setReturnClass(video.dto.Movie[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "findMoviesReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[2] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("updatePersonAccount");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "person"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Person"), video.dto.Person.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "account"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Account"), video.dto.Account.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "address"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Address"), video.dto.Address.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        oper.setReturnClass(java.lang.String.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "updatePersonAccountReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[3] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("isUsernameExisted");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "isUsernameExistedReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[4] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("displayPerson");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "personId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "PersonInfo"));
-        oper.setReturnClass(video.dto.PersonInfo.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "displayPersonReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[5] = oper;
@@ -142,14 +148,12 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _operations[8] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("signUp");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "person"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Person"), video.dto.Person.class, false, false);
+        oper.setName("getAccount");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "userId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "accountType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        oper.setReturnClass(java.lang.String.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "signUpReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "Account"));
+        oper.setReturnClass(video.dto.Account.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "getAccountReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[9] = oper;
@@ -160,14 +164,14 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("logon");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.setName("signUp");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "person"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Person"), video.dto.Person.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "pwd"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "accountType"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "logonReturn"));
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "signUpReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[10] = oper;
@@ -184,55 +188,51 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _operations[11] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getAccount");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "userId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        oper.setName("logon");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "Account"));
-        oper.setReturnClass(video.dto.Account.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "getAccountReturn"));
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "pwd"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        oper.setReturnClass(java.lang.String.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "logonReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[12] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("deletePerson");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "personId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.setName("isUsernameExisted");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        oper.setReturnClass(java.lang.String.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "deletePersonReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "isUsernameExistedReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[13] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("find_Persons");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "id"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
+        oper.setName("displayPerson");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "personId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "firstName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "lastName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "registration"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "last_Login"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"), java.util.Calendar.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "Person"));
-        oper.setReturnClass(video.dto.Person[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "find_PersonsReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "PersonInfo"));
+        oper.setReturnClass(video.dto.PersonInfo.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "displayPersonReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[14] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("displayMovie");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "movieId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.setName("updatePersonAccount");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "person"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Person"), video.dto.Person.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://dto.video", "MovieInfo"));
-        oper.setReturnClass(video.dto.MovieInfo.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "displayMovieReturn"));
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "account"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Account"), video.dto.Account.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://connection.video", "address"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dto.video", "Address"), video.dto.Address.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        oper.setReturnClass(java.lang.String.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://connection.video", "updatePersonAccountReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[15] = oper;
@@ -462,12 +462,114 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
 }
     }
 
-    public video.dto.Movie[] findMovies(long id, java.lang.String name, java.lang.String banner, java.lang.String release, double rentalPrice, int category, boolean isAvailable) throws java.rmi.RemoteException {
+    public video.dto.Person[] find_Persons(long id, java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.util.Calendar registration, java.util.Calendar last_Login) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[2]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "find_Persons"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(id), firstName, lastName, username, registration, last_Login});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (video.dto.Person[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (video.dto.Person[]) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.Person[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public java.lang.String deletePerson(int personId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[3]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "deletePerson"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(personId)});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (java.lang.String) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public video.dto.MovieInfo displayMovie(int movieId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[4]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "displayMovie"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(movieId)});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (video.dto.MovieInfo) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (video.dto.MovieInfo) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.MovieInfo.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public video.dto.Movie[] findMovies(long id, java.lang.String name, java.lang.String banner, java.lang.String release, double rentalPrice, int category, boolean isAvailable) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[5]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -489,108 +591,6 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
                 return (video.dto.Movie[]) _resp;
             } catch (java.lang.Exception _exception) {
                 return (video.dto.Movie[]) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.Movie[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public java.lang.String updatePersonAccount(video.dto.Person person, video.dto.Account account, video.dto.Address address) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[3]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "updatePersonAccount"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {person, account, address});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public boolean isUsernameExisted(java.lang.String username) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[4]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "isUsernameExisted"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {username});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return ((java.lang.Boolean) _resp).booleanValue();
-            } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public video.dto.PersonInfo displayPerson(int personId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[5]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "displayPerson"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(personId)});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (video.dto.PersonInfo) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (video.dto.PersonInfo) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.PersonInfo.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -700,7 +700,7 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
 }
     }
 
-    public java.lang.String signUp(video.dto.Person person, int accountType) throws java.rmi.RemoteException {
+    public video.dto.Account getAccount(long userId) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -712,11 +712,11 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "signUp"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "getAccount"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {person, new java.lang.Integer(accountType)});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(userId)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -724,9 +724,9 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         else {
             extractAttachments(_call);
             try {
-                return (java.lang.String) _resp;
+                return (video.dto.Account) _resp;
             } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+                return (video.dto.Account) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.Account.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -734,7 +734,7 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
 }
     }
 
-    public java.lang.String logon(java.lang.String username, java.lang.String pwd) throws java.rmi.RemoteException {
+    public java.lang.String signUp(video.dto.Person person, int accountType) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -746,11 +746,11 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "logon"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "signUp"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {username, pwd});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {person, new java.lang.Integer(accountType)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -802,7 +802,7 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
 }
     }
 
-    public video.dto.Account getAccount(long userId) throws java.rmi.RemoteException {
+    public java.lang.String logon(java.lang.String username, java.lang.String pwd) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -814,45 +814,11 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "getAccount"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "logon"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(userId)});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (video.dto.Account) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (video.dto.Account) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.Account.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public java.lang.String deletePerson(int personId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[13]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "deletePerson"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(personId)});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {username, pwd});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -870,7 +836,41 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
 }
     }
 
-    public video.dto.Person[] find_Persons(long id, java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.util.Calendar registration, java.util.Calendar last_Login) throws java.rmi.RemoteException {
+    public boolean isUsernameExisted(java.lang.String username) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[13]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "isUsernameExisted"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {username});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return ((java.lang.Boolean) _resp).booleanValue();
+            } catch (java.lang.Exception _exception) {
+                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public video.dto.PersonInfo displayPerson(int personId) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -882,11 +882,11 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "find_Persons"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "displayPerson"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(id), firstName, lastName, username, registration, last_Login});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(personId)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -894,9 +894,9 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         else {
             extractAttachments(_call);
             try {
-                return (video.dto.Person[]) _resp;
+                return (video.dto.PersonInfo) _resp;
             } catch (java.lang.Exception _exception) {
-                return (video.dto.Person[]) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.Person[].class);
+                return (video.dto.PersonInfo) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.PersonInfo.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -904,7 +904,7 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
 }
     }
 
-    public video.dto.MovieInfo displayMovie(int movieId) throws java.rmi.RemoteException {
+    public java.lang.String updatePersonAccount(video.dto.Person person, video.dto.Account account, video.dto.Address address) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -916,11 +916,11 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "displayMovie"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://connection.video", "updatePersonAccount"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(movieId)});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {person, account, address});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -928,9 +928,9 @@ public class ServiceSoapBindingStub extends org.apache.axis.client.Stub implemen
         else {
             extractAttachments(_call);
             try {
-                return (video.dto.MovieInfo) _resp;
+                return (java.lang.String) _resp;
             } catch (java.lang.Exception _exception) {
-                return (video.dto.MovieInfo) org.apache.axis.utils.JavaUtils.convert(_resp, video.dto.MovieInfo.class);
+                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
