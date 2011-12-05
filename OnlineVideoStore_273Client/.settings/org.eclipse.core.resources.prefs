@@ -1,4 +1,4 @@
-#Sun Dec 04 00:26:42 PST 2011
+#Sun Dec 04 21:14:03 PST 2011
 eclipse.preferences.version=1
 encoding//src/video/connection/Service.java=UTF-8
 encoding//src/video/connection/ServiceService.java=UTF-8
@@ -6,6 +6,7 @@ encoding//src/video/connection/ServiceServiceLocator.java=UTF-8
 encoding//src/video/connection/ServiceSoapBindingStub.java=UTF-8
 encoding//src/video/dto/Account.java=UTF-8
 encoding//src/video/dto/Address.java=UTF-8
+encoding//src/video/dto/Bill.java=UTF-8
 encoding//src/video/dto/Movie.java=UTF-8
 encoding//src/video/dto/MovieInfo.java=UTF-8
 encoding//src/video/dto/Person.java=UTF-8

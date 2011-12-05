@@ -196,8 +196,9 @@ public class AdminLet extends HttpServlet {
 			
 		 	//List Movie
 		 	if(function.equals("ListMovie")){
-			    Movie[] movieList = proxy.listMovies();				 		
-		 	}//end if(function.equals("ListMovie")
+			    Movie[] movieList = proxy.listMovies();	
+			    request.setAttribute("movieList", movieList);
+		 	}
 		 	
 		 	//Update Movie
 		 	if(function.equals("UpdateMovie")){

@@ -10,7 +10,7 @@ package video.dto;
 public class Person  implements java.io.Serializable {
     private java.lang.String firstName;
 
-    private long id;
+    private int id;
 
     private java.lang.String lastName;
 
@@ -27,7 +27,7 @@ public class Person  implements java.io.Serializable {
 
     public Person(
            java.lang.String firstName,
-           long id,
+           int id,
            java.lang.String lastName,
            java.util.Calendar last_login,
            java.lang.String password,
@@ -68,7 +68,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @return id
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -78,7 +78,7 @@ public class Person  implements java.io.Serializable {
      * 
      * @param id
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -227,7 +227,7 @@ public class Person  implements java.io.Serializable {
         if (getFirstName() != null) {
             _hashCode += getFirstName().hashCode();
         }
-        _hashCode += new Long(getId()).hashCode();
+        _hashCode += getId();
         if (getLastName() != null) {
             _hashCode += getLastName().hashCode();
         }
@@ -262,7 +262,7 @@ public class Person  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("id");
         elemField.setXmlName(new javax.xml.namespace.QName("http://dto.video", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
