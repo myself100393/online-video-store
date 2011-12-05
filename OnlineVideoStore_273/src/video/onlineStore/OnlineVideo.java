@@ -513,7 +513,7 @@ public class OnlineVideo {
 		try {
 			// Type of account
 			s = db.con.createStatement();
-			String query = "SELECT type FROM accounts WHERE person_id = ?";
+			String query = "SELECT type FROM account WHERE person_id = ?";
 			PreparedStatement prepare = db.con.prepareStatement(query);
 			prepare.setInt(1, personId);
 			ResultSet r = prepare.executeQuery();
@@ -528,7 +528,7 @@ public class OnlineVideo {
 //			System.out.println("account_type:" + accountType);
 			
 			// Compter le nombre de movie rented
-			query = "SELECT COUNT(*) FROM rentals WHERE id_persons = ?";
+			query = "SELECT COUNT(*) FROM rental WHERE person_id = ?";
 			prepare = db.con.prepareStatement(query);
 			prepare.setInt(1, personId);
 			r = prepare.executeQuery();
@@ -556,7 +556,7 @@ public class OnlineVideo {
 					prepare.execute();
 					
 					java.util.Date date = new java.util.Date();
-					query = "INSERT INTO rentals(id_persons, id_movie, date, status) VALUES(?, ?, ?, ?)";
+					query = "INSERT INTO rental(person_id, movie_id, date, status) VALUES(?, ?, ?, ?)";
 					prepare = db.con.prepareStatement(query);
 					prepare.setInt(1, personId);
 					prepare.setInt(2, movieId);
@@ -585,7 +585,7 @@ public class OnlineVideo {
 		int nbAvailable = 0;
 		try {
 			s = db.con.createStatement();
-			String query = "UPDATE rentals SET status = 'returned' WHERE id_persons = ? AND id_movie = ?";
+			String query = "UPDATE rental SET status = 'returned' WHERE person_id = ? AND movie_id= ?";
 			PreparedStatement prepare = db.con.prepareStatement(query);
 			prepare.setInt(1, personId);
 			prepare.setInt(2, movieId);
