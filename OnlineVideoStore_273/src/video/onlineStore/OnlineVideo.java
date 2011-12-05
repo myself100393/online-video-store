@@ -41,7 +41,7 @@ public class OnlineVideo {
 			}			
 			
 			boolean isCreate = dao.create(db.con, person);			
-			long personId = person.getId();
+			int personId = person.getId();
 			
 			
 			//Create Account
@@ -98,8 +98,8 @@ public class OnlineVideo {
 				
 				if(pwd.equals(pass)){
 					//[[update last login time]]					 
-					//Date date = new Date(new java.util.Date().getTime());
-					person.setLast_login(new java.util.Date());
+					Date date = new Date(new java.util.Date().getTime());
+					person.setLast_login(date);
 					dao.save(db.con, person);					
 					
 					return "true";
@@ -162,7 +162,7 @@ public class OnlineVideo {
 		return null;
 	}
 	
-	public Account getAccount(long userId) {
+	public Account getAccount(int userId) {
 		try {
 			
 			AccountDao dao = new AccountDao();			
@@ -180,7 +180,7 @@ public class OnlineVideo {
 		}
 	}
 	
-	public Address getAddress(long userId) {
+	public Address getAddress(int userId) {
 		try {
 			
 			AddressDao dao = new AddressDao();			
@@ -272,10 +272,10 @@ public class OnlineVideo {
 		return null;
 	}
 
-	public String generateStringQuery_Find_Persons(long id,String firstName, String lastName, String userName, Date registration,Date last_Login) {
+	public String generateStringQuery_Find_Persons(int id,String firstName, String lastName, String userName, Date registration,Date last_Login) {
 		boolean isFirstArg = true;
 		String query = "SELECT * FROM person ";
-		if (((Long)id)!=null) {
+		if (((Integer)id)!=null) {
 			if (isFirstArg) {
 				query += "WHERE id <= " + id + " ";
 				isFirstArg = false;
@@ -336,7 +336,7 @@ public class OnlineVideo {
 	}
 
 	//for admin
-	public Person[] find_Persons(long id, String firstName, String lastName, String username, Date registration,Date last_Login){
+	public Person[] find_Persons(int id, String firstName, String lastName, String username, Date registration,Date last_Login){
 		Statement s;
 		ArrayList<Person> arraylistPerson = new ArrayList<Person>();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -347,13 +347,16 @@ public class OnlineVideo {
 			while (r.next()) {
 				Date timeStamp_Reg = r.getDate("date_registration");
 				Date timeStamp_Last_Login = r.getDate("last_login");
-				Person p = new Person(r.getLong("id"));
-				p.setId(r.getLong("id"));
+				Person p = new Person(r.getInt("id"));
+				p.setId(r.getInt("id"));
             	p.setFirstName(r.getString("first_name"));
             	p.setLastName(r.getString("last_name"));
             	p.setUsername(r.getString("username"));
-            	p.setRegistration(timeStamp_Reg); 
-            	p.setLast_login(timeStamp_Last_Login);	
+            //	p.setRegistration(timeStamp_Reg); 
+           // 	p.setLast_login(timeStamp_Last_Login);
+            	
+            	p.setRegistration(r.getDate("date_registration")); 
+               	p.setLast_login(r.getDate("last_login"));
 				arraylistPerson.add(p);
 									
 			}
@@ -379,8 +382,8 @@ public class OnlineVideo {
 			String query = "SELECT * FROM movie ORDER BY name ASC";
 			ResultSet r = s.executeQuery(query);
 			while (r.next()) {
-				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
-				m.setId(r.getLong("id"));
+				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getDate("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
+				m.setId(r.getInt("id"));
 				arraylistmovie.add(m);
 			}
 		} catch (SQLException e) {
@@ -396,11 +399,11 @@ public class OnlineVideo {
 		return listMovie;
 	}
 
-	public String generateStringQuery(long id,String name, String banner, String release,
+	public String generateStringQuery(int id,String name, String banner, Date release,
 			Double rentalPrice, int category, boolean isAvailable) {
 		boolean isFirstArg = true;
 		String query = "SELECT * FROM movie ";
-		if (((Long)id)!=null) {
+		if (((Integer)id)!=null) {
 			if (isFirstArg) {
 				query += "WHERE id <= " + id + " ";
 				isFirstArg = false;
@@ -426,7 +429,7 @@ public class OnlineVideo {
 				query += "AND banner LIKE '%" + banner + "%' ";
 		}
 		
-		if (release != null && release.length()>0) {
+		if (release != null && release.getYear() > 0) {
 			if (isFirstArg) {
 				query += "WHERE release_date = '" + release + "' ";
 				isFirstArg = false;
@@ -465,7 +468,7 @@ public class OnlineVideo {
 		return query;
 	}
 	
-	public Movie[] findMovies(long id,String name, String banner, String release,
+	public Movie[] findMovies(int id,String name, String banner, Date release,
 			Double rentalPrice, int category, boolean isAvailable) {
 		Statement s;
 		ArrayList<Movie> arraylistmovie = new ArrayList<Movie>();
@@ -477,8 +480,8 @@ public class OnlineVideo {
 			ResultSet r = s.executeQuery(query);
 			System.out.println("3rd....");
 			while (r.next()) {
-				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
-				m.setId(r.getLong("id"));
+				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getDate("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
+				m.setId(r.getInt("id"));
 				arraylistmovie.add(m);				
 			}
 		} catch (SQLException e) {
@@ -627,7 +630,7 @@ public class OnlineVideo {
 				rs.first();
 				
 				Person person = new Person();
-				person.setId(rs.getLong("id"));
+				person.setId(rs.getInt("id"));
 				person.setRegistration(rs.getDate("date_registration"));
 				person.setFirstName(rs.getString("first_name"));
 				person.setLast_login(rs.getDate("last_login"));
@@ -660,7 +663,7 @@ public class OnlineVideo {
 					movie.setId(rs.getInt("movie_id"));
 					movie.setName(rs.getString("name"));
 					movie.setBanner(rs.getString("banner"));
-					movie.setReleaseDate(rs.getString("release_date"));
+					movie.setReleaseDate(rs.getDate("release_date"));
 					movie.setRentAmount(rs.getDouble("rent_amount"));
 					movie.setNbAvailable(rs.getInt("nb_available"));
 					
@@ -708,7 +711,7 @@ public class OnlineVideo {
 				movie.setBanner(rs.getString("banner"));
 				movie.setNbAvailable(rs.getInt("nb_available"));
 				movie.setRentAmount(rs.getDouble("rent_amount"));
-				movie.setReleaseDate(rs.getString("release_date"));
+				movie.setReleaseDate(rs.getDate("release_date"));
 				
 				movieInfo.setMovie(movie);
 				
@@ -797,12 +800,13 @@ public class OnlineVideo {
 		}
 		
 		try {
-			String sql = "INSERT INTO movies (name, banner, release_date, rent_amount, nb_available, category_title) VALUES (?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO movie (name, banner, release_date, rent_amount, nb_available, category_title) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement prepare = db.con.prepareStatement(sql);
 
 			prepare.setString(1, movie.getName());
 			prepare.setString(2, movie.getBanner());
-			prepare.setString(3, movie.getReleaseDate());
+			prepare.setDate(3, (java.sql.Date) movie.getReleaseDate());
+		
 			prepare.setDouble(4, movie.getRentAmount());
 			prepare.setInt(5, movie.getNbAvailable());
 			prepare.setString(6, "default"); // TODO implement category_id in the model
@@ -830,7 +834,7 @@ public class OnlineVideo {
 				movie.setBanner(rs.getString("banner"));
 				movie.setNbAvailable(rs.getInt("nb_available"));
 				movie.setRentAmount(rs.getDouble("rent_amount"));
-				movie.setReleaseDate(rs.getDate("release_date").toString());
+				movie.setReleaseDate(rs.getDate("release_date"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -924,7 +928,7 @@ public class OnlineVideo {
 			
 			Person person = new Person();
 			person.setId(rs.getInt("id"));
-			person.setRegistration(new java.util.Date(rs.getDate("date_registration").getTime()));
+			person.setRegistration(rs.getDate("date_registration"));
 			person.setFirstName(rs.getString("first_name"));
 //			person.setLastLogin(new java.util.Date(rs.getDate("last_login").getTime()));
 			person.setLastName(rs.getString("last_name"));
@@ -990,6 +994,10 @@ public class OnlineVideo {
 			
 			personInfo.setListActualRentMovie(arrayRentedMovies);
 			personInfo.setListRentMovie(arrayReturnedMovies);
+			
+			
+		//	personInfo.setListActualRentMovie(rentedMovies);
+		//	personInfo.setListRentMovie(returnedMovies);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
