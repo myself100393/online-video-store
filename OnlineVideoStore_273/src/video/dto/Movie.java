@@ -1,17 +1,19 @@
 package video.dto;
 
+import java.util.Date;
+
 public class Movie {
 
-	private long id;
+	private int id;
 	private String name;
 	private String banner;
-	private String releaseDate;
+	private Date releaseDate;
 	private double rentAmount;
 	private int nbAvailable;
 	
 	public Movie() {}
 	
-	public Movie(String name, String banner, String releaseDate, double rentAmount, int nbAvailable) {
+	public Movie(String name, String banner, Date releaseDate, double rentAmount, int nbAvailable) {
 		this.name = name;
 		this.banner = banner;
 		this.releaseDate = releaseDate;
@@ -19,11 +21,11 @@ public class Movie {
 		this.nbAvailable = nbAvailable;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -43,11 +45,11 @@ public class Movie {
 		this.banner = banner;
 	}
 
-	public String getReleaseDate() {
+	public Date getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(String releaseDate) {
+	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
@@ -66,12 +68,4 @@ public class Movie {
 	public void setNbAvailable(int nbAvailable) {
 		this.nbAvailable = nbAvailable;
 	}
-
-	@Override
-	public String toString() {
-		return "Movie [id=" + id + ", name=" + name + ", banner=" + banner
-				+ ", releaseDate=" + releaseDate + ", rentAmount=" + rentAmount
-				+ ", nbAvailable=" + nbAvailable + "]";
-	}
-	
 }

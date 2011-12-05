@@ -12,8 +12,8 @@ public class Account implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4500980981822261760L;
-	private long id;
-    private long personId;
+	private int id;
+    private int personId;
     private String ssn; //membership number but in SSN format 
     private int userType;
     private double balance;
@@ -25,18 +25,18 @@ public class Account implements Serializable {
     }
  
 
-    public long getId() {
+    public int getId() {
           return this.id;
     }
-    public void setId(long idIn) {
+    public void setId(int idIn) {
           this.id = idIn;
     }
 
-    public long getPersonId() {
+    public int getPersonId() {
           return this.personId;
     }
-    public void setPersonId(long personIdIn) {
-          this.personId = personIdIn;
+    public void setPersonId(int personId2) {
+          this.personId = personId2;
     }
 
     public String getSsn() {

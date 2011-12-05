@@ -1,7 +1,7 @@
 package video.dto;
 
 import java.io.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
  
 
@@ -16,7 +16,7 @@ public class Person implements Serializable {
 	/** 
      * This data is directly mapped to the columns of database table.
      */
-    private long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String username;
@@ -26,17 +26,17 @@ public class Person implements Serializable {
 
     public Person () {}
 
-    public Person (long id) {
+    public Person (int id) {
           this.id = id;
     }
 
 
     /** Get- and Set-methods  **/
 
-    public long getId() {
+    public int getId() {
           return this.id;
     }
-    public void setId(long idIn) {
+    public void setId(int idIn) {
           this.id = idIn;
     }
 
@@ -78,8 +78,8 @@ public class Person implements Serializable {
     public Date getLast_login() {
           return this.last_login;
     }
-    public void setLast_login(Date last_loginIn) {
-          this.last_login = last_loginIn;
+    public void setLast_login(java.util.Date date) {
+          this.last_login = (Date) date;
     }
 
     /**
@@ -131,7 +131,7 @@ public class Person implements Serializable {
      * setAll allows to set all variables in one method call. 
      */
 
-    public void setAll(long id,
+    public void setAll(int id,
     					String firstName,
     					String lastName,
     					String username,

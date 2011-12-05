@@ -22,7 +22,7 @@ OnlineVideo omp = new OnlineVideo();
 
 
 	
-	public Movie[] findMovies(long id,String name, String banner, String release,
+	public Movie[] findMovies(int id,String name, String banner, Date release,
 			Double rentalPrice, int category, boolean isAvailable) {
 		//SearchMovieManager smm = new SearchMovieManager();
 		return omp.findMovies(id,name, banner, release, rentalPrice, category, isAvailable);
@@ -113,13 +113,13 @@ OnlineVideo omp = new OnlineVideo();
  
 		
 	
-	public Account getAccount(long userId){		
+	public Account getAccount(int userId){		
 		return omp.getAccount(userId);
 	}
 	
 	
 	
-	public Address getAddress(long userId){		
+	public Address getAddress(int userId){		
 		return omp.getAddress(userId);
 	}
 	
@@ -186,7 +186,7 @@ OnlineVideo omp = new OnlineVideo();
 	}
 	
 	
-	public Person[] find_Persons(long id, String firstName, String lastName, String username, Date registration,Date last_Login){		
+	public Person[] find_Persons(int id, String firstName, String lastName, String username, Date registration,Date last_Login){		
 		return omp.find_Persons(id,firstName,lastName,username,registration,last_Login);
 	}
 
