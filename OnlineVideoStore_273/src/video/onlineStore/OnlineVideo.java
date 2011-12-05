@@ -42,7 +42,7 @@ public class OnlineVideo {
 			}			
 			
 			boolean isCreate = dao.create(db.con, person);			
-			long personId = person.getId();
+			int personId = person.getId();
 			
 			
 			//Create Account
@@ -55,7 +55,7 @@ public class OnlineVideo {
 			//Create Address
 			AddressDao add_dao = new AddressDao();
 			Address address = add_dao.createValueObject();
-			address.setPersonId(personId);
+			address.setPersonId(personId);	
 			address.setStreet("");
 			address.setCity("");
 			address.setState("");
@@ -101,7 +101,7 @@ public class OnlineVideo {
 				if(pwd.equals(pass)){
 					//[[update last login time]]					 
 					//Date date = new Date(new java.util.Date().getTime());
-					person.setLast_login(new java.util.Date());
+					person.setLast_login(new java.util.Date().getTime()+"");
 					dao.save(db.con, person);					
 					
 					return "true";
@@ -165,7 +165,7 @@ public class OnlineVideo {
 		return null;
 	}
 	
-	public Account getAccount(long userId) {
+	public Account getAccount(int userId) {
 		try {
 			
 			AccountDao dao = new AccountDao();			
@@ -183,7 +183,7 @@ public class OnlineVideo {
 		}
 	}
 	
-	public Address getAddress(long userId) {
+	public Address getAddress(int userId) {
 		try {
 			
 			AddressDao dao = new AddressDao();			
@@ -278,103 +278,6 @@ public class OnlineVideo {
 		
 		return null;
 	}
-
-	
-	public String generateStringQuery_Find_Persons(long id,String firstName, String lastName, String userName, Date registration,Date last_Login) {
-		boolean isFirstArg = true;
-		String query = "SELECT * FROM person ";
-		if (((Long)id)!=null) {
-			if (isFirstArg) {
-				query += "WHERE id <= " + id + " ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND id <= " + id + " ";
-		}
-		if (firstName != null && firstName.length() > 0) {
-			if (isFirstArg) {
-				query += "WHERE first_name LIKE '%" + firstName + "%' ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND first_name LIKE '%" + firstName + "%' ";
-		}
-		
-		if (lastName != null && lastName.length() > 0) {
-			if (isFirstArg) {
-				query += "WHERE last_name LIKE '%" + lastName + "%' ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND last_name LIKE '%" + lastName + "%' ";
-		}
-		
-		if (userName != null && userName.length() > 0) {
-			if (isFirstArg) {
-				query += "WHERE username LIKE '%" + userName + "%' ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND username LIKE '%" + userName + "%' ";
-		}
-
-		if (registration != null) {
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			String dateRegister = dateFormat.format(registration);
-			if (isFirstArg) {
-				query += "WHERE date_registration = '" + dateRegister + "' ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND date_registration = '" + dateRegister + "' ";
-		}
-				
-		if (last_Login != null) {
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			String date_Last_Login = dateFormat.format(last_Login);
-			if (isFirstArg) {
-				query += "WHERE last_login = '" + date_Last_Login + "' ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND last_login = '" + date_Last_Login + "' ";
-		}
-			
-		return query;
-	}
-
-	//for admin
-	public Person[] find_Persons(long id, String firstName, String lastName, String username, Date registration,Date last_Login){
-		Statement s;
-		ArrayList<Person> arraylistPerson = new ArrayList<Person>();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			s = db.con.createStatement();
-			String query = generateStringQuery_Find_Persons(id,firstName, lastName, username, registration, last_Login);
-			ResultSet r = s.executeQuery(query);
-			while (r.next()) {
-				Date timeStamp_Reg = r.getDate("date_registration");
-				Date timeStamp_Last_Login = r.getDate("last_login");
-				Person p = new Person(r.getLong("id"));
-				p.setId(r.getLong("id"));
-            	p.setFirstName(r.getString("first_name"));
-            	p.setLastName(r.getString("last_name"));
-            	p.setUsername(r.getString("username"));
-            	p.setRegistration(timeStamp_Reg); 
-            	p.setLast_login(timeStamp_Last_Login);	
-				arraylistPerson.add(p);
-									
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Person[] listPerson = new Person[arraylistPerson.size()];
-		int i = 0;
-		for (Person person : arraylistPerson) 
-			listPerson[i++] = person;
-		return listPerson;		
-	}
 	
 	public Movie[] listMovies() {
 		Statement s;
@@ -387,9 +290,9 @@ public class OnlineVideo {
 			String query = "SELECT * FROM movie ORDER BY name ASC";
 			ResultSet r = s.executeQuery(query);
 			while (r.next()) {
-				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
-				m.setId(r.getLong("id"));
-				arraylistmovie.add(m);
+				Long timestamp = r.getDate("release_date").getTime();
+				java.util.Date releaseDate = new java.util.Date(timestamp);
+				arraylistmovie.add(new Movie(r.getString("name"), r.getString("banner"), releaseDate, Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available"))));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -397,25 +300,15 @@ public class OnlineVideo {
 		}
 		Movie[] listMovie = new Movie[arraylistmovie.size()];
 		int i = 0;
-		for (Movie movie : arraylistmovie) {
+		for (Movie movie : arraylistmovie) 
 			listMovie[i++] = movie;
-			System.out.println(movie.toString());
-		}
 		return listMovie;
 	}
 
-	public String generateStringQuery(long id,String name, String banner, String release,
+	public String generateStringQuery(String name, String banner, Date release,
 			Double rentalPrice, int category, boolean isAvailable) {
 		boolean isFirstArg = true;
 		String query = "SELECT * FROM movie ";
-		if (((Long)id)!=null) {
-			if (isFirstArg) {
-				query += "WHERE id <= " + id + " ";
-				isFirstArg = false;
-			}
-			else
-				query += "AND id <= " + id + " ";
-		}		
 		if (name != null && name.length() > 0) {
 			if (isFirstArg) {
 				query += "WHERE name LIKE '%" + name + "%' ";
@@ -434,16 +327,18 @@ public class OnlineVideo {
 				query += "AND banner LIKE '%" + banner + "%' ";
 		}
 		
-		if (release != null && release.length()>0) {
+		if (release != null) {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String dateRelease = dateFormat.format(release);
 			if (isFirstArg) {
-				query += "WHERE release_date = '" + release + "' ";
+				query += "WHERE release_date = '" + dateRelease + "' ";
 				isFirstArg = false;
 			}
 			else
-				query += "AND release_date = '" + release + "' ";
+				query += "AND release_date = '" + dateRelease + "' ";
 		}
 		
-		if (((Double)rentalPrice) != null) {
+		if (rentalPrice != null) {
 			if (isFirstArg) {
 				query += "WHERE rent_amount <= " + rentalPrice + " ";
 				isFirstArg = false;
@@ -469,25 +364,23 @@ public class OnlineVideo {
 			else
 				query += "AND nb_available = " + 0 + " ";
 		}
-		System.out.print("generated query for movie searching is.... "+query);
+		
 		return query;
 	}
 	
-	public Movie[] findMovies(long id,String name, String banner, String release,
+	public Movie[] findMovies(String name, String banner, Date release,
 			Double rentalPrice, int category, boolean isAvailable) {
 		Statement s;
 		ArrayList<Movie> arraylistmovie = new ArrayList<Movie>();
-		System.out.println("1st....");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			s = db.con.createStatement();
-			System.out.println("2nd....");
-			String query = generateStringQuery(id,name, banner, release, rentalPrice, category, isAvailable);
+			String query = generateStringQuery(name, banner, release, rentalPrice, category, isAvailable);
 			ResultSet r = s.executeQuery(query);
-			System.out.println("3rd....");
 			while (r.next()) {
-				Movie m = new Movie(r.getString("name"), r.getString("banner"), r.getString("release_date"), Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available")));
-				m.setId(r.getLong("id"));
-				arraylistmovie.add(m);				
+				Long timestamp = r.getDate("release_date").getTime();
+				java.util.Date releaseDate = new java.util.Date(timestamp);
+				arraylistmovie.add(new Movie(r.getString("name"), r.getString("banner"), releaseDate, Double.parseDouble(r.getString("rent_amount")), Integer.parseInt(r.getString("nb_available"))));				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -497,18 +390,11 @@ public class OnlineVideo {
 		int i = 0;
 		for (Movie movie : arraylistmovie) 
 			listMovie[i++] = movie;
-
-		for(Movie movie:listMovie){
-			System.out.println(listMovie.toString());
-            
-			System.out.println("");
-		}
-		
 		return listMovie;
 	}
 	
 	// status=rented
-	// vifier en fonction du type de compte combien de films ils ont empruntï¿½
+	// vérifier en fonction du type de compte combien de films ils ont emprunté
 	// premium = 10
 	// simple member = 2
 	public String issueMovie(int movieId, int personId) {
@@ -594,7 +480,7 @@ public class OnlineVideo {
 		int nbAvailable = 0;
 		try {
 			s = db.con.createStatement();
-			String query = "UPDATE rentals SET status = 'returned' WHERE id_persons = ? AND id_movie = ?";
+			String query = "UPDATE rental SET status = 'returned' WHERE person_id = ? AND movie_id = ?";
 			PreparedStatement prepare = db.con.prepareStatement(query);
 			prepare.setInt(1, personId);
 			prepare.setInt(2, movieId);
@@ -623,183 +509,170 @@ public class OnlineVideo {
 		return "true:Movie returned";
 	}
 	
-	 
 	
+// for admin
+public PersonInfo displayPerson(int personId) {
+		
+		PersonInfo personInfo = new PersonInfo();
+		try {
+			// Get the person from db
+			String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id WHERE p.id = ?";
+			PreparedStatement prepare = db.con.prepareStatement(sql);
+			prepare.setInt(1, personId);
+			ResultSet rs = prepare.executeQuery();
+			rs.first();
+			
+			Person person = new Person();
+			person.setId(rs.getInt("id"));
+			person.setRegistration(rs.getString("date_registration"));
+			person.setFirstName(rs.getString("first_name"));
+			person.setLast_login(rs.getString("last_login"));
+			person.setLastName(rs.getString("last_name"));
+			person.setPassword(rs.getString("password"));
+			person.setUsername(rs.getString("username"));
+		//	person.setSsn(rs.getString("ssn"));
+			
+			personInfo.setPerson(person);
+			rs.close();
+			prepare.close();
+			
+			// Get the rented movies for this user
+			sql = "SELECT * "
+					+ "FROM rental r JOIN movie m ON r.movie_id = m.id "
+					+ "WHERE r.person_ = ?";
+			
+			prepare = db.con.prepareStatement(sql);
+	
+					
+			prepare.setInt(1, personId);
+			
+			rs = prepare.executeQuery();
+			
+			ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
+			ArrayList<Movie> returnedMovies = new ArrayList<Movie>();
+			
+			while (rs.next()) {
+				Movie movie = new Movie();
+				movie.setId(rs.getInt("movie_id"));
+				movie.setName(rs.getString("name"));
+				movie.setBanner(rs.getString("banner"));
+				movie.setReleaseDate(new java.util.Date(rs.getDate("release_date").getTime()));
+				movie.setRentAmount(rs.getDouble("rent_amount"));
+				movie.setNbAvailable(rs.getInt("nb_available"));
+				
+				if (rs.getString("status").equalsIgnoreCase("returned")) {
+					returnedMovies.add(movie);
+				} else if (rs.getString("status").equalsIgnoreCase("rented")) {
+					rentedMovies.add(movie);
+				}
+			}
+			
+			personInfo.setListActualRentMovie(rentedMovies);
+			personInfo.setListRentMovie(returnedMovies);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return personInfo;
+		
+	}
 	
 	// for admin
-	public PersonInfo displayPerson(int personId) {
-			
-			PersonInfo personInfo = new PersonInfo();
-			try {
-				// Get the person from db
-				String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id WHERE p.id = ?";
-				PreparedStatement prepare = db.con.prepareStatement(sql);
-				prepare.setInt(1, personId);
-				ResultSet rs = prepare.executeQuery();
-				rs.first();
+	public MovieInfo displayMovie(int movieId) {
+		
+		MovieInfo movieInfo = new MovieInfo();
+		
+		Movie movie = null;
+		try {
+			String sql = "SELECT * FROM movie WHERE id = ?";
+			PreparedStatement prepare = db.con.prepareStatement(sql);
+			prepare.setInt(1, movieId);
+			ResultSet rs = prepare.executeQuery();
+			if (rs.first()) {
+				movie = new Movie();
+				movie.setId(rs.getInt("id"));
+				movie.setName(rs.getString("name"));
+				movie.setBanner(rs.getString("banner"));
+				movie.setNbAvailable(rs.getInt("nb_available"));
+				movie.setRentAmount(rs.getDouble("rent_amount"));
+				movie.setReleaseDate(new java.util.Date(rs.getDate("release_date").getTime()));
 				
-				Person person = new Person();
-				person.setId(rs.getLong("id"));
-				person.setRegistration(rs.getDate("date_registration"));
-				person.setFirstName(rs.getString("first_name"));
-				person.setLast_login(rs.getDate("last_login"));
-				person.setLastName(rs.getString("last_name"));
-				person.setPassword(rs.getString("password"));
-				person.setUsername(rs.getString("username"));
-			//	person.setSsn(rs.getString("ssn"));
+				movieInfo.setMovie(movie);
 				
-				personInfo.setPerson(person);
 				rs.close();
 				prepare.close();
 				
-				// Get the rented movies for this user
-				sql = "SELECT * "
-						+ "FROM rental r JOIN movie m ON r.movie_id = m.id "
-						+ "WHERE r.person_id = ?";
+				// Get the persons who rented  this movie
+				sql = "select * from rental r, persons p,  account a "
+						+ "where r.person_id=p.id and p.id=a.person_id and r.movie_id=?";
 				
 				prepare = db.con.prepareStatement(sql);
 		
 						
-				prepare.setInt(1, personId);
+				prepare.setInt(1, movieId);
 				
 				rs = prepare.executeQuery();
 				
-				ArrayList<Movie> rentedMovies = new ArrayList<Movie>();
-				ArrayList<Movie> returnedMovies = new ArrayList<Movie>();
-				
-				while (rs.next()) {
-					Movie movie = new Movie();
-					movie.setId(rs.getInt("movie_id"));
-					movie.setName(rs.getString("name"));
-					movie.setBanner(rs.getString("banner"));
-					movie.setReleaseDate(rs.getString("release_date"));
-					movie.setRentAmount(rs.getDouble("rent_amount"));
-					movie.setNbAvailable(rs.getInt("nb_available"));
-					
-					if (rs.getString("status").equalsIgnoreCase("returned")) {
-						returnedMovies.add(movie);
-					} else if (rs.getString("status").equalsIgnoreCase("rented")) {
-						rentedMovies.add(movie);
-					}
-				}
-				Movie[] listRentMovie = new Movie[returnedMovies.size()];
-				int i = 0;
-				for (Movie movie : returnedMovies) 
-					listRentMovie[i++] = movie;
-				
-				Movie[] listActualRentMovie = new Movie[rentedMovies.size()];
-				i = 0;
-				for (Movie movie : rentedMovies) 
-					listActualRentMovie[i++] = movie;
-				
-				personInfo.setListActualRentMovie(listActualRentMovie);
-				personInfo.setListRentMovie(listRentMovie);
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return personInfo;
-			
-		}
-		
-		// for admin
-		public MovieInfo displayMovie(int movieId) {
-			
-			MovieInfo movieInfo = new MovieInfo();
-			
-			Movie movie = null;
-			try {
-				String sql = "SELECT * FROM movie WHERE id = ?";
-				PreparedStatement prepare = db.con.prepareStatement(sql);
-				prepare.setInt(1, movieId);
-				ResultSet rs = prepare.executeQuery();
-				if (rs.first()) {
-					movie = new Movie();
-					movie.setId(rs.getInt("id"));
-					movie.setName(rs.getString("name"));
-					movie.setBanner(rs.getString("banner"));
-					movie.setNbAvailable(rs.getInt("nb_available"));
-					movie.setRentAmount(rs.getDouble("rent_amount"));
-					movie.setReleaseDate(rs.getString("release_date"));
-					
-					movieInfo.setMovie(movie);
-					
-					rs.close();
-					prepare.close();
-					
-					// Get the persons who rented  this movie
-					sql = "select * from rental r, person p,  account a "
-							+ "where r.person_id=p.id and p.id=a.person_id and r.movie_id=?";
-					
-					prepare = db.con.prepareStatement(sql);
-			
-							
-					prepare.setInt(1, movieId);
-					
-					rs = prepare.executeQuery();
-					
-					ArrayList<Person> rentPersons = new ArrayList<Person>();
-					
-					while (rs.next()) {
-						Person person = new Person();
-						person.setId(rs.getInt("id"));
-						person.setRegistration(rs.getDate("date_registration"));
-						person.setFirstName(rs.getString("first_name"));
-						person.setLast_login(rs.getDate("last_login"));
-						person.setLastName(rs.getString("last_name"));
-						person.setPassword(rs.getString("password"));
-						person.setUsername(rs.getString("username"));
-					//	person.setSsn(rs.getString("ssn"));
-						
-						rentPersons.add(person);
-										
-					}
-					Person[] listRentPerson = new Person[rentPersons.size()];
-					int i = 0;
-					for (Person person : rentPersons) 
-						listRentPerson[i++] = person;					
-					movieInfo.setListPerson(listRentPerson);
-					
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-			return movieInfo;
-		}
-		
-		// for admin
-		public Person[] listAllPersons(int type) {
-			ArrayList<Person> persons = new ArrayList<Person>(); 
-		
-			try {	
-				// Get all persons from db
-				String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where type=?";
-				PreparedStatement prepare = db.con.prepareStatement(sql);
-				prepare.setInt(1, type);
-				ResultSet rs = prepare.executeQuery();
+				ArrayList<Person> rentPersons = new ArrayList<Person>();
 				
 				while (rs.next()) {
 					Person person = new Person();
-					person.setId(rs.getInt("id"));
-					person.setRegistration(rs.getDate("date_registration"));
+					person.setId(rs.getInt("id_persons"));
+					person.setRegistration(rs.getString("date_registration"));
 					person.setFirstName(rs.getString("first_name"));
-					person.setLast_login(rs.getDate("last_login"));
+					person.setLast_login(rs.getString("last_login"));
 					person.setLastName(rs.getString("last_name"));
 					person.setPassword(rs.getString("password"));
 					person.setUsername(rs.getString("username"));
 				//	person.setSsn(rs.getString("ssn"));
 					
-					persons.add(person);
+					rentPersons.add(person);
+									
 				}
 				
-			} catch (SQLException e) {
-				e.printStackTrace();
+				movieInfo.setListPerson(rentPersons);
+				
 			}
-			Person[] arrPersons = new Person[persons.size()];
-			arrPersons = persons.toArray(arrPersons);
-			return arrPersons;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		return movieInfo;
+	}
+	
+	// for admin
+	public Person[] listAllPersons(int type) {
+		ArrayList<Person> persons = new ArrayList<Person>(); 
+	
+		try {	
+			// Get all persons from db
+			String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where type=?";
+			PreparedStatement prepare = db.con.prepareStatement(sql);
+			prepare.setInt(1, type);
+			ResultSet rs = prepare.executeQuery();
+			
+			while (rs.next()) {
+				Person person = new Person();
+				person.setId(rs.getInt("id"));
+				person.setRegistration(rs.getString("date_registration"));
+				person.setFirstName(rs.getString("first_name"));
+				person.setLast_login(rs.getString("last_login"));
+				person.setLastName(rs.getString("last_name"));
+				person.setPassword(rs.getString("password"));
+				person.setUsername(rs.getString("username"));
+			//	person.setSsn(rs.getString("ssn"));
+				
+				persons.add(person);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Person[] arrPersons = new Person[persons.size()];
+		arrPersons = persons.toArray(arrPersons);
+		return arrPersons;
+	}
+	
 	 
 }
  
