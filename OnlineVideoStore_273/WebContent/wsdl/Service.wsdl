@@ -8,7 +8,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="getAddress">
     <complexType>
      <sequence>
-      <element name="userId" type="xsd:int"/>
+      <element name="userId" type="xsd:long"/>
      </sequence>
     </complexType>
    </element>
@@ -33,6 +33,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="find_Persons">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="registration" type="xsd:dateTime"/>
+      <element name="last_Login" type="xsd:dateTime"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="find_PersonsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="find_PersonsReturn" type="tns1:Person"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="deletePerson">
     <complexType>
      <sequence>
@@ -47,12 +66,32 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="displayMovie">
+    <complexType>
+     <sequence>
+      <element name="movieId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayMovieResponse">
+    <complexType>
+     <sequence>
+      <element name="displayMovieReturn" type="tns1:MovieInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_Person">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Person"/>
+    </sequence>
+   </complexType>
    <element name="findMovies">
     <complexType>
      <sequence>
+      <element name="id" type="xsd:long"/>
       <element name="name" type="xsd:string"/>
       <element name="banner" type="xsd:string"/>
-      <element name="release" type="xsd:dateTime"/>
+      <element name="release" type="xsd:string"/>
       <element name="rentalPrice" type="xsd:double"/>
       <element name="category" type="xsd:int"/>
       <element name="isAvailable" type="xsd:boolean"/>
@@ -63,20 +102,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element maxOccurs="unbounded" name="findMoviesReturn" type="tns1:Movie"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getAccount">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getAccountResponse">
-    <complexType>
-     <sequence>
-      <element name="getAccountReturn" type="tns1:Account"/>
      </sequence>
     </complexType>
    </element>
@@ -120,17 +145,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="getPerson">
+   <element name="getAccount">
     <complexType>
      <sequence>
-      <element name="username" type="xsd:string"/>
+      <element name="userId" type="xsd:long"/>
      </sequence>
     </complexType>
    </element>
-   <element name="getPersonResponse">
+   <element name="getAccountResponse">
     <complexType>
      <sequence>
-      <element name="getPersonReturn" type="tns1:Person"/>
+      <element name="getAccountReturn" type="tns1:Account"/>
      </sequence>
     </complexType>
    </element>
@@ -146,6 +171,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="signUpReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPerson">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPersonResponse">
+    <complexType>
+     <sequence>
+      <element name="getPersonReturn" type="tns1:Person"/>
      </sequence>
     </complexType>
    </element>
@@ -178,6 +217,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="displayPerson">
+    <complexType>
+     <sequence>
+      <element name="personId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayPersonResponse">
+    <complexType>
+     <sequence>
+      <element name="displayPersonReturn" type="tns1:PersonInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_Movie">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Movie"/>
+    </sequence>
+   </complexType>
    <element name="updatePersonAccount">
     <complexType>
      <sequence>
@@ -196,47 +254,61 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </element>
   </schema>
   <schema elementFormDefault="qualified" targetNamespace="http://dto.video" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://connection.video"/>
    <complexType name="Address">
     <sequence>
      <element name="city" nillable="true" type="xsd:string"/>
      <element name="country" nillable="true" type="xsd:string"/>
-     <element name="id" type="xsd:int"/>
-     <element name="personId" type="xsd:int"/>
+     <element name="id" type="xsd:long"/>
+     <element name="personId" type="xsd:long"/>
      <element name="state" nillable="true" type="xsd:string"/>
      <element name="street" nillable="true" type="xsd:string"/>
      <element name="zip" nillable="true" type="xsd:string"/>
     </sequence>
    </complexType>
+   <complexType name="Person">
+    <sequence>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:long"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="last_login" nillable="true" type="xsd:dateTime"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="registration" nillable="true" type="xsd:dateTime"/>
+     <element name="username" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
    <complexType name="Movie">
     <sequence>
      <element name="banner" nillable="true" type="xsd:string"/>
-     <element name="id" type="xsd:int"/>
+     <element name="id" type="xsd:long"/>
      <element name="name" nillable="true" type="xsd:string"/>
      <element name="nbAvailable" type="xsd:int"/>
-     <element name="releaseDate" nillable="true" type="xsd:dateTime"/>
+     <element name="releaseDate" nillable="true" type="xsd:string"/>
      <element name="rentAmount" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="MovieInfo">
+    <sequence>
+     <element name="listPerson" nillable="true" type="impl:ArrayOf_tns1_Person"/>
+     <element name="movie" nillable="true" type="tns1:Movie"/>
     </sequence>
    </complexType>
    <complexType name="Account">
     <sequence>
      <element name="balance" type="xsd:double"/>
-     <element name="id" type="xsd:int"/>
+     <element name="id" type="xsd:long"/>
      <element name="monthlyFee" type="xsd:double"/>
      <element name="outstandingMovies" type="xsd:int"/>
-     <element name="personId" type="xsd:int"/>
+     <element name="personId" type="xsd:long"/>
      <element name="ssn" nillable="true" type="xsd:string"/>
      <element name="userType" type="xsd:int"/>
     </sequence>
    </complexType>
-   <complexType name="Person">
+   <complexType name="PersonInfo">
     <sequence>
-     <element name="firstName" nillable="true" type="xsd:string"/>
-     <element name="id" type="xsd:int"/>
-     <element name="lastName" nillable="true" type="xsd:string"/>
-     <element name="last_login" nillable="true" type="xsd:string"/>
-     <element name="password" nillable="true" type="xsd:string"/>
-     <element name="registration" nillable="true" type="xsd:string"/>
-     <element name="username" nillable="true" type="xsd:string"/>
+     <element name="listActualRentMovie" nillable="true" type="impl:ArrayOf_tns1_Movie"/>
+     <element name="listRentMovie" nillable="true" type="impl:ArrayOf_tns1_Movie"/>
+     <element name="person" nillable="true" type="tns1:Person"/>
     </sequence>
    </complexType>
   </schema>
@@ -266,9 +338,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="find_PersonsRequest">
+
+      <wsdl:part element="impl:find_Persons" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="issueMovieRequest">
 
       <wsdl:part element="impl:issueMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayPersonResponse">
+
+      <wsdl:part element="impl:displayPersonResponse" name="parameters">
 
       </wsdl:part>
 
@@ -290,17 +378,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="deletePersonResponse">
+   <wsdl:message name="displayMovieResponse">
 
-      <wsdl:part element="impl:deletePersonResponse" name="parameters">
+      <wsdl:part element="impl:displayMovieResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="getAccountRequest">
+   <wsdl:message name="deletePersonResponse">
 
-      <wsdl:part element="impl:getAccount" name="parameters">
+      <wsdl:part element="impl:deletePersonResponse" name="parameters">
 
       </wsdl:part>
 
@@ -314,9 +402,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getAddressResponse">
+   <wsdl:message name="getAccountRequest">
 
-      <wsdl:part element="impl:getAddressResponse" name="parameters">
+      <wsdl:part element="impl:getAccount" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isUsernameExistedResponse">
+
+      <wsdl:part element="impl:isUsernameExistedResponse" name="parameters">
 
       </wsdl:part>
 
@@ -330,9 +426,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="isUsernameExistedResponse">
+   <wsdl:message name="getAddressResponse">
 
-      <wsdl:part element="impl:isUsernameExistedResponse" name="parameters">
+      <wsdl:part element="impl:getAddressResponse" name="parameters">
 
       </wsdl:part>
 
@@ -386,14 +482,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getAddressRequest">
-
-      <wsdl:part element="impl:getAddress" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="updatePersonAccountRequest">
 
       <wsdl:part element="impl:updatePersonAccount" name="parameters">
@@ -402,9 +490,33 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="displayMovieRequest">
+
+      <wsdl:part element="impl:displayMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAddressRequest">
+
+      <wsdl:part element="impl:getAddress" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="signUpResponse">
 
       <wsdl:part element="impl:signUpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayPersonRequest">
+
+      <wsdl:part element="impl:displayPerson" name="parameters">
 
       </wsdl:part>
 
@@ -437,6 +549,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="findMoviesResponse">
 
       <wsdl:part element="impl:findMoviesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="find_PersonsResponse">
+
+      <wsdl:part element="impl:find_PersonsResponse" name="parameters">
 
       </wsdl:part>
 
@@ -476,6 +596,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="find_Persons">
+
+         <wsdl:input message="impl:find_PersonsRequest" name="find_PersonsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:find_PersonsResponse" name="find_PersonsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="deletePerson">
 
          <wsdl:input message="impl:deletePersonRequest" name="deletePersonRequest">
@@ -488,6 +620,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="displayMovie">
+
+         <wsdl:input message="impl:displayMovieRequest" name="displayMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayMovieResponse" name="displayMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="findMovies">
 
          <wsdl:input message="impl:findMoviesRequest" name="findMoviesRequest">
@@ -495,18 +639,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:findMoviesResponse" name="findMoviesResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getAccount">
-
-         <wsdl:input message="impl:getAccountRequest" name="getAccountRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getAccountResponse" name="getAccountResponse">
 
        </wsdl:output>
 
@@ -548,13 +680,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getPerson">
+      <wsdl:operation name="getAccount">
 
-         <wsdl:input message="impl:getPersonRequest" name="getPersonRequest">
+         <wsdl:input message="impl:getAccountRequest" name="getAccountRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:getPersonResponse" name="getPersonResponse">
+         <wsdl:output message="impl:getAccountResponse" name="getAccountResponse">
 
        </wsdl:output>
 
@@ -567,6 +699,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:signUpResponse" name="signUpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPerson">
+
+         <wsdl:input message="impl:getPersonRequest" name="getPersonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPersonResponse" name="getPersonResponse">
 
        </wsdl:output>
 
@@ -591,6 +735,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:isUsernameExistedResponse" name="isUsernameExistedResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayPerson">
+
+         <wsdl:input message="impl:displayPersonRequest" name="displayPersonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayPersonResponse" name="displayPersonResponse">
 
        </wsdl:output>
 
@@ -650,6 +806,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="find_Persons">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="find_PersonsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="find_PersonsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="deletePerson">
 
          <wsdlsoap:operation soapAction=""/>
@@ -668,6 +842,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="displayMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="findMovies">
 
          <wsdlsoap:operation soapAction=""/>
@@ -679,24 +871,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="findMoviesResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getAccount">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getAccountRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getAccountResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -758,17 +932,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getPerson">
+      <wsdl:operation name="getAccount">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getPersonRequest">
+         <wsdl:input name="getAccountRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getPersonResponse">
+         <wsdl:output name="getAccountResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -787,6 +961,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="signUpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPersonResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -823,6 +1015,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="isUsernameExistedResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayPersonResponse">
 
             <wsdlsoap:body use="literal"/>
 
