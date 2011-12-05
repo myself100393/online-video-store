@@ -8,7 +8,7 @@
 <%@ page import="video.util.CountryHelper"%>
 <%@ page import="video.util.StateHelper"%>
 <%@ page import="video.util.MovieSearchHelper"%>
-<%@ page import="video.dto.Account;"%>
+<%@ page import="video.dto.Account"%>
 
 
 <%
@@ -20,17 +20,20 @@
 	int rentAmount = 0;
 
 	LinkedHashMap<String, String> movies = (LinkedHashMap<String, String>) MovieSearchHelper.states;
+	
+	String successMessage = (String)session.getAttribute("success");
 %>
 
 
 <div class="rright">
 	<!-- Register Form -->
-	<form id="adminForm" action="Admin" method="post">
-		<h1>Your Account Info</h1>
-
-
+	
+		<h1>Admin Panel</h1>
+		
+	
 
 		<div id="tabs">
+		<form id="adminForm" action="Admin" method="post">
 			<ul>
 				<li><a href="#tabs-1">Create Movie</a></li>
 				<li><a href="#tabs-2">Movie Searching</a></li>
@@ -44,21 +47,21 @@
 				<br />
 				<p>
 				<h2 class="accountX">Name:</h2>
-				<input id="name" name="name" size="30" minlength="1" maxlength="30"
+				<input id="name" name="name" size="60" minlength="1" maxlength="60"
 					value="<%=name%>" />
 				<p />
 
 				<br />
 				<p>
 				<h2 class="accountX">Banner :</h2>
-				<input id="banner" name="banner" size="30" minlength="4"
-					maxlength="20" value="<%=banner%>" />
+				<input id="banner" name="banner" size="60" minlength="4"
+					maxlength="60" value="<%=banner%>" />
 				<p />
 
 				<br />
 				<p>
 				<h2 class="accountX">Release Date:</h2>
-				<select class="required" id="date" name="date">
+				<select class="required" id="date" name="releaseDate">
 					<option value="">Please Select</option>
 					<%
 						for (String key : movies.keySet()) {
@@ -66,7 +69,7 @@
 							if (key.equals(movie)) {
 								selectedMovieAttr = "selected=\"selected\"";
 							}
-							out.println("<option " + selectedMovieAttr + " value=\"" + key
+							out.println("<option " + selectedMovieAttr + " value=\"" + movies.get(key)
 									+ "\">" + movies.get(key) + "</option>");
 						}
 					%>
@@ -75,22 +78,23 @@
 				<br /> <br />
 				<p>
 				<h2 class="accountX">Rent Amount:</h2>
-				<input name="rentAmount" id="rentAmount" size="10" minlength="1"
+				$ <input name="rentAmount" id="rentAmount" size="10" minlength="1"
 					maxlength="10" value="<%=rentAmount%>" />
 				<p />
 				<br /> <br />
 				<p>
-				<h2 class="accountX">Number of Available Movie :</h2>
-				<input name="availability" id="availability" size="10" minlength="1"
+				<h2 class="accountX">Number of Available Movies :</h2>
+				<input name="nbAvailable" id="availability" size="10" minlength="1"
 					maxlength="10" value="<%=""%>" /> <input type="submit"
 					name="submit" value=" Submit " class="bt_login" id="CreateMovie" />
-				<input type="hidden" name="FunctionCall" value="Logon">
+				<input type="hidden" name="FunctionCall" value="CreateMovie">
 				<p />
 
 
 			</div>
-
+			
 			<div id="tabs-2">
+			<form id="adminForm1" action="Admin" method="post">
 				<br />
 				<p>
 				<h2 class="accountX">Movie ID:</h2>
@@ -144,13 +148,13 @@
 
 				<input type="submit" name="submit" value=" Start Searching "
 					class="bt_login" id="SearchMovie" /> <input type="hidden"
-					name="FunctionCall" value="Logon">
+					name="FunctionCall" value="SearchMovie">
 				<p />
 
 
 			</div>
 			<div id="tabs-3">
-
+<form id="adminForm2" action="Admin" method="post">
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
 					id="jQTable_Movie" style="width: 940px">
 					<thead>
@@ -279,6 +283,7 @@
 			</div>
 
 			<div id="tabs-4">
+			<form id="adminForm3" action="Admin" method="post">
 				<br />
 				<p>
 				<h2 class="accountX">Customer ID :</h2>
@@ -322,9 +327,11 @@
 					id="SearchCustomer" /> <input type="hidden" name="FunctionCall"
 					value="Logon">
 				<p />
+				
 			</div>
 
 			<div id="tabs-5">
+			<form id="adminForm4" action="Admin" method="post">
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
 					id="example" style="width: 940px">
 					<thead>
@@ -419,6 +426,7 @@
 					</tbody>
 				</table>
 			</div>
+			<form id="adminForm5" action="Admin" method="post">
 			<div id="tabs-6">
 				<br />
 				<p>
