@@ -2,6 +2,9 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
@@ -44,7 +47,7 @@ public class AdminLet extends HttpServlet {
 		
 		if(loggedInUser!=null){		
 						
-			proxy.setEndpoint("http://localhost:8080/OnlineVideoStore_273/services/Service");
+			proxy.setEndpoint("http://localhost:8080/OnlineVideoStoreProject/services/Service");
 			
 			//String user = request.getParameter("user");
 		 	
@@ -94,7 +97,7 @@ public class AdminLet extends HttpServlet {
 		String qdone="";		 
 		
 		try{ 
-		 	proxy.setEndpoint("http://localhost:8080/OnlineVideoStore_273/services/Service");
+			proxy.setEndpoint("http://localhost:8080/OnlineVideoStoreProject/services/Service");
 		 	HttpSession session = request.getSession();
 			 	
 		 	String loggedInUser = (String)session.getAttribute("loggedInUser");
@@ -207,7 +210,56 @@ public class AdminLet extends HttpServlet {
 		 	
 		 	//Create Movie
 		 	if(function.equals("CreateMovie")){
-			    //Movie[] movieList = proxy.listMovies();				 		
+		 		String name = request.getParameter("name");
+		 		String banner = request.getParameter("banner");
+		 		String releaseDate = request.getParameter("releaseDate");
+		 		String rentAmount = request.getParameter("rentAmount");
+		 		String nbAvailable = request.getParameter("nbAvailable");
+		 		
+		 		
+		 		
+		 		double rentAmt = Double.parseDouble(rentAmount);
+		 		int nbAvail = Integer.parseInt(nbAvailable);
+		 		Date release_date = new java.util.Date(releaseDate+"-00-00");
+		 		
+		 		SimpleDateFormat formater = new SimpleDateFormat("yyyy");
+		 		Date releaseD =  (Date) formater.parse(releaseDate);
+		 		System.out.println("result: "+releaseDate);
+		 		//Date releaseD = Date.parse(releaseDate);
+		 		
+		 		java.util.Calendar calendar = java.util.Calendar.getInstance();
+		 		calendar.setTime(releaseD); 
+		 		Movie movie = new Movie();
+		 		movie.setBanner(banner);
+		 		movie.setName(name);
+		// 		movie.setReleaseDate(new java.sql.Date(release_date));
+		 		movie.setRentAmount(rentAmt);
+		 		movie.setNbAvailable(nbAvail);
+		 		
+		 		
+
+		 		
+		 		//else, create the movie
+				qdone = proxy.addMovie(movie);
+					 
+	 
+				if(qdone.substring(0,7).equals("SUCCESS")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", "Movie is successfully created!");	
+														
+				}else{	
+					
+					System.out.println("result: "+qdone);
+					
+					request.setAttribute("errorInfo", qdone.replace("false:", ""));				
+				}		
+				
+				String destination = "View/Admin#tabs-1";
+				//request.setAttribute("result", "Success");
+				//request.setAttribute("user", user);
+				RequestDispatcher rd = request.getRequestDispatcher(destination);
+				rd.forward(request, response);
 		 	}//end if(function.equals("CreateMovie")
 		 	
 		 	//Search Movies
