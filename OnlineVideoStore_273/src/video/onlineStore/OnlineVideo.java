@@ -65,8 +65,8 @@ public class OnlineVideo {
 			address.setZip("00000");
 			
 			
-			System.out.println("street: "+address.getStreet());
-			add_dao.create(db.con,address );
+//			System.out.println("street: "+address.getStreet());
+			add_dao.create(db.con,address);
 			
 			
 			return (isCreate)?"true" : "false:No obj return";
@@ -397,7 +397,6 @@ public class OnlineVideo {
 		int i = 0;
 		for (Movie movie : arraylistmovie) {
 			listMovie[i++] = movie;
-			System.out.println(movie.toString());
 		}
 		return listMovie;
 	}
@@ -406,7 +405,7 @@ public class OnlineVideo {
 			Double rentalPrice, int category, boolean isAvailable) {
 		boolean isFirstArg = true;
 		String query = "SELECT * FROM movie ";
-		if (((Integer)id)!=null) {
+		if (((Integer)id)!=null && id != 0) {
 			if (isFirstArg) {
 				query += "WHERE id <= " + id + " ";
 				isFirstArg = false;
@@ -467,7 +466,6 @@ public class OnlineVideo {
 			else
 				query += "AND nb_available = " + 0 + " ";
 		}
-		System.out.print("generated query for movie searching is.... "+query);
 		return query;
 	}
 	
@@ -816,7 +814,8 @@ public class OnlineVideo {
 
 			prepare.setString(1, movie.getName());
 			prepare.setString(2, movie.getBanner());
-			prepare.setDate(3, (java.sql.Date) movie.getReleaseDate());
+			java.sql.Date sqlDate = new java.sql.Date(movie.getReleaseDate().getTime());
+			prepare.setDate(3, sqlDate);
 		
 			prepare.setDouble(4, movie.getRentAmount());
 			prepare.setInt(5, movie.getNbAvailable());
@@ -863,7 +862,7 @@ public class OnlineVideo {
 			prepare.setInt(3, movie.getNbAvailable());
 			prepare.setDouble(4, movie.getRentAmount());
 //			prepare.setString(5, new java.sql.Date(movie.getReleaseDate().getTime()));
-			prepare.setLong(6, movie.getId());
+			prepare.setLong(5, movie.getId());
 			
 			prepare.executeUpdate();
 			
@@ -1015,5 +1014,17 @@ public class OnlineVideo {
 		}
 		return personInfo;
 	}
+
+	public int getPersonTableSize() {
+        try {
+            return new PersonDao().countAll(db.con);
+        } catch (SQLException e) {                 
+            e.printStackTrace();
+        }
+		return 0;
+	}
+	
+	
+	
 }
  

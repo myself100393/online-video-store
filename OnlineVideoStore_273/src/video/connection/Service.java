@@ -213,7 +213,11 @@ OnlineVideo omp = new OnlineVideo();
 		return omp.displayMovie(movieId);
 	}
 
-	
+
+	public int getPersonTableSize() {
+		// TODO Auto-generated method stub
+		return omp.getPersonTableSize();
+	}
 	
 
 }
