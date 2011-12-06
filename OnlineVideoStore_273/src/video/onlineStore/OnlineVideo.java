@@ -48,7 +48,10 @@ public class OnlineVideo {
 			AccountDao a_dao = new AccountDao();
 			Account account = a_dao.createValueObject();
 			account.setPersonId(personId);
-			account.setUserType(accountType);			
+			account.setUserType(accountType);
+			if (accountType==2) {
+				account.setMonthlyFee();
+			}
 			a_dao.create(db.con,account );
  
 			//Create Address

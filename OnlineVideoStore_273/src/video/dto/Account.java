@@ -17,7 +17,7 @@ public class Account implements Serializable {
     private String ssn; //membership number but in SSN format 
     private int userType;
     private double balance;
-    private final double monthlyFee=14.99; //should read from an external source but need quick and dirty
+    private double monthlyFee=0.00; //should read from an external source but need quick and dirty
     private int outstandingMovies;
  
     public Account () {
@@ -64,6 +64,9 @@ public class Account implements Serializable {
           return this.monthlyFee;
     }
     
+    public void setMonthlyFee() {
+    	this.monthlyFee = 14.99;
+    }
     
  /*   
     public void setMonthlyFee(double monthlyFeeIn) {
