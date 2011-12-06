@@ -366,6 +366,10 @@ tr.even td.mycolor {
     background-color: #DADCFF;
     color: #2F4F4F;
 }
+tr td.mycolor_1 {
+    background-color: #DADCFF;
+    color: #000000;
+}
 /* For the Conditional-CSS grading rows */
 /*
  	Colour calculations (based off the main row colours)
