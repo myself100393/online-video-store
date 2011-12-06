@@ -326,12 +326,15 @@
 	function changeHiddenValue_1(new_value) {
 		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
 		document.getElementById("movieListingForm").buttonPressed_Delete_Movie.value = new_value;
+		document.getElementById("movieListingForm").FunctionCall.value = "deleteMovie";
+
 	}
 </script>
 <script type="text/javascript">
 	function changeHiddenValue_2(new_value) {
 		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
 		document.getElementById("movieListingForm").buttonPressed_Update.value = new_value;
+		document.getElementById("movieListingForm").FunctionCall.value = "UpdateMovie";
 	}
 </script>
 <script type="text/javascript">
