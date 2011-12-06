@@ -663,7 +663,7 @@ public class OnlineVideo {
 					movie.setId(rs.getInt("movie_id"));
 					movie.setName(rs.getString("name"));
 					movie.setBanner(rs.getString("banner"));
-					movie.setReleaseDate(rs.getDate("release_date"));
+					movie.setReleaseDate( new java.util.Date(rs.getDate("release_date").getTime()));
 					movie.setRentAmount(rs.getDouble("rent_amount"));
 					movie.setNbAvailable(rs.getInt("nb_available"));
 					
@@ -823,7 +823,7 @@ public class OnlineVideo {
 	public Movie find(String name) {
 		Movie movie = null;
 		try {
-			String sql = "SELECT * FROM movies WHERE name = ?";
+			String sql = "SELECT * FROM movie WHERE name = ?";
 			PreparedStatement prepare = db.con.prepareStatement(sql);
 			prepare.setString(1, name);
 			ResultSet rs = prepare.executeQuery();
@@ -844,7 +844,7 @@ public class OnlineVideo {
 	
 	public boolean update(Movie movie) {
 		try {
-			String sql = "UPDATE movies SET name = ?, banner = ?, nb_available = ?, rent_amount = ?, release_date = NOW() WHERE id = ?";
+			String sql = "UPDATE movie SET name = ?, banner = ?, nb_available = ?, rent_amount = ?, release_date = NOW() WHERE id = ?";
 			PreparedStatement prepare = db.con.prepareStatement(sql);
 			
 			prepare.setString(1, movie.getName());
@@ -865,7 +865,7 @@ public class OnlineVideo {
 	
 	public boolean delete(int movieId) {
 		try {
-			String sql = "DELETE FROM movies WHERE id = ?";
+			String sql = "DELETE FROM movie WHERE id = ?";
 			PreparedStatement prepare = db.con.prepareStatement(sql);
 			prepare.setInt(1, movieId);
 			prepare.executeUpdate();
@@ -879,7 +879,7 @@ public class OnlineVideo {
 	
 	public boolean clearTable() {
 		try {
-			String sql = "DELETE FROM movies";
+			String sql = "DELETE FROM movie";
 			Statement s = db.con.createStatement();
 			s.executeUpdate(sql);
 			
@@ -942,8 +942,8 @@ public class OnlineVideo {
 			
 			// Get the rented movies for this month and this user
 			sql = "SELECT m.name, m.rent_amount, r.date, r.status "
-					+ "FROM rentals r JOIN movies m ON r.id_movies = m.id "
-					+ "WHERE r.date >= ? AND r.date < ? AND r.id_persons = ?";
+					+ "FROM rental r JOIN movie m ON r.movie_id = m.id "
+					+ "WHERE r.date >= ? AND r.date < ? AND r.person_id = ?";
 			
 			prepare = db.con.prepareStatement(sql);
 			prepare.setString(1, year + "-" + month + "-01");
