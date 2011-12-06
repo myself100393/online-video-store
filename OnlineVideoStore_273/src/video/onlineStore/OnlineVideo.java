@@ -774,7 +774,8 @@ public class OnlineVideo {
 			rs = prepare.executeQuery();
 			}
 			else{
-			sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where username not like 'admin'";
+			sql = "SELECT * FROM person where username not like 'admin'";
+			//sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where username not like 'admin'";
 			PreparedStatement prepare = db.con.prepareStatement(sql);
 			rs = prepare.executeQuery();
 			}
