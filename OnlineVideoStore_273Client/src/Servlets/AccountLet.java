@@ -16,6 +16,7 @@ import video.dto.Account;
 import video.dto.Address;
 import video.dto.Movie;
 import video.dto.Person;
+import video.dto.PersonInfo;
 
 
 import video.connection.ServiceProxy;
@@ -51,6 +52,8 @@ public class AccountLet extends HttpServlet {
 		 	
 			Person person = proxy.getPerson(loggedInUser);			 
 			Movie[] movieList = proxy.listMovies();
+			PersonInfo personInfo = proxy.displayPerson(person.getId());
+			Movie[] rentedMovieList = personInfo.getListActualRentMovie();
 			
 			if(person!=null && movieList!=null){				 
 				Account account = proxy.getAccount(person.getId());
@@ -66,7 +69,7 @@ public class AccountLet extends HttpServlet {
 				request.setAttribute("address", address);
 				
 				request.setAttribute("movieList", movieList);
-
+				request.setAttribute("rentedMovieList", rentedMovieList);
 				
 				
 			//	String[] countryCodes = Locale.getISOCountries();
@@ -115,9 +118,8 @@ public class AccountLet extends HttpServlet {
 		 	}
 			 	
 			 	
-			//UpdateUser
 		 	if(function.equals("UpdateUser")){
-					 		
+		 		
 		 		Person person = proxy.getPerson(loggedInUser);
 		 		if(person==null){
 					request.setAttribute("errorInfo", "Incorrect user, pls login again!!");
@@ -195,16 +197,48 @@ public class AccountLet extends HttpServlet {
 				}
 					 		
 			}//end if(function.equals("UpdateUser")
-			 				 		
-			//Movie Renting
+
+		 	//Movie Renting
 		 	if(function.equals("rentMovie")){
 		 		String movieId_Str = request.getParameter("buttonPressed");
 		 		int movieId = Integer.parseInt(movieId_Str);
 				Person person = proxy.getPerson(loggedInUser);
 				String result = proxy.issueMovie(movieId, person.getId());
-		 		
+				System.out.println("result...."+result);
+				if(result.substring(0,10).equals("Successful")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", result);	
+														
+				}else{	
+					
+					System.out.println("result: "+result);
+					
+					request.setAttribute("errorInfo", result);				
+				}
+
 		 	}
 		 	
+		 	//Movie Returning
+		 	if(function.equals("returnMovie")){
+		 		String movieId_Str = request.getParameter("buttonPressed");
+		 		int movieId = Integer.parseInt(movieId_Str);
+				Person person = proxy.getPerson(loggedInUser);
+				String result = proxy.submitMovie(movieId, person.getId());
+				System.out.println("result...."+result);
+				if(result.substring(0,4).equals("true")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", result);	
+														
+				}else{	
+					
+					System.out.println("result: "+result);
+					
+					request.setAttribute("errorInfo", result);				
+				}
+
+		 	}
 		 	doGet(request, response);
 		 }
 		 catch (Exception e){			 
@@ -240,7 +274,10 @@ public class AccountLet extends HttpServlet {
     	String password = p.getPassword();
     	
     	
-    	
+    	System.out.println(fname);
+    	System.out.println(lname);
+    	System.out.println(uname);
+    	System.out.println(pwd);
     	fname = fname.trim();
     	lname = lname.trim();
     	uname = uname.trim();
@@ -301,6 +338,8 @@ public class AccountLet extends HttpServlet {
     	
     	String orig_ssn = account.getSsn();
     	int orig_userType = account.getUserType();
+    	System.out.println(orig_ssn);
+    	System.out.println(orig_userType);
 
     	if (orig_ssn == null) {
                   if (ssn != null){
