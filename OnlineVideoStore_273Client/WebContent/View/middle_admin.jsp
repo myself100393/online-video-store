@@ -93,13 +93,14 @@
 				<br /> <br />
 				<p>
 				<h2 class="accountX">Number of Available Movies :</h2>
+						<input type="hidden" name="FunctionCall" value="CreateMovie">
 				<input name="nbAvailable" id="availability" size="10" minlength="1"
 					maxlength="10" value="<%=""%>" /> <input type="submit"
 					name="submit" value=" Submit " class="bt_login" id="CreateMovie" />
-				<input type="hidden" name="FunctionCall" value="CreateMovie">
+		
 				<p />
 
-
+</form>
 			</div>
 			
 			<div id="tabs-2">
@@ -159,16 +160,15 @@
 					class="bt_login" id="SearchMovie" /> <input type="hidden"
 					name="FunctionCall" value="SearchMovie">
 				<p />
-
+</form>
 
 			</div>
 			<div id="tabs-3">
-			<form id="movieListingForm" action="" method="post">
+			<form id="movieListingForm" action="Admin" method="post">
 				<input id='btnP' type="hidden" name="buttonPressed_Delete_Movie" value="" /> <input
-					type="hidden" name="FunctionCall" value="deleteMovie" />
+					type="hidden" name="FunctionCall" value="" />
 
-				<input id='btnP' type="hidden" name="buttonPressed_Update" value="" /> <input
-					type="hidden" name="FunctionCall" value="updateMovie" />
+				<input id='btnP' type="hidden" name="buttonPressed_Update" value="" /> 
 
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
 					id="jQMovie_List">
@@ -283,7 +283,7 @@
 					id="SearchCustomer" /> <input type="hidden" name="FunctionCall"
 					value="Logon">
 				<p />
-				
+		</form>		
 			</div>
 
 			<div id="tabs-5">
