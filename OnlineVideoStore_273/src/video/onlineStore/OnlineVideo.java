@@ -567,7 +567,7 @@ public class OnlineVideo {
 					prepare.setString(4, "rented");
 					prepare.execute();
 					
-					result = "Movie rented!";
+					result = "Successful! Movie rented!";
 				}
 				else
 					result = "This movie is not available!";
@@ -762,13 +762,21 @@ public class OnlineVideo {
 	// for admin
 	public Person[] listAllPersons(int type) {
 		ArrayList<Person> persons = new ArrayList<Person>(); 
-	
+	    String sql="";
+	    ResultSet rs;
 		try {	
 			// Get all persons from db
-			String sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where type=?";
+			if(type==1||type==2){
+			sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where type=?";
 			PreparedStatement prepare = db.con.prepareStatement(sql);
 			prepare.setInt(1, type);
-			ResultSet rs = prepare.executeQuery();
+			rs = prepare.executeQuery();
+			}
+			else{
+			sql = "SELECT * FROM person p JOIN account a ON p.id = a.person_id where username not like 'admin'";
+			PreparedStatement prepare = db.con.prepareStatement(sql);
+			rs = prepare.executeQuery();
+			}
 			
 			while (rs.next()) {
 				Person person = new Person();
