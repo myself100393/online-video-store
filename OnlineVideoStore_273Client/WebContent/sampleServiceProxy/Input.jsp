@@ -78,8 +78,8 @@ valid = false;
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">userId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="userId35" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">username:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username35" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -95,25 +95,8 @@ valid = false;
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">username:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username40" SIZE=20></TD>
-</TR>
-</TABLE>
-<BR>
-<INPUT TYPE="SUBMIT" VALUE="Invoke">
-<INPUT TYPE="RESET" VALUE="Clear">
-</FORM>
-<%
-break;
-case 42:
-valid = false;
-%>
-<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
-<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<TABLE>
-<TR>
 <TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId65" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId60" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -122,7 +105,7 @@ valid = false;
 </FORM>
 <%
 break;
-case 67:
+case 62:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
@@ -133,59 +116,59 @@ valid = false;
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">registration:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="registration72" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="registration67" SIZE=20></TD>
 <%
-java.text.DateFormat dateFormatregistration72 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExampregistration72  = new java.util.GregorianCalendar();
-java.util.Date dateregistration72 = gcExampregistration72.getTime();
-String tempResultregistration72 = dateFormatregistration72.format(dateregistration72);
+java.text.DateFormat dateFormatregistration67 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampregistration67  = new java.util.GregorianCalendar();
+java.util.Date dateregistration67 = gcExampregistration67.getTime();
+String tempResultregistration67 = dateFormatregistration67.format(dateregistration67);
 %>
 <TD ALIGN="left">
 </TR>
 <TR>
 <TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultregistration72 %> </TD>
+<TD ALIGN="left"> eg. <%= tempResultregistration67 %> </TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">password:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="password74" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="password69" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">lastName:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="lastName76" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="lastName71" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">firstName:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="firstName78" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="firstName73" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">last_login:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="last_login80" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="last_login75" SIZE=20></TD>
 <%
-java.text.DateFormat dateFormatlast_login80 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExamplast_login80  = new java.util.GregorianCalendar();
-java.util.Date datelast_login80 = gcExamplast_login80.getTime();
-String tempResultlast_login80 = dateFormatlast_login80.format(datelast_login80);
+java.text.DateFormat dateFormatlast_login75 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExamplast_login75  = new java.util.GregorianCalendar();
+java.util.Date datelast_login75 = gcExamplast_login75.getTime();
+String tempResultlast_login75 = dateFormatlast_login75.format(datelast_login75);
 %>
 <TD ALIGN="left">
 </TR>
 <TR>
 <TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultlast_login80 %> </TD>
+<TD ALIGN="left"> eg. <%= tempResultlast_login75 %> </TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">username:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username82" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username77" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id84" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id79" SIZE=20></TD>
 </TR>
 </TABLE>
 <TABLE>
@@ -194,37 +177,37 @@ String tempResultlast_login80 = dateFormatlast_login80.format(datelast_login80);
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">ssn:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="ssn88" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="ssn83" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">outstandingMovies:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="outstandingMovies90" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="outstandingMovies85" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId92" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId87" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">monthlyFee:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="monthlyFee94" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="monthlyFee89" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">balance:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="balance96" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="balance91" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">userType:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="userType98" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="userType93" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id100" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id95" SIZE=20></TD>
 </TR>
 </TABLE>
 <TABLE>
@@ -233,37 +216,37 @@ String tempResultlast_login80 = dateFormatlast_login80.format(datelast_login80);
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">zip:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="zip104" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="zip99" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId106" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId101" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">state:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="state108" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="state103" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">country:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="country110" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="country105" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">city:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="city112" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="city107" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">street:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="street114" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="street109" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id116" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id111" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -272,24 +255,7 @@ String tempResultlast_login80 = dateFormatlast_login80.format(datelast_login80);
 </FORM>
 <%
 break;
-case 118:
-valid = false;
-%>
-<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
-<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">userId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="userId135" SIZE=20></TD>
-</TR>
-</TABLE>
-<BR>
-<INPUT TYPE="SUBMIT" VALUE="Invoke">
-<INPUT TYPE="RESET" VALUE="Clear">
-</FORM>
-<%
-break;
-case 137:
+case 113:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
@@ -297,7 +263,13 @@ valid = false;
 <TABLE>
 <TR>
 <TD COLSPAN="1" ALIGN="LEFT">username:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username154" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username116" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">pwd:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="pwd118" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -306,7 +278,24 @@ valid = false;
 </FORM>
 <%
 break;
-case 156:
+case 120:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">username:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username137" SIZE=20></TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 139:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
@@ -314,76 +303,19 @@ valid = false;
 <TABLE>
 <TR>
 <TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId159" SIZE=20></TD>
-</TR>
-</TABLE>
-<BR>
-<INPUT TYPE="SUBMIT" VALUE="Invoke">
-<INPUT TYPE="RESET" VALUE="Clear">
-</FORM>
-<%
-break;
-case 161:
-valid = false;
-%>
-<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
-<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id164" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId170" SIZE=20></TD>
 </TR>
 </TABLE>
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">firstName:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="firstName166" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">month:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="month172" SIZE=20></TD>
 </TR>
 </TABLE>
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">lastName:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="lastName168" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">username:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username170" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">registration:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="registration172" SIZE=20></TD>
-<%
-java.text.DateFormat dateFormatregistration172 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExampregistration172  = new java.util.GregorianCalendar();
-java.util.Date dateregistration172 = gcExampregistration172.getTime();
-String tempResultregistration172 = dateFormatregistration172.format(dateregistration172);
-%>
-<TD ALIGN="left">
-</TR>
-<TR>
-<TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultregistration172 %> </TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">last_Login:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="last_Login174" SIZE=20></TD>
-<%
-java.text.DateFormat dateFormatlast_Login174 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExamplast_Login174  = new java.util.GregorianCalendar();
-java.util.Date datelast_Login174 = gcExamplast_Login174.getTime();
-String tempResultlast_Login174 = dateFormatlast_Login174.format(datelast_Login174);
-%>
-<TD ALIGN="left">
-</TR>
-<TR>
-<TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultlast_Login174 %> </TD>
+<TD COLSPAN="1" ALIGN="LEFT">year:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="year174" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -399,8 +331,8 @@ valid = false;
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">movieId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId195" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">userId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="userId193" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -409,55 +341,15 @@ valid = false;
 </FORM>
 <%
 break;
-case 197:
+case 195:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">username:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username200" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">pwd:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="pwd202" SIZE=20></TD>
-</TR>
-</TABLE>
-<BR>
-<INPUT TYPE="SUBMIT" VALUE="Invoke">
-<INPUT TYPE="RESET" VALUE="Clear">
-</FORM>
-<%
-break;
-case 204:
-valid = false;
-%>
-<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
-<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<BR>
-<INPUT TYPE="SUBMIT" VALUE="Invoke">
-<INPUT TYPE="RESET" VALUE="Clear">
-</FORM>
-<%
-break;
-case 207:
-valid = false;
-%>
-<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
-<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">movieId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId210" SIZE=20></TD>
-</TR>
-</TABLE>
 <TABLE>
 <TR>
 <TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId212" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId198" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -466,54 +358,67 @@ valid = false;
 </FORM>
 <%
 break;
-case 214:
+case 200:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
-<TD COLSPAN="3" ALIGN="LEFT">movie:</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">banner:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="banner219" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">id:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id203" SIZE=20></TD>
 </TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">nbAvailable:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="nbAvailable221" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">firstName:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="firstName205" SIZE=20></TD>
 </TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">name:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="name223" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">lastName:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="lastName207" SIZE=20></TD>
 </TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">rentAmount:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="rentAmount225" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">username:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username209" SIZE=20></TD>
 </TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">releaseDate:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="releaseDate227" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">registration:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="registration211" SIZE=20></TD>
 <%
-java.text.DateFormat dateFormatreleaseDate227 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExampreleaseDate227  = new java.util.GregorianCalendar();
-java.util.Date datereleaseDate227 = gcExampreleaseDate227.getTime();
-String tempResultreleaseDate227 = dateFormatreleaseDate227.format(datereleaseDate227);
+java.text.DateFormat dateFormatregistration211 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampregistration211  = new java.util.GregorianCalendar();
+java.util.Date dateregistration211 = gcExampregistration211.getTime();
+String tempResultregistration211 = dateFormatregistration211.format(dateregistration211);
 %>
 <TD ALIGN="left">
 </TR>
 <TR>
 <TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultreleaseDate227 %> </TD>
+<TD ALIGN="left"> eg. <%= tempResultregistration211 %> </TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">last_Login:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="last_Login213" SIZE=20></TD>
+<%
+java.text.DateFormat dateFormatlast_Login213 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExamplast_Login213  = new java.util.GregorianCalendar();
+java.util.Date datelast_Login213 = gcExamplast_Login213.getTime();
+String tempResultlast_Login213 = dateFormatlast_Login213.format(datelast_Login213);
+%>
+<TD ALIGN="left">
 </TR>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id229" SIZE=20></TD>
+<TD> </TD>
+<TD ALIGN="left"> eg. <%= tempResultlast_Login213 %> </TD>
 </TR>
 </TABLE>
 <BR>
@@ -522,7 +427,7 @@ String tempResultreleaseDate227 = dateFormatreleaseDate227.format(datereleaseDat
 </FORM>
 <%
 break;
-case 231:
+case 215:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
@@ -533,66 +438,68 @@ valid = false;
 <TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId234" SIZE=20></TD>
 </TR>
 </TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId236" SIZE=20></TD>
-</TR>
-</TABLE>
 <BR>
 <INPUT TYPE="SUBMIT" VALUE="Invoke">
 <INPUT TYPE="RESET" VALUE="Clear">
 </FORM>
 <%
 break;
-case 238:
+case 236:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
-<TD COLSPAN="3" ALIGN="LEFT">movie:</TD>
+<TD COLSPAN="1" ALIGN="LEFT">id:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id239" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">banner:</TD>
+<TD COLSPAN="1" ALIGN="LEFT">name:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="name241" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">banner:</TD>
 <TD ALIGN="left"><INPUT TYPE="TEXT" NAME="banner243" SIZE=20></TD>
 </TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">nbAvailable:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="nbAvailable245" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">name:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="name247" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">rentAmount:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="rentAmount249" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">releaseDate:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="releaseDate251" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">release:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="release245" SIZE=20></TD>
 <%
-java.text.DateFormat dateFormatreleaseDate251 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExampreleaseDate251  = new java.util.GregorianCalendar();
-java.util.Date datereleaseDate251 = gcExampreleaseDate251.getTime();
-String tempResultreleaseDate251 = dateFormatreleaseDate251.format(datereleaseDate251);
+java.text.DateFormat dateFormatrelease245 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExamprelease245  = new java.util.GregorianCalendar();
+java.util.Date daterelease245 = gcExamprelease245.getTime();
+String tempResultrelease245 = dateFormatrelease245.format(daterelease245);
 %>
 <TD ALIGN="left">
 </TR>
 <TR>
 <TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultreleaseDate251 %> </TD>
+<TD ALIGN="left"> eg. <%= tempResultrelease245 %> </TD>
 </TR>
+</TABLE>
+<TABLE>
 <TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id253" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">rentalPrice:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="rentalPrice247" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">category:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="category249" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">isAvailable:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="isAvailable251" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -601,7 +508,7 @@ String tempResultreleaseDate251 = dateFormatreleaseDate251.format(datereleaseDat
 </FORM>
 <%
 break;
-case 255:
+case 253:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
@@ -609,7 +516,13 @@ valid = false;
 <TABLE>
 <TR>
 <TD COLSPAN="1" ALIGN="LEFT">movieId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId258" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId256" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId258" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -623,71 +536,234 @@ valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 263:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">movieId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId266" SIZE=20></TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 268:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">movieId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="movieId271" SIZE=20></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId273" SIZE=20></TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 275:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<TABLE>
+<TR>
+<TD COLSPAN="3" ALIGN="LEFT">movie:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">banner:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="banner280" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">nbAvailable:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="nbAvailable282" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">name:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="name284" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">rentAmount:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="rentAmount286" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">releaseDate:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="releaseDate288" SIZE=20></TD>
+<%
+java.text.DateFormat dateFormatreleaseDate288 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampreleaseDate288  = new java.util.GregorianCalendar();
+java.util.Date datereleaseDate288 = gcExampreleaseDate288.getTime();
+String tempResultreleaseDate288 = dateFormatreleaseDate288.format(datereleaseDate288);
+%>
+<TD ALIGN="left">
+</TR>
+<TR>
+<TD> </TD>
+<TD ALIGN="left"> eg. <%= tempResultreleaseDate288 %> </TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id290" SIZE=20></TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 292:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<TABLE>
+<TR>
+<TD COLSPAN="3" ALIGN="LEFT">movie:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">banner:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="banner297" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">nbAvailable:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="nbAvailable299" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">name:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="name301" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">rentAmount:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="rentAmount303" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">releaseDate:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="releaseDate305" SIZE=20></TD>
+<%
+java.text.DateFormat dateFormatreleaseDate305 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampreleaseDate305  = new java.util.GregorianCalendar();
+java.util.Date datereleaseDate305 = gcExampreleaseDate305.getTime();
+String tempResultreleaseDate305 = dateFormatreleaseDate305.format(datereleaseDate305);
+%>
+<TD ALIGN="left">
+</TR>
+<TR>
+<TD> </TD>
+<TD ALIGN="left"> eg. <%= tempResultreleaseDate305 %> </TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id307" SIZE=20></TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 309:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
 <TD COLSPAN="3" ALIGN="LEFT">person:</TD>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">registration:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="registration265" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="registration314" SIZE=20></TD>
 <%
-java.text.DateFormat dateFormatregistration265 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExampregistration265  = new java.util.GregorianCalendar();
-java.util.Date dateregistration265 = gcExampregistration265.getTime();
-String tempResultregistration265 = dateFormatregistration265.format(dateregistration265);
+java.text.DateFormat dateFormatregistration314 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampregistration314  = new java.util.GregorianCalendar();
+java.util.Date dateregistration314 = gcExampregistration314.getTime();
+String tempResultregistration314 = dateFormatregistration314.format(dateregistration314);
 %>
 <TD ALIGN="left">
 </TR>
 <TR>
 <TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultregistration265 %> </TD>
+<TD ALIGN="left"> eg. <%= tempResultregistration314 %> </TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">password:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="password267" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="password316" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">lastName:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="lastName269" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="lastName318" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">firstName:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="firstName271" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="firstName320" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">last_login:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="last_login273" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="last_login322" SIZE=20></TD>
 <%
-java.text.DateFormat dateFormatlast_login273 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExamplast_login273  = new java.util.GregorianCalendar();
-java.util.Date datelast_login273 = gcExamplast_login273.getTime();
-String tempResultlast_login273 = dateFormatlast_login273.format(datelast_login273);
+java.text.DateFormat dateFormatlast_login322 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExamplast_login322  = new java.util.GregorianCalendar();
+java.util.Date datelast_login322 = gcExamplast_login322.getTime();
+String tempResultlast_login322 = dateFormatlast_login322.format(datelast_login322);
 %>
 <TD ALIGN="left">
 </TR>
 <TR>
 <TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultlast_login273 %> </TD>
+<TD ALIGN="left"> eg. <%= tempResultlast_login322 %> </TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">username:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username275" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="username324" SIZE=20></TD>
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id277" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id326" SIZE=20></TD>
 </TR>
 </TABLE>
 <TABLE>
 <TR>
 <TD COLSPAN="1" ALIGN="LEFT">accountType:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="accountType279" SIZE=20></TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="accountType328" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -696,62 +772,15 @@ String tempResultlast_login273 = dateFormatlast_login273.format(datelast_login27
 </FORM>
 <%
 break;
-case 281:
+case 330:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id284" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">name:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="name286" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">banner:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="banner288" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">release:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="release290" SIZE=20></TD>
-<%
-java.text.DateFormat dateFormatrelease290 = java.text.DateFormat.getDateInstance();
-java.util.GregorianCalendar gcExamprelease290  = new java.util.GregorianCalendar();
-java.util.Date daterelease290 = gcExamprelease290.getTime();
-String tempResultrelease290 = dateFormatrelease290.format(daterelease290);
-%>
-<TD ALIGN="left">
-</TR>
-<TR>
-<TD> </TD>
-<TD ALIGN="left"> eg. <%= tempResultrelease290 %> </TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">rentalPrice:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="rentalPrice292" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">category:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="category294" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">isAvailable:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="isAvailable296" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">userId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="userId333" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -760,29 +789,33 @@ String tempResultrelease290 = dateFormatrelease290.format(daterelease290);
 </FORM>
 <%
 break;
-case 298:
+case 335:
 valid = false;
 %>
 <FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">personId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="personId329" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">month:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="month331" SIZE=20></TD>
-</TR>
-</TABLE>
-<TABLE>
-<TR>
-<TD COLSPAN="1" ALIGN="LEFT">year:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="year333" SIZE=20></TD>
-</TR>
-</TABLE>
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 338:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
+<BR>
+<INPUT TYPE="SUBMIT" VALUE="Invoke">
+<INPUT TYPE="RESET" VALUE="Clear">
+</FORM>
+<%
+break;
+case 341:
+valid = false;
+%>
+<FORM METHOD="POST" ACTION="Result.jsp" TARGET="result">
+<INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=method%>">
 <BR>
 <INPUT TYPE="SUBMIT" VALUE="Invoke">
 <INPUT TYPE="RESET" VALUE="Clear">

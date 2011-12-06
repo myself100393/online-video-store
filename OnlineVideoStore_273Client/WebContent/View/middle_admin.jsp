@@ -40,7 +40,6 @@
 	
 
 		<div id="tabs">
-		<form id="adminForm" action="Admin" method="post">
 			<ul>
 				<li><a href="#tabs-1">Create Movie</a></li>
 				<li><a href="#tabs-2">Movie Searching</a></li>
@@ -52,6 +51,7 @@
 				<li><a href="#tabs-8">Bill Generating</a></li>
 			</ul>
 			<div id="tabs-1">
+		<form id="createMovieForm" action="Admin" method="post">
 
 				<br />
 				<p>
@@ -104,7 +104,7 @@
 			</div>
 			
 			<div id="tabs-2">
-			<form id="adminForm1" action="Admin" method="post">
+			<form id="movieSearchForm" action="Admin" method="post">
 				<br />
 				<p>
 				<h2 class="accountX">Movie ID:</h2>
@@ -239,7 +239,7 @@
 			</div>
 
 			<div id="tabs-4">
-			<form id="adminForm3" action="Admin" method="post">
+			<form id="customerSearchForm" action="Admin" method="post">
 				<br />
 				<p>
 				<h2 class="accountX">Customer ID :</h2>

@@ -33,22 +33,35 @@
 <script src="js/jquery.validate.js" type="text/javascript"></script>
 <!-- DataTable -->
 <script src="js/jquery.jeditable.mini.js" type="text/javascript"></script>
+<%@ page import="video.dto.MovieInfo"%>
+<%@ page import="video.dto.PersonInfo"%>
+<%@ page import="video.dto.Movie"%>
+<%@ page import="video.dto.Person"%>
 
+<%
+MovieInfo[]     movieInfo =	(MovieInfo[])request.getAttribute("movieInfo");
+PersonInfo[]	personInfo_SimpleM =(PersonInfo[])request.getAttribute("personInfo_SimpleM");
+PersonInfo[]	personInfo_PreM=(PersonInfo[])request.getAttribute("personInfo_PreM" );
+PersonInfo[]	personInfo_AllM=(PersonInfo[])request.getAttribute("personInfo_AllM" );
+
+
+%>
 <!-- "jQMovie_List" -->
 <script src="js/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
 	/* Formating function for row details */
 	function fnFormatDetails(oTable, nTr) {
 		var aData = oTable.fnGetData(nTr);
-		var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-		sOut += '<tr><td>Customer Renting This Movie:</td><td>' + aData[1]
-				+ ' ' + aData[4] + '</td></tr>';
-		sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-		sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
-		sOut += '</table>';
-
+		if(aData[1]==5)
+			var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+				sOut += '<tr><td class = mycolor_1 ID: 6, Name: Chinh Ngh, UserName: chinh></td></tr>';
+				sOut += '</table>';
+		 if(aData[1]==6)
+					    sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+						sOut += '<tr><td class = mycolor_1 ID: 7, Name: Chu Liu UserName: steven></td></tr>';
+						sOut += '</table>';
 		return sOut;
-	}
+	} 
 	$(document).ready(function() {
 		/*
 		 * Insert a 'details' column to the table
@@ -103,10 +116,10 @@
 	function fnFormatDetails(oTable_Customer, nTr) {
 		var aData = oTable_Customer.fnGetData(nTr);
 		var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-		sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' '
+		sOut += '<tr><td class = mycolor_1>Rendering engine:</td><td class = mycolor_1>' + aData[1] + ' '
 				+ aData[4] + '</td></tr>';
-		sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-		sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+		sOut += '<tr><td class = mycolor_1>Link to source:</td><td class = mycolor_1>Could provide a link here</td></tr>';
+		sOut += '<tr><td class = mycolor_1>Extra info:</td><td class = mycolor_1>And any further details here (images etc)</td></tr>';
 		sOut += '</table>';
 
 		return sOut;
@@ -173,10 +186,10 @@
 	function fnFormatDetails(oTable_Customer, nTr) {
 		var aData = oTable_Customer.fnGetData(nTr);
 		var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-		sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' '
+		sOut += '<tr><td class = mycolor_1>Rendering engine:</td><td class = mycolor_1>' + aData[1] + ' '
 				+ aData[4] + '</td></tr>';
-		sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-		sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+		sOut += '<tr><td class = mycolor_1>Link to source:</td><td class = mycolor_1>Could provide a link here</td></tr>';
+		sOut += '<tr><td class = mycolor_1>Extra info:</td><td class = mycolor_1>And any further details here (images etc)</td></tr>';
 		sOut += '</table>';
 
 		return sOut;
@@ -243,10 +256,10 @@
 	function fnFormatDetails(oTable_Customer, nTr) {
 		var aData = oTable_Customer.fnGetData(nTr);
 		var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-		sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' '
+		sOut += '<tr><td class = mycolor_1>Rendering engine:</td><td class = mycolor_1>' + aData[1] + ' '
 				+ aData[4] + '</td></tr>';
-		sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-		sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+		sOut += '<tr><td class = mycolor_1>Link to source:</td><td class = mycolor_1>Could provide a link here</td></tr>';
+		sOut += '<tr><td class = mycolor_1>Extra info:</td><td class = mycolor_1>And any further details here (images etc)</td></tr>';
 		sOut += '</table>';
 
 		return sOut;
