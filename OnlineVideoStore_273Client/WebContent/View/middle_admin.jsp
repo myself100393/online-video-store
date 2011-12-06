@@ -164,7 +164,7 @@
 			</div>
 			<div id="tabs-3">
 			<form id="movieListingForm" action="" method="post">
-				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
+				<input id='btnP' type="hidden" name="buttonPressed_Delete_Movie" value="" /> <input
 					type="hidden" name="FunctionCall" value="deleteMovie" />
 
 				<input id='btnP' type="hidden" name="buttonPressed_Update" value="" /> <input
@@ -218,11 +218,11 @@
 									out.println("	<td class=\"center\">");
 									// Ok, onclikc means when you click on the button, then it calls the javascript function 
 									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue_1('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("	<td class=\"center\">");
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Update \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Update \" onclick=\"changeHiddenValue_2('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("</tr>");
@@ -288,8 +288,8 @@
 
 			<div id="tabs-5">
 			<form id="simpleMListingForm" action="" method="post">
-				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
-					type="hidden" name="FunctionCall" value="deleteMember" />
+				<input id='btnP' type="hidden" name="buttonPressed_Delete_SimpleM" value="" /> <input
+					type="hidden" name="FunctionCall" value="deleteSimpleMember" />
 
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
 					id="simpleMember_Table">
@@ -338,7 +338,7 @@
 									out.println("	<td class=\"center\">");
 									// Ok, onclikc means when you click on the button, then it calls the javascript function 
 									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue_3('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("</tr>");
@@ -354,8 +354,8 @@
 			</div>
 			<div id="tabs-6">
 			<form id="premiumMListingForm" action="" method="post">
-				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
-					type="hidden" name="FunctionCall" value="deleteMember" />
+				<input id='btnP' type="hidden" name="buttonPressed_Delete_PreM" value="" /> <input
+					type="hidden" name="FunctionCall" value="deletePreMember" />
 
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
 					id="premiumMember_Table">
@@ -404,7 +404,7 @@
 									out.println("	<td class=\"center\">");
 									// Ok, onclikc means when you click on the button, then it calls the javascript function 
 									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue_4('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("</tr>");
@@ -421,8 +421,8 @@
 			
             <div id="tabs-7">
 			<form id="allMListingForm" action="" method="post">
-				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
-					type="hidden" name="FunctionCall" value="deleteMember" />
+				<input id='btnP' type="hidden" name="buttonPressed_Delete_AllM" value="" /> <input
+					type="hidden" name="FunctionCall" value="deleteInAllMember" />
 
 					<table cellpadding="0" cellspacing="0" border="0" class="display"
 						id="allMember_Table">
@@ -471,7 +471,7 @@
 									out.println("	<td class=\"center\">");
 									// Ok, onclikc means when you click on the button, then it calls the javascript function 
 									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue_5('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("</tr>");

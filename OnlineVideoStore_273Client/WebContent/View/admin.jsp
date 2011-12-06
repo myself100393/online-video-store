@@ -322,7 +322,36 @@
 				out.println("<div class=\"ser_success\">" + success + "</div>");
 			}
 		%>
-
+<script type="text/javascript">
+	function changeHiddenValue_1(new_value) {
+		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
+		document.getElementById("movieListingForm").buttonPressed_Delete_Movie.value = new_value;
+	}
+</script>
+<script type="text/javascript">
+	function changeHiddenValue_2(new_value) {
+		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
+		document.getElementById("movieListingForm").buttonPressed_Update.value = new_value;
+	}
+</script>
+<script type="text/javascript">
+	function changeHiddenValue_3(new_value) {
+		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
+		document.getElementById("simpleMListingForm").buttonPressed_Delete_SimpleM.value = new_value;
+	}
+</script>
+<script type="text/javascript">
+	function changeHiddenValue_4(new_value) {
+		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
+		document.getElementById("premiumMListingForm").buttonPressed_Delete_PreM.value = new_value;
+	}
+</script>
+<script type="text/javascript">
+	function changeHiddenValue_5(new_value) {
+		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
+		document.getElementById("allMListingForm").buttonPressed_Delete_AllM.value = new_value;
+	}
+</script>
 		<!-- Main -->
 		<div id="main">
 			<!-- Content -->
