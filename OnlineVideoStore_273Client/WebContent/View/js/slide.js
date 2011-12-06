@@ -25,8 +25,9 @@ $(document).ready(function() {
 	
 	// Add Adver Form Validation
 	$("#userInfoForm").validate();
-	$("#accInfoForm").validate();
-	$("#addressInfoForm").validate();
+	$("#createMovieForm").validate();
+	$("#movieSearchForm").validate();
+	$("#customerSearchForm").validate();
 
 	 
 	
