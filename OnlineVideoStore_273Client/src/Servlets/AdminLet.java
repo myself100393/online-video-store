@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,6 +20,7 @@ import video.dto.Account;
 import video.dto.Address;
 import video.dto.Movie;
 import video.dto.Person;
+import video.dto.PersonInfo;
 
 
 import video.connection.ServiceProxy;
@@ -47,12 +49,18 @@ public class AdminLet extends HttpServlet {
 		
 		if(loggedInUser!=null){		
 						
-			proxy.setEndpoint("http://localhost:8080/OnlineVideoStoreProject/services/Service");
+			proxy.setEndpoint("http://localhost:8080/OnlineVideoStore_273/services/Service");
 			
 			//String user = request.getParameter("user");
 		 	
 		 	
 			Person person = proxy.getPerson(loggedInUser);			 
+			Movie[] movieList = proxy.listMovies();
+			Person[] personList_SimpleM = proxy.listSimpleMember();
+			Person[] personList_PremiumM = proxy.listPremiumMember();
+			Person[] personList_All_Person = proxy.listAllPersons();
+			//PersonInfo personInfo = proxy.displayPerson(person.getId());
+			//Movie[] rentedMovieList = personInfo.getListActualRentMovie();
 
 			if(person!=null){				
 				Account account = proxy.getAccount(person.getId());
@@ -67,6 +75,11 @@ public class AdminLet extends HttpServlet {
 				request.setAttribute("account", account);
 				request.setAttribute("address", address);
 				
+				request.setAttribute("movieList", movieList);
+				request.setAttribute("personList_SimpleM", personList_SimpleM);
+				request.setAttribute("personList_PremiumM", personList_PremiumM);
+				request.setAttribute("personList_All_Person", personList_All_Person);
+				//request.setAttribute("rentedMovieList", rentedMovieList);
 
 				
 				
@@ -97,7 +110,7 @@ public class AdminLet extends HttpServlet {
 		String qdone="";		 
 		
 		try{ 
-			proxy.setEndpoint("http://localhost:8080/OnlineVideoStoreProject/services/Service");
+			proxy.setEndpoint("http://localhost:8080/OnlineVideoStore_273/services/Service");
 		 	HttpSession session = request.getSession();
 			 	
 		 	String loggedInUser = (String)session.getAttribute("loggedInUser");
@@ -220,11 +233,10 @@ public class AdminLet extends HttpServlet {
 		 		
 		 		double rentAmt = Double.parseDouble(rentAmount);
 		 		int nbAvail = Integer.parseInt(nbAvailable);
-		 		Date release_date = new java.util.Date(releaseDate+"-00-00");
-		 		
-		 		SimpleDateFormat formater = new SimpleDateFormat("yyyy");
-		 		Date releaseD =  (Date) formater.parse(releaseDate);
-		 		System.out.println("result: "+releaseDate);
+		 		String releaseD_Full_Format = releaseDate + "-00-00";
+		 		DateFormat formater = new SimpleDateFormat("yyyy-mm-dd");
+		 		Date releaseD =  (Date) formater.parse(releaseD_Full_Format);
+		 		System.out.println("result: "+releaseD);
 		 		//Date releaseD = Date.parse(releaseDate);
 		 		
 		 		java.util.Calendar calendar = java.util.Calendar.getInstance();
@@ -232,7 +244,7 @@ public class AdminLet extends HttpServlet {
 		 		Movie movie = new Movie();
 		 		movie.setBanner(banner);
 		 		movie.setName(name);
-		// 		movie.setReleaseDate(new java.sql.Date(release_date));
+		 		movie.setReleaseDate(calendar);
 		 		movie.setRentAmount(rentAmt);
 		 		movie.setNbAvailable(nbAvail);
 		 		
@@ -243,7 +255,7 @@ public class AdminLet extends HttpServlet {
 				qdone = proxy.addMovie(movie);
 					 
 	 
-				if(qdone.substring(0,7).equals("SUCCESS")){
+				if(qdone.substring(0,5).equals("SUCCE")){
 					session.setAttribute("userSession", session);
 					session.setAttribute("loggedInUser", loggedInUser);
 					request.setAttribute("success", "Movie is successfully created!");	
@@ -255,32 +267,96 @@ public class AdminLet extends HttpServlet {
 					request.setAttribute("errorInfo", qdone.replace("false:", ""));				
 				}		
 				
-				String destination = "View/Admin#tabs-1";
-				//request.setAttribute("result", "Success");
-				//request.setAttribute("user", user);
-				RequestDispatcher rd = request.getRequestDispatcher(destination);
-				rd.forward(request, response);
-		 	}//end if(function.equals("CreateMovie")
+   	 	    }//end if(function.equals("CreateMovie")
 		 	
-		 	//Search Movies
-		 	if(function.equals("SearchMovie")){
-			    //Movie[] movieList = proxy.listMovies();				 		
-		 	}//end if(function.equals("SearchMovie")
+		 	//Delete Movies
+		 	if(function.equals("deleteMovie")){
+		 		String movieId_Str = request.getParameter("buttonPressed_Delete_Movie");
+		 		System.out.println(movieId_Str);
+				String result = proxy.deleteMovie(movieId_Str);
+				System.out.println("result...."+result);
+				if(result.substring(0,5).equals("SUCCE")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", result);	
+														
+				}else{	
+					
+					System.out.println("result: "+result);
+					
+					request.setAttribute("errorInfo", result);				
+				}
+		 	}
 		 	
-		 	//Search Customers
-		 	if(function.equals("SearchCustomer")){
-			    //Movie[] movieList = proxy.listMovies();				 		
-		 	}//end if(function.equals("SearchCustomer")
+		 	//Delete Simple Customers
+		 	if(function.equals("deleteSimpleMember")){
+		 		String personId_Str = request.getParameter("buttonPressed_Delete_SimpleM");
+		 		System.out.println(personId_Str);
+		 		int personId = Integer.parseInt(personId_Str);
+				String result = proxy.deletePerson(personId);
+				System.out.println("result...."+result);
+				if(result.substring(0,4).equals("true")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", result);	
+														
+				}else{	
+					
+					System.out.println("result: "+result);
+					
+					request.setAttribute("errorInfo", result);				
+				}
+		 	}
 		 	
-		 	//List Customer 
-		 	if(function.equals("ListCustomer")){
-			    //Movie[] movieList = proxy.listMovies();				 		
-		 	}//end if(function.equals("ListCustomer")
+		 	//Delete Premium Customers
+		 	if(function.equals("deletePreMember")){
+		 		String personId_Str = request.getParameter("buttonPressed_Delete_PreM");
+		 		System.out.println(personId_Str);
+		 		int personId = Integer.parseInt(personId_Str);
+				String result = proxy.deletePerson(personId);
+				System.out.println("result...."+result);
+				if(result.substring(0,4).equals("true")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", result);	
+														
+				}else{	
+					
+					System.out.println("result: "+result);
+					
+					request.setAttribute("errorInfo", result);				
+				}
+		 	}
 		 	
+		 	//Delete All Customers
+		 	if(function.equals("deleteInAllMember")){
+		 		String personId_Str = request.getParameter("buttonPressed_Delete_AllM");
+		 		System.out.println(personId_Str);
+		 		int personId = Integer.parseInt(personId_Str);
+				String result = proxy.deletePerson(personId);
+				System.out.println("result...."+result);
+				if(result.substring(0,4).equals("true")){
+					session.setAttribute("userSession", session);
+					session.setAttribute("loggedInUser", loggedInUser);
+					request.setAttribute("success", result);	
+														
+				}else{	
+					
+					System.out.println("result: "+result);
+					
+					request.setAttribute("errorInfo", result);				
+				}
+		 	}
+
 		 	//Generate Bill
 		 	if(function.equals("GenerateBill")){
-			    //Movie[] movieList = proxy.listMovies();				 		
-		 	}//end if(function.equals("GenerateBill")
+		 		Person person = proxy.getPerson(loggedInUser);
+		 		int personId = person.getId();
+		 		Calendar currentDate = Calendar.getInstance();
+		 		int month = currentDate.get(Calendar.MONTH)+1;
+		 		int year = currentDate.get(Calendar.YEAR);
+			    proxy.generateBill(personId, month, year);
+		 	}
 		 	
 		 	doGet(request, response);
 		 }

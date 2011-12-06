@@ -76,7 +76,7 @@ public class AccountLet extends HttpServlet {
 		
 			}else{	
 				 
-				request.setAttribute("errorInfo", "Can't not find the user, pls login again!");				
+				request.setAttribute("errorInfo", "Can not find the user, pls login again!");				
 			}
 		
 		}else{//end if isLoggedIn
@@ -201,7 +201,9 @@ public class AccountLet extends HttpServlet {
 		 	//Movie Renting
 		 	if(function.equals("rentMovie")){
 		 		String movieId_Str = request.getParameter("buttonPressed");
+		 		System.out.println(movieId_Str);
 		 		int movieId = Integer.parseInt(movieId_Str);
+		 		System.out.println(movieId);
 				Person person = proxy.getPerson(loggedInUser);
 				String result = proxy.issueMovie(movieId, person.getId());
 				System.out.println("result...."+result);
