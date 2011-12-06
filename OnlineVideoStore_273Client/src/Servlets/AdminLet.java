@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import video.dto.Account;
 import video.dto.Address;
 import video.dto.Movie;
+import video.dto.MovieInfo;
 import video.dto.Person;
 import video.dto.PersonInfo;
 
@@ -59,8 +60,27 @@ public class AdminLet extends HttpServlet {
 			Person[] personList_SimpleM = proxy.listSimpleMember();
 			Person[] personList_PremiumM = proxy.listPremiumMember();
 			Person[] personList_All_Person = proxy.listAllPersons();
-			//PersonInfo personInfo = proxy.displayPerson(person.getId());
-			//Movie[] rentedMovieList = personInfo.getListActualRentMovie();
+
+			MovieInfo[] movieInfo = new MovieInfo[movieList.length];
+			for(int i=0;i<movieList.length;i++){
+				movieInfo[i] = proxy.displayMovie(movieList[i].getId());
+			}
+			
+			PersonInfo[] personInfo_SimpleM = new PersonInfo[personList_SimpleM.length];
+			for(int i=0;i<personList_SimpleM.length;i++){
+				personInfo_SimpleM[i] = proxy.displayPerson(personList_SimpleM[i].getId());
+			}
+			
+			PersonInfo[] personInfo_PreM = new PersonInfo[personList_PremiumM.length];
+			for(int i=0;i<personList_SimpleM.length;i++){
+				personInfo_PreM[i] = proxy.displayPerson(personList_PremiumM[i].getId());
+			}
+
+			PersonInfo[] personInfo_AllM = new PersonInfo[personList_All_Person.length];
+			for(int i=0;i<personList_All_Person.length;i++){
+				personInfo_AllM[i] = proxy.displayPerson(personList_All_Person[i].getId());
+			}
+
 
 			if(person!=null){				
 				Account account = proxy.getAccount(person.getId());
@@ -79,6 +99,11 @@ public class AdminLet extends HttpServlet {
 				request.setAttribute("personList_SimpleM", personList_SimpleM);
 				request.setAttribute("personList_PremiumM", personList_PremiumM);
 				request.setAttribute("personList_All_Person", personList_All_Person);
+				
+				request.setAttribute("movieInfo", movieInfo);
+				request.setAttribute("personInfo_SimpleM", personInfo_SimpleM);
+				request.setAttribute("personInfo_PreM", personInfo_PreM);
+				request.setAttribute("personInfo_AllM", personInfo_AllM);
 				//request.setAttribute("rentedMovieList", rentedMovieList);
 
 				

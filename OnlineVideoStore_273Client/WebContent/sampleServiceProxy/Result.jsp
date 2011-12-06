@@ -166,41 +166,25 @@ if(getAddress13mtemp != null){
 break;
 case 32:
         gotMethod = true;
-        String userId_2id=  request.getParameter("userId35");
-        int userId_2idTemp  = Integer.parseInt(userId_2id);
-        java.lang.String logout32mtemp = sampleServiceProxyid.logout(userId_2idTemp);
-if(logout32mtemp == null){
-%>
-<%=logout32mtemp %>
-<%
-}else{
-        String tempResultreturnp33 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(logout32mtemp));
+        String username_2id=  request.getParameter("username35");
+            java.lang.String username_2idTemp = null;
+        if(!username_2id.equals("")){
+         username_2idTemp  = username_2id;
+        }
+        boolean isUsernameExisted32mtemp = sampleServiceProxyid.isUsernameExisted(username_2idTemp);
+        String tempResultreturnp33 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(isUsernameExisted32mtemp));
         %>
         <%= tempResultreturnp33 %>
         <%
-}
 break;
 case 37:
         gotMethod = true;
-        String username_3id=  request.getParameter("username40");
-            java.lang.String username_3idTemp = null;
-        if(!username_3id.equals("")){
-         username_3idTemp  = username_3id;
-        }
-        boolean isUsernameExisted37mtemp = sampleServiceProxyid.isUsernameExisted(username_3idTemp);
-        String tempResultreturnp38 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(isUsernameExisted37mtemp));
-        %>
-        <%= tempResultreturnp38 %>
-        <%
-break;
-case 42:
-        gotMethod = true;
-        String personId_4id=  request.getParameter("personId65");
-        int personId_4idTemp  = Integer.parseInt(personId_4id);
-        video.dto.PersonInfo displayPerson42mtemp = sampleServiceProxyid.displayPerson(personId_4idTemp);
-if(displayPerson42mtemp == null){
+        String personId_3id=  request.getParameter("personId60");
+        int personId_3idTemp  = Integer.parseInt(personId_3id);
+        video.dto.PersonInfo displayPerson37mtemp = sampleServiceProxyid.displayPerson(personId_3idTemp);
+if(displayPerson37mtemp == null){
 %>
-<%=displayPerson42mtemp %>
+<%=displayPerson37mtemp %>
 <%
 }else{
 %>
@@ -216,15 +200,15 @@ if(displayPerson42mtemp == null){
 <TD COLSPAN="1" ALIGN="LEFT">registration:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
-java.util.Calendar typeregistration47 = tebece0.getRegistration();
-        java.text.DateFormat dateFormatregistration47 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateregistration47 = typeregistration47.getTime();
-        String tempResultregistration47 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatregistration47.format(dateregistration47));
+java.util.Calendar typeregistration42 = tebece0.getRegistration();
+        java.text.DateFormat dateFormatregistration42 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateregistration42 = typeregistration42.getTime();
+        String tempResultregistration42 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatregistration42.format(dateregistration42));
         %>
-        <%= tempResultregistration47 %>
+        <%= tempResultregistration42 %>
         <%
 }}%>
 </TD>
@@ -234,13 +218,13 @@ java.util.Calendar typeregistration47 = tebece0.getRegistration();
 <TD COLSPAN="1" ALIGN="LEFT">password:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
-java.lang.String typepassword49 = tebece0.getPassword();
-        String tempResultpassword49 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typepassword49));
+java.lang.String typepassword44 = tebece0.getPassword();
+        String tempResultpassword44 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typepassword44));
         %>
-        <%= tempResultpassword49 %>
+        <%= tempResultpassword44 %>
         <%
 }}%>
 </TD>
@@ -250,13 +234,13 @@ java.lang.String typepassword49 = tebece0.getPassword();
 <TD COLSPAN="1" ALIGN="LEFT">lastName:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
-java.lang.String typelastName51 = tebece0.getLastName();
-        String tempResultlastName51 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typelastName51));
+java.lang.String typelastName46 = tebece0.getLastName();
+        String tempResultlastName46 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typelastName46));
         %>
-        <%= tempResultlastName51 %>
+        <%= tempResultlastName46 %>
         <%
 }}%>
 </TD>
@@ -266,13 +250,13 @@ java.lang.String typelastName51 = tebece0.getLastName();
 <TD COLSPAN="1" ALIGN="LEFT">firstName:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
-java.lang.String typefirstName53 = tebece0.getFirstName();
-        String tempResultfirstName53 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefirstName53));
+java.lang.String typefirstName48 = tebece0.getFirstName();
+        String tempResultfirstName48 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefirstName48));
         %>
-        <%= tempResultfirstName53 %>
+        <%= tempResultfirstName48 %>
         <%
 }}%>
 </TD>
@@ -282,15 +266,15 @@ java.lang.String typefirstName53 = tebece0.getFirstName();
 <TD COLSPAN="1" ALIGN="LEFT">last_login:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
-java.util.Calendar typelast_login55 = tebece0.getLast_login();
-        java.text.DateFormat dateFormatlast_login55 = java.text.DateFormat.getDateInstance();
-        java.util.Date datelast_login55 = typelast_login55.getTime();
-        String tempResultlast_login55 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatlast_login55.format(datelast_login55));
+java.util.Calendar typelast_login50 = tebece0.getLast_login();
+        java.text.DateFormat dateFormatlast_login50 = java.text.DateFormat.getDateInstance();
+        java.util.Date datelast_login50 = typelast_login50.getTime();
+        String tempResultlast_login50 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatlast_login50.format(datelast_login50));
         %>
-        <%= tempResultlast_login55 %>
+        <%= tempResultlast_login50 %>
         <%
 }}%>
 </TD>
@@ -300,13 +284,13 @@ java.util.Calendar typelast_login55 = tebece0.getLast_login();
 <TD COLSPAN="1" ALIGN="LEFT">username:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
-java.lang.String typeusername57 = tebece0.getUsername();
-        String tempResultusername57 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeusername57));
+java.lang.String typeusername52 = tebece0.getUsername();
+        String tempResultusername52 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeusername52));
         %>
-        <%= tempResultusername57 %>
+        <%= tempResultusername52 %>
         <%
 }}%>
 </TD>
@@ -316,8 +300,8 @@ java.lang.String typeusername57 = tebece0.getUsername();
 <TD COLSPAN="1" ALIGN="LEFT">id:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Person tebece0=displayPerson42mtemp.getPerson();
+if(displayPerson37mtemp != null){
+video.dto.Person tebece0=displayPerson37mtemp.getPerson();
 if(tebece0 != null){
 %>
 <%=tebece0.getId()
@@ -328,15 +312,15 @@ if(tebece0 != null){
 <TD COLSPAN="2" ALIGN="LEFT">listActualRentMovie:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Movie[] typelistActualRentMovie61 = displayPerson42mtemp.getListActualRentMovie();
-        String templistActualRentMovie61 = null;
-        if(typelistActualRentMovie61 != null){
-        java.util.List listlistActualRentMovie61= java.util.Arrays.asList(typelistActualRentMovie61);
-        templistActualRentMovie61 = listlistActualRentMovie61.toString();
+if(displayPerson37mtemp != null){
+video.dto.Movie[] typelistActualRentMovie56 = displayPerson37mtemp.getListActualRentMovie();
+        String templistActualRentMovie56 = null;
+        if(typelistActualRentMovie56 != null){
+        java.util.List listlistActualRentMovie56= java.util.Arrays.asList(typelistActualRentMovie56);
+        templistActualRentMovie56 = listlistActualRentMovie56.toString();
         }
         %>
-        <%=templistActualRentMovie61%>
+        <%=templistActualRentMovie56%>
         <%
 }%>
 </TD>
@@ -345,15 +329,15 @@ video.dto.Movie[] typelistActualRentMovie61 = displayPerson42mtemp.getListActual
 <TD COLSPAN="2" ALIGN="LEFT">listRentMovie:</TD>
 <TD>
 <%
-if(displayPerson42mtemp != null){
-video.dto.Movie[] typelistRentMovie63 = displayPerson42mtemp.getListRentMovie();
-        String templistRentMovie63 = null;
-        if(typelistRentMovie63 != null){
-        java.util.List listlistRentMovie63= java.util.Arrays.asList(typelistRentMovie63);
-        templistRentMovie63 = listlistRentMovie63.toString();
+if(displayPerson37mtemp != null){
+video.dto.Movie[] typelistRentMovie58 = displayPerson37mtemp.getListRentMovie();
+        String templistRentMovie58 = null;
+        if(typelistRentMovie58 != null){
+        java.util.List listlistRentMovie58= java.util.Arrays.asList(typelistRentMovie58);
+        templistRentMovie58 = listlistRentMovie58.toString();
         }
         %>
-        <%=templistRentMovie63%>
+        <%=templistRentMovie58%>
         <%
 }%>
 </TD>
@@ -361,236 +345,169 @@ video.dto.Movie[] typelistRentMovie63 = displayPerson42mtemp.getListRentMovie();
 <%
 }
 break;
-case 67:
+case 62:
         gotMethod = true;
-        String registration_6id=  request.getParameter("registration72");
-            java.util.Calendar registration_6idTemp = null;
-        if(!registration_6id.equals("")){
-        java.text.DateFormat dateFormatregistration72 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempregistration72  = dateFormatregistration72.parse(registration_6id);
-         registration_6idTemp = new java.util.GregorianCalendar();
-        registration_6idTemp.setTime(dateTempregistration72);
+        String registration_5id=  request.getParameter("registration67");
+            java.util.Calendar registration_5idTemp = null;
+        if(!registration_5id.equals("")){
+        java.text.DateFormat dateFormatregistration67 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempregistration67  = dateFormatregistration67.parse(registration_5id);
+         registration_5idTemp = new java.util.GregorianCalendar();
+        registration_5idTemp.setTime(dateTempregistration67);
         }
-        String password_7id=  request.getParameter("password74");
-            java.lang.String password_7idTemp = null;
-        if(!password_7id.equals("")){
-         password_7idTemp  = password_7id;
+        String password_6id=  request.getParameter("password69");
+            java.lang.String password_6idTemp = null;
+        if(!password_6id.equals("")){
+         password_6idTemp  = password_6id;
         }
-        String lastName_8id=  request.getParameter("lastName76");
-            java.lang.String lastName_8idTemp = null;
-        if(!lastName_8id.equals("")){
-         lastName_8idTemp  = lastName_8id;
+        String lastName_7id=  request.getParameter("lastName71");
+            java.lang.String lastName_7idTemp = null;
+        if(!lastName_7id.equals("")){
+         lastName_7idTemp  = lastName_7id;
         }
-        String firstName_9id=  request.getParameter("firstName78");
-            java.lang.String firstName_9idTemp = null;
-        if(!firstName_9id.equals("")){
-         firstName_9idTemp  = firstName_9id;
+        String firstName_8id=  request.getParameter("firstName73");
+            java.lang.String firstName_8idTemp = null;
+        if(!firstName_8id.equals("")){
+         firstName_8idTemp  = firstName_8id;
         }
-        String last_login_10id=  request.getParameter("last_login80");
-            java.util.Calendar last_login_10idTemp = null;
-        if(!last_login_10id.equals("")){
-        java.text.DateFormat dateFormatlast_login80 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTemplast_login80  = dateFormatlast_login80.parse(last_login_10id);
-         last_login_10idTemp = new java.util.GregorianCalendar();
-        last_login_10idTemp.setTime(dateTemplast_login80);
+        String last_login_9id=  request.getParameter("last_login75");
+            java.util.Calendar last_login_9idTemp = null;
+        if(!last_login_9id.equals("")){
+        java.text.DateFormat dateFormatlast_login75 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemplast_login75  = dateFormatlast_login75.parse(last_login_9id);
+         last_login_9idTemp = new java.util.GregorianCalendar();
+        last_login_9idTemp.setTime(dateTemplast_login75);
         }
-        String username_11id=  request.getParameter("username82");
-            java.lang.String username_11idTemp = null;
-        if(!username_11id.equals("")){
-         username_11idTemp  = username_11id;
+        String username_10id=  request.getParameter("username77");
+            java.lang.String username_10idTemp = null;
+        if(!username_10id.equals("")){
+         username_10idTemp  = username_10id;
         }
-        String id_12id=  request.getParameter("id84");
-        int id_12idTemp  = Integer.parseInt(id_12id);
+        String id_11id=  request.getParameter("id79");
+        int id_11idTemp  = Integer.parseInt(id_11id);
         %>
-        <jsp:useBean id="video1dto1Person_5id" scope="session" class="video.dto.Person" />
+        <jsp:useBean id="video1dto1Person_4id" scope="session" class="video.dto.Person" />
         <%
-        video1dto1Person_5id.setRegistration(registration_6idTemp);
-        video1dto1Person_5id.setPassword(password_7idTemp);
-        video1dto1Person_5id.setLastName(lastName_8idTemp);
-        video1dto1Person_5id.setFirstName(firstName_9idTemp);
-        video1dto1Person_5id.setLast_login(last_login_10idTemp);
-        video1dto1Person_5id.setUsername(username_11idTemp);
-        video1dto1Person_5id.setId(id_12idTemp);
-        String ssn_14id=  request.getParameter("ssn88");
-            java.lang.String ssn_14idTemp = null;
-        if(!ssn_14id.equals("")){
-         ssn_14idTemp  = ssn_14id;
+        video1dto1Person_4id.setRegistration(registration_5idTemp);
+        video1dto1Person_4id.setPassword(password_6idTemp);
+        video1dto1Person_4id.setLastName(lastName_7idTemp);
+        video1dto1Person_4id.setFirstName(firstName_8idTemp);
+        video1dto1Person_4id.setLast_login(last_login_9idTemp);
+        video1dto1Person_4id.setUsername(username_10idTemp);
+        video1dto1Person_4id.setId(id_11idTemp);
+        String ssn_13id=  request.getParameter("ssn83");
+            java.lang.String ssn_13idTemp = null;
+        if(!ssn_13id.equals("")){
+         ssn_13idTemp  = ssn_13id;
         }
-        String outstandingMovies_15id=  request.getParameter("outstandingMovies90");
-        int outstandingMovies_15idTemp  = Integer.parseInt(outstandingMovies_15id);
-        String personId_16id=  request.getParameter("personId92");
-        int personId_16idTemp  = Integer.parseInt(personId_16id);
-        String monthlyFee_17id=  request.getParameter("monthlyFee94");
-        double monthlyFee_17idTemp  = Double.parseDouble(monthlyFee_17id);
-        String balance_18id=  request.getParameter("balance96");
-        double balance_18idTemp  = Double.parseDouble(balance_18id);
-        String userType_19id=  request.getParameter("userType98");
-        int userType_19idTemp  = Integer.parseInt(userType_19id);
-        String id_20id=  request.getParameter("id100");
-        int id_20idTemp  = Integer.parseInt(id_20id);
+        String outstandingMovies_14id=  request.getParameter("outstandingMovies85");
+        int outstandingMovies_14idTemp  = Integer.parseInt(outstandingMovies_14id);
+        String personId_15id=  request.getParameter("personId87");
+        int personId_15idTemp  = Integer.parseInt(personId_15id);
+        String monthlyFee_16id=  request.getParameter("monthlyFee89");
+        double monthlyFee_16idTemp  = Double.parseDouble(monthlyFee_16id);
+        String balance_17id=  request.getParameter("balance91");
+        double balance_17idTemp  = Double.parseDouble(balance_17id);
+        String userType_18id=  request.getParameter("userType93");
+        int userType_18idTemp  = Integer.parseInt(userType_18id);
+        String id_19id=  request.getParameter("id95");
+        int id_19idTemp  = Integer.parseInt(id_19id);
         %>
-        <jsp:useBean id="video1dto1Account_13id" scope="session" class="video.dto.Account" />
+        <jsp:useBean id="video1dto1Account_12id" scope="session" class="video.dto.Account" />
         <%
-        video1dto1Account_13id.setSsn(ssn_14idTemp);
-        video1dto1Account_13id.setOutstandingMovies(outstandingMovies_15idTemp);
-        video1dto1Account_13id.setPersonId(personId_16idTemp);
-        video1dto1Account_13id.setMonthlyFee(monthlyFee_17idTemp);
-        video1dto1Account_13id.setBalance(balance_18idTemp);
-        video1dto1Account_13id.setUserType(userType_19idTemp);
-        video1dto1Account_13id.setId(id_20idTemp);
-        String zip_22id=  request.getParameter("zip104");
-            java.lang.String zip_22idTemp = null;
-        if(!zip_22id.equals("")){
-         zip_22idTemp  = zip_22id;
+        video1dto1Account_12id.setSsn(ssn_13idTemp);
+        video1dto1Account_12id.setOutstandingMovies(outstandingMovies_14idTemp);
+        video1dto1Account_12id.setPersonId(personId_15idTemp);
+        video1dto1Account_12id.setMonthlyFee(monthlyFee_16idTemp);
+        video1dto1Account_12id.setBalance(balance_17idTemp);
+        video1dto1Account_12id.setUserType(userType_18idTemp);
+        video1dto1Account_12id.setId(id_19idTemp);
+        String zip_21id=  request.getParameter("zip99");
+            java.lang.String zip_21idTemp = null;
+        if(!zip_21id.equals("")){
+         zip_21idTemp  = zip_21id;
         }
-        String personId_23id=  request.getParameter("personId106");
-        int personId_23idTemp  = Integer.parseInt(personId_23id);
-        String state_24id=  request.getParameter("state108");
-            java.lang.String state_24idTemp = null;
-        if(!state_24id.equals("")){
-         state_24idTemp  = state_24id;
+        String personId_22id=  request.getParameter("personId101");
+        int personId_22idTemp  = Integer.parseInt(personId_22id);
+        String state_23id=  request.getParameter("state103");
+            java.lang.String state_23idTemp = null;
+        if(!state_23id.equals("")){
+         state_23idTemp  = state_23id;
         }
-        String country_25id=  request.getParameter("country110");
-            java.lang.String country_25idTemp = null;
-        if(!country_25id.equals("")){
-         country_25idTemp  = country_25id;
+        String country_24id=  request.getParameter("country105");
+            java.lang.String country_24idTemp = null;
+        if(!country_24id.equals("")){
+         country_24idTemp  = country_24id;
         }
-        String city_26id=  request.getParameter("city112");
-            java.lang.String city_26idTemp = null;
-        if(!city_26id.equals("")){
-         city_26idTemp  = city_26id;
+        String city_25id=  request.getParameter("city107");
+            java.lang.String city_25idTemp = null;
+        if(!city_25id.equals("")){
+         city_25idTemp  = city_25id;
         }
-        String street_27id=  request.getParameter("street114");
-            java.lang.String street_27idTemp = null;
-        if(!street_27id.equals("")){
-         street_27idTemp  = street_27id;
+        String street_26id=  request.getParameter("street109");
+            java.lang.String street_26idTemp = null;
+        if(!street_26id.equals("")){
+         street_26idTemp  = street_26id;
         }
-        String id_28id=  request.getParameter("id116");
-        int id_28idTemp  = Integer.parseInt(id_28id);
+        String id_27id=  request.getParameter("id111");
+        int id_27idTemp  = Integer.parseInt(id_27id);
         %>
-        <jsp:useBean id="video1dto1Address_21id" scope="session" class="video.dto.Address" />
+        <jsp:useBean id="video1dto1Address_20id" scope="session" class="video.dto.Address" />
         <%
-        video1dto1Address_21id.setZip(zip_22idTemp);
-        video1dto1Address_21id.setPersonId(personId_23idTemp);
-        video1dto1Address_21id.setState(state_24idTemp);
-        video1dto1Address_21id.setCountry(country_25idTemp);
-        video1dto1Address_21id.setCity(city_26idTemp);
-        video1dto1Address_21id.setStreet(street_27idTemp);
-        video1dto1Address_21id.setId(id_28idTemp);
-        java.lang.String updatePersonAccount67mtemp = sampleServiceProxyid.updatePersonAccount(video1dto1Person_5id,video1dto1Account_13id,video1dto1Address_21id);
-if(updatePersonAccount67mtemp == null){
+        video1dto1Address_20id.setZip(zip_21idTemp);
+        video1dto1Address_20id.setPersonId(personId_22idTemp);
+        video1dto1Address_20id.setState(state_23idTemp);
+        video1dto1Address_20id.setCountry(country_24idTemp);
+        video1dto1Address_20id.setCity(city_25idTemp);
+        video1dto1Address_20id.setStreet(street_26idTemp);
+        video1dto1Address_20id.setId(id_27idTemp);
+        java.lang.String updatePersonAccount62mtemp = sampleServiceProxyid.updatePersonAccount(video1dto1Person_4id,video1dto1Account_12id,video1dto1Address_20id);
+if(updatePersonAccount62mtemp == null){
 %>
-<%=updatePersonAccount67mtemp %>
+<%=updatePersonAccount62mtemp %>
 <%
 }else{
-        String tempResultreturnp68 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(updatePersonAccount67mtemp));
+        String tempResultreturnp63 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(updatePersonAccount62mtemp));
         %>
-        <%= tempResultreturnp68 %>
+        <%= tempResultreturnp63 %>
         <%
 }
 break;
-case 118:
+case 113:
         gotMethod = true;
-        String userId_29id=  request.getParameter("userId135");
-        int userId_29idTemp  = Integer.parseInt(userId_29id);
-        video.dto.Account getAccount118mtemp = sampleServiceProxyid.getAccount(userId_29idTemp);
-if(getAccount118mtemp == null){
+        String username_28id=  request.getParameter("username116");
+            java.lang.String username_28idTemp = null;
+        if(!username_28id.equals("")){
+         username_28idTemp  = username_28id;
+        }
+        String pwd_29id=  request.getParameter("pwd118");
+            java.lang.String pwd_29idTemp = null;
+        if(!pwd_29id.equals("")){
+         pwd_29idTemp  = pwd_29id;
+        }
+        java.lang.String logon113mtemp = sampleServiceProxyid.logon(username_28idTemp,pwd_29idTemp);
+if(logon113mtemp == null){
 %>
-<%=getAccount118mtemp %>
+<%=logon113mtemp %>
 <%
 }else{
-%>
-<TABLE>
-<TR>
-<TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">ssn:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-java.lang.String typessn121 = getAccount118mtemp.getSsn();
-        String tempResultssn121 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typessn121));
+        String tempResultreturnp114 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(logon113mtemp));
         %>
-        <%= tempResultssn121 %>
+        <%= tempResultreturnp114 %>
         <%
-}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">outstandingMovies:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-%>
-<%=getAccount118mtemp.getOutstandingMovies()
-%><%}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">personId:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-%>
-<%=getAccount118mtemp.getPersonId()
-%><%}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">monthlyFee:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-%>
-<%=getAccount118mtemp.getMonthlyFee()
-%><%}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">balance:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-%>
-<%=getAccount118mtemp.getBalance()
-%><%}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">userType:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-%>
-<%=getAccount118mtemp.getUserType()
-%><%}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD>
-<%
-if(getAccount118mtemp != null){
-%>
-<%=getAccount118mtemp.getId()
-%><%}%>
-</TD>
-</TABLE>
-<%
 }
 break;
-case 137:
+case 120:
         gotMethod = true;
-        String username_30id=  request.getParameter("username154");
+        String username_30id=  request.getParameter("username137");
             java.lang.String username_30idTemp = null;
         if(!username_30id.equals("")){
          username_30idTemp  = username_30id;
         }
-        video.dto.Person getPerson137mtemp = sampleServiceProxyid.getPerson(username_30idTemp);
-if(getPerson137mtemp == null){
+        video.dto.Person getPerson120mtemp = sampleServiceProxyid.getPerson(username_30idTemp);
+if(getPerson120mtemp == null){
 %>
-<%=getPerson137mtemp %>
+<%=getPerson120mtemp %>
 <%
 }else{
 %>
@@ -602,13 +519,13 @@ if(getPerson137mtemp == null){
 <TD COLSPAN="2" ALIGN="LEFT">registration:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
-java.util.Calendar typeregistration140 = getPerson137mtemp.getRegistration();
-        java.text.DateFormat dateFormatregistration140 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateregistration140 = typeregistration140.getTime();
-        String tempResultregistration140 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatregistration140.format(dateregistration140));
+if(getPerson120mtemp != null){
+java.util.Calendar typeregistration123 = getPerson120mtemp.getRegistration();
+        java.text.DateFormat dateFormatregistration123 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateregistration123 = typeregistration123.getTime();
+        String tempResultregistration123 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatregistration123.format(dateregistration123));
         %>
-        <%= tempResultregistration140 %>
+        <%= tempResultregistration123 %>
         <%
 }%>
 </TD>
@@ -617,11 +534,11 @@ java.util.Calendar typeregistration140 = getPerson137mtemp.getRegistration();
 <TD COLSPAN="2" ALIGN="LEFT">password:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
-java.lang.String typepassword142 = getPerson137mtemp.getPassword();
-        String tempResultpassword142 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typepassword142));
+if(getPerson120mtemp != null){
+java.lang.String typepassword125 = getPerson120mtemp.getPassword();
+        String tempResultpassword125 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typepassword125));
         %>
-        <%= tempResultpassword142 %>
+        <%= tempResultpassword125 %>
         <%
 }%>
 </TD>
@@ -630,11 +547,11 @@ java.lang.String typepassword142 = getPerson137mtemp.getPassword();
 <TD COLSPAN="2" ALIGN="LEFT">lastName:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
-java.lang.String typelastName144 = getPerson137mtemp.getLastName();
-        String tempResultlastName144 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typelastName144));
+if(getPerson120mtemp != null){
+java.lang.String typelastName127 = getPerson120mtemp.getLastName();
+        String tempResultlastName127 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typelastName127));
         %>
-        <%= tempResultlastName144 %>
+        <%= tempResultlastName127 %>
         <%
 }%>
 </TD>
@@ -643,11 +560,11 @@ java.lang.String typelastName144 = getPerson137mtemp.getLastName();
 <TD COLSPAN="2" ALIGN="LEFT">firstName:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
-java.lang.String typefirstName146 = getPerson137mtemp.getFirstName();
-        String tempResultfirstName146 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefirstName146));
+if(getPerson120mtemp != null){
+java.lang.String typefirstName129 = getPerson120mtemp.getFirstName();
+        String tempResultfirstName129 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefirstName129));
         %>
-        <%= tempResultfirstName146 %>
+        <%= tempResultfirstName129 %>
         <%
 }%>
 </TD>
@@ -656,13 +573,13 @@ java.lang.String typefirstName146 = getPerson137mtemp.getFirstName();
 <TD COLSPAN="2" ALIGN="LEFT">last_login:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
-java.util.Calendar typelast_login148 = getPerson137mtemp.getLast_login();
-        java.text.DateFormat dateFormatlast_login148 = java.text.DateFormat.getDateInstance();
-        java.util.Date datelast_login148 = typelast_login148.getTime();
-        String tempResultlast_login148 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatlast_login148.format(datelast_login148));
+if(getPerson120mtemp != null){
+java.util.Calendar typelast_login131 = getPerson120mtemp.getLast_login();
+        java.text.DateFormat dateFormatlast_login131 = java.text.DateFormat.getDateInstance();
+        java.util.Date datelast_login131 = typelast_login131.getTime();
+        String tempResultlast_login131 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatlast_login131.format(datelast_login131));
         %>
-        <%= tempResultlast_login148 %>
+        <%= tempResultlast_login131 %>
         <%
 }%>
 </TD>
@@ -671,11 +588,11 @@ java.util.Calendar typelast_login148 = getPerson137mtemp.getLast_login();
 <TD COLSPAN="2" ALIGN="LEFT">username:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
-java.lang.String typeusername150 = getPerson137mtemp.getUsername();
-        String tempResultusername150 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeusername150));
+if(getPerson120mtemp != null){
+java.lang.String typeusername133 = getPerson120mtemp.getUsername();
+        String tempResultusername133 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeusername133));
         %>
-        <%= tempResultusername150 %>
+        <%= tempResultusername133 %>
         <%
 }%>
 </TD>
@@ -684,520 +601,27 @@ java.lang.String typeusername150 = getPerson137mtemp.getUsername();
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
 <TD>
 <%
-if(getPerson137mtemp != null){
+if(getPerson120mtemp != null){
 %>
-<%=getPerson137mtemp.getId()
+<%=getPerson120mtemp.getId()
 %><%}%>
 </TD>
 </TABLE>
 <%
 }
 break;
-case 156:
+case 139:
         gotMethod = true;
-        String personId_31id=  request.getParameter("personId159");
+        String personId_31id=  request.getParameter("personId170");
         int personId_31idTemp  = Integer.parseInt(personId_31id);
-        java.lang.String deletePerson156mtemp = sampleServiceProxyid.deletePerson(personId_31idTemp);
-if(deletePerson156mtemp == null){
+        String month_32id=  request.getParameter("month172");
+        int month_32idTemp  = Integer.parseInt(month_32id);
+        String year_33id=  request.getParameter("year174");
+        int year_33idTemp  = Integer.parseInt(year_33id);
+        video.dto.Bill generateBill139mtemp = sampleServiceProxyid.generateBill(personId_31idTemp,month_32idTemp,year_33idTemp);
+if(generateBill139mtemp == null){
 %>
-<%=deletePerson156mtemp %>
-<%
-}else{
-        String tempResultreturnp157 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(deletePerson156mtemp));
-        %>
-        <%= tempResultreturnp157 %>
-        <%
-}
-break;
-case 161:
-        gotMethod = true;
-        String id_32id=  request.getParameter("id164");
-        int id_32idTemp  = Integer.parseInt(id_32id);
-        String firstName_33id=  request.getParameter("firstName166");
-            java.lang.String firstName_33idTemp = null;
-        if(!firstName_33id.equals("")){
-         firstName_33idTemp  = firstName_33id;
-        }
-        String lastName_34id=  request.getParameter("lastName168");
-            java.lang.String lastName_34idTemp = null;
-        if(!lastName_34id.equals("")){
-         lastName_34idTemp  = lastName_34id;
-        }
-        String username_35id=  request.getParameter("username170");
-            java.lang.String username_35idTemp = null;
-        if(!username_35id.equals("")){
-         username_35idTemp  = username_35id;
-        }
-        String registration_36id=  request.getParameter("registration172");
-            java.util.Calendar registration_36idTemp = null;
-        if(!registration_36id.equals("")){
-        java.text.DateFormat dateFormatregistration172 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempregistration172  = dateFormatregistration172.parse(registration_36id);
-         registration_36idTemp = new java.util.GregorianCalendar();
-        registration_36idTemp.setTime(dateTempregistration172);
-        }
-        String last_Login_37id=  request.getParameter("last_Login174");
-            java.util.Calendar last_Login_37idTemp = null;
-        if(!last_Login_37id.equals("")){
-        java.text.DateFormat dateFormatlast_Login174 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTemplast_Login174  = dateFormatlast_Login174.parse(last_Login_37id);
-         last_Login_37idTemp = new java.util.GregorianCalendar();
-        last_Login_37idTemp.setTime(dateTemplast_Login174);
-        }
-        video.dto.Person[] find_Persons161mtemp = sampleServiceProxyid.find_Persons(id_32idTemp,firstName_33idTemp,lastName_34idTemp,username_35idTemp,registration_36idTemp,last_Login_37idTemp);
-if(find_Persons161mtemp == null){
-%>
-<%=find_Persons161mtemp %>
-<%
-}else{
-        String tempreturnp162 = null;
-        if(find_Persons161mtemp != null){
-        java.util.List listreturnp162= java.util.Arrays.asList(find_Persons161mtemp);
-        tempreturnp162 = listreturnp162.toString();
-        }
-        %>
-        <%=tempreturnp162%>
-        <%
-}
-break;
-case 176:
-        gotMethod = true;
-        String movieId_38id=  request.getParameter("movieId195");
-        int movieId_38idTemp  = Integer.parseInt(movieId_38id);
-        video.dto.MovieInfo displayMovie176mtemp = sampleServiceProxyid.displayMovie(movieId_38idTemp);
-if(displayMovie176mtemp == null){
-%>
-<%=displayMovie176mtemp %>
-<%
-}else{
-%>
-<TABLE>
-<TR>
-<TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">movie:</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="1" ALIGN="LEFT">banner:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Movie tebece0=displayMovie176mtemp.getMovie();
-if(tebece0 != null){
-java.lang.String typebanner181 = tebece0.getBanner();
-        String tempResultbanner181 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typebanner181));
-        %>
-        <%= tempResultbanner181 %>
-        <%
-}}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="1" ALIGN="LEFT">nbAvailable:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Movie tebece0=displayMovie176mtemp.getMovie();
-if(tebece0 != null){
-%>
-<%=tebece0.getNbAvailable()
-%><%}}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="1" ALIGN="LEFT">name:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Movie tebece0=displayMovie176mtemp.getMovie();
-if(tebece0 != null){
-java.lang.String typename185 = tebece0.getName();
-        String tempResultname185 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typename185));
-        %>
-        <%= tempResultname185 %>
-        <%
-}}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="1" ALIGN="LEFT">rentAmount:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Movie tebece0=displayMovie176mtemp.getMovie();
-if(tebece0 != null){
-%>
-<%=tebece0.getRentAmount()
-%><%}}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="1" ALIGN="LEFT">releaseDate:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Movie tebece0=displayMovie176mtemp.getMovie();
-if(tebece0 != null){
-java.util.Calendar typereleaseDate189 = tebece0.getReleaseDate();
-        java.text.DateFormat dateFormatreleaseDate189 = java.text.DateFormat.getDateInstance();
-        java.util.Date datereleaseDate189 = typereleaseDate189.getTime();
-        String tempResultreleaseDate189 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatreleaseDate189.format(datereleaseDate189));
-        %>
-        <%= tempResultreleaseDate189 %>
-        <%
-}}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="1" ALIGN="LEFT">id:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Movie tebece0=displayMovie176mtemp.getMovie();
-if(tebece0 != null){
-%>
-<%=tebece0.getId()
-%><%}}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">listPerson:</TD>
-<TD>
-<%
-if(displayMovie176mtemp != null){
-video.dto.Person[] typelistPerson193 = displayMovie176mtemp.getListPerson();
-        String templistPerson193 = null;
-        if(typelistPerson193 != null){
-        java.util.List listlistPerson193= java.util.Arrays.asList(typelistPerson193);
-        templistPerson193 = listlistPerson193.toString();
-        }
-        %>
-        <%=templistPerson193%>
-        <%
-}%>
-</TD>
-</TABLE>
-<%
-}
-break;
-case 197:
-        gotMethod = true;
-        String username_39id=  request.getParameter("username200");
-            java.lang.String username_39idTemp = null;
-        if(!username_39id.equals("")){
-         username_39idTemp  = username_39id;
-        }
-        String pwd_40id=  request.getParameter("pwd202");
-            java.lang.String pwd_40idTemp = null;
-        if(!pwd_40id.equals("")){
-         pwd_40idTemp  = pwd_40id;
-        }
-        java.lang.String logon197mtemp = sampleServiceProxyid.logon(username_39idTemp,pwd_40idTemp);
-if(logon197mtemp == null){
-%>
-<%=logon197mtemp %>
-<%
-}else{
-        String tempResultreturnp198 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(logon197mtemp));
-        %>
-        <%= tempResultreturnp198 %>
-        <%
-}
-break;
-case 204:
-        gotMethod = true;
-        video.dto.Movie[] listMovies204mtemp = sampleServiceProxyid.listMovies();
-if(listMovies204mtemp == null){
-%>
-<%=listMovies204mtemp %>
-<%
-}else{
-        String tempreturnp205 = null;
-        if(listMovies204mtemp != null){
-        java.util.List listreturnp205= java.util.Arrays.asList(listMovies204mtemp);
-        tempreturnp205 = listreturnp205.toString();
-        }
-        %>
-        <%=tempreturnp205%>
-        <%
-}
-break;
-case 207:
-        gotMethod = true;
-        String movieId_41id=  request.getParameter("movieId210");
-        int movieId_41idTemp  = Integer.parseInt(movieId_41id);
-        String personId_42id=  request.getParameter("personId212");
-        int personId_42idTemp  = Integer.parseInt(personId_42id);
-        java.lang.String issueMovie207mtemp = sampleServiceProxyid.issueMovie(movieId_41idTemp,personId_42idTemp);
-if(issueMovie207mtemp == null){
-%>
-<%=issueMovie207mtemp %>
-<%
-}else{
-        String tempResultreturnp208 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(issueMovie207mtemp));
-        %>
-        <%= tempResultreturnp208 %>
-        <%
-}
-break;
-case 214:
-        gotMethod = true;
-        String banner_44id=  request.getParameter("banner219");
-            java.lang.String banner_44idTemp = null;
-        if(!banner_44id.equals("")){
-         banner_44idTemp  = banner_44id;
-        }
-        String nbAvailable_45id=  request.getParameter("nbAvailable221");
-        int nbAvailable_45idTemp  = Integer.parseInt(nbAvailable_45id);
-        String name_46id=  request.getParameter("name223");
-            java.lang.String name_46idTemp = null;
-        if(!name_46id.equals("")){
-         name_46idTemp  = name_46id;
-        }
-        String rentAmount_47id=  request.getParameter("rentAmount225");
-        double rentAmount_47idTemp  = Double.parseDouble(rentAmount_47id);
-        String releaseDate_48id=  request.getParameter("releaseDate227");
-            java.util.Calendar releaseDate_48idTemp = null;
-        if(!releaseDate_48id.equals("")){
-        java.text.DateFormat dateFormatreleaseDate227 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempreleaseDate227  = dateFormatreleaseDate227.parse(releaseDate_48id);
-         releaseDate_48idTemp = new java.util.GregorianCalendar();
-        releaseDate_48idTemp.setTime(dateTempreleaseDate227);
-        }
-        String id_49id=  request.getParameter("id229");
-        int id_49idTemp  = Integer.parseInt(id_49id);
-        %>
-        <jsp:useBean id="video1dto1Movie_43id" scope="session" class="video.dto.Movie" />
-        <%
-        video1dto1Movie_43id.setBanner(banner_44idTemp);
-        video1dto1Movie_43id.setNbAvailable(nbAvailable_45idTemp);
-        video1dto1Movie_43id.setName(name_46idTemp);
-        video1dto1Movie_43id.setRentAmount(rentAmount_47idTemp);
-        video1dto1Movie_43id.setReleaseDate(releaseDate_48idTemp);
-        video1dto1Movie_43id.setId(id_49idTemp);
-        java.lang.String addMovie214mtemp = sampleServiceProxyid.addMovie(video1dto1Movie_43id);
-if(addMovie214mtemp == null){
-%>
-<%=addMovie214mtemp %>
-<%
-}else{
-        String tempResultreturnp215 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(addMovie214mtemp));
-        %>
-        <%= tempResultreturnp215 %>
-        <%
-}
-break;
-case 231:
-        gotMethod = true;
-        String movieId_50id=  request.getParameter("movieId234");
-        int movieId_50idTemp  = Integer.parseInt(movieId_50id);
-        String personId_51id=  request.getParameter("personId236");
-        int personId_51idTemp  = Integer.parseInt(personId_51id);
-        java.lang.String submitMovie231mtemp = sampleServiceProxyid.submitMovie(movieId_50idTemp,personId_51idTemp);
-if(submitMovie231mtemp == null){
-%>
-<%=submitMovie231mtemp %>
-<%
-}else{
-        String tempResultreturnp232 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(submitMovie231mtemp));
-        %>
-        <%= tempResultreturnp232 %>
-        <%
-}
-break;
-case 238:
-        gotMethod = true;
-        String banner_53id=  request.getParameter("banner243");
-            java.lang.String banner_53idTemp = null;
-        if(!banner_53id.equals("")){
-         banner_53idTemp  = banner_53id;
-        }
-        String nbAvailable_54id=  request.getParameter("nbAvailable245");
-        int nbAvailable_54idTemp  = Integer.parseInt(nbAvailable_54id);
-        String name_55id=  request.getParameter("name247");
-            java.lang.String name_55idTemp = null;
-        if(!name_55id.equals("")){
-         name_55idTemp  = name_55id;
-        }
-        String rentAmount_56id=  request.getParameter("rentAmount249");
-        double rentAmount_56idTemp  = Double.parseDouble(rentAmount_56id);
-        String releaseDate_57id=  request.getParameter("releaseDate251");
-            java.util.Calendar releaseDate_57idTemp = null;
-        if(!releaseDate_57id.equals("")){
-        java.text.DateFormat dateFormatreleaseDate251 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempreleaseDate251  = dateFormatreleaseDate251.parse(releaseDate_57id);
-         releaseDate_57idTemp = new java.util.GregorianCalendar();
-        releaseDate_57idTemp.setTime(dateTempreleaseDate251);
-        }
-        String id_58id=  request.getParameter("id253");
-        int id_58idTemp  = Integer.parseInt(id_58id);
-        %>
-        <jsp:useBean id="video1dto1Movie_52id" scope="session" class="video.dto.Movie" />
-        <%
-        video1dto1Movie_52id.setBanner(banner_53idTemp);
-        video1dto1Movie_52id.setNbAvailable(nbAvailable_54idTemp);
-        video1dto1Movie_52id.setName(name_55idTemp);
-        video1dto1Movie_52id.setRentAmount(rentAmount_56idTemp);
-        video1dto1Movie_52id.setReleaseDate(releaseDate_57idTemp);
-        video1dto1Movie_52id.setId(id_58idTemp);
-        java.lang.String updateMovie238mtemp = sampleServiceProxyid.updateMovie(video1dto1Movie_52id);
-if(updateMovie238mtemp == null){
-%>
-<%=updateMovie238mtemp %>
-<%
-}else{
-        String tempResultreturnp239 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(updateMovie238mtemp));
-        %>
-        <%= tempResultreturnp239 %>
-        <%
-}
-break;
-case 255:
-        gotMethod = true;
-        String movieId_59id=  request.getParameter("movieId258");
-            java.lang.String movieId_59idTemp = null;
-        if(!movieId_59id.equals("")){
-         movieId_59idTemp  = movieId_59id;
-        }
-        java.lang.String deleteMovie255mtemp = sampleServiceProxyid.deleteMovie(movieId_59idTemp);
-if(deleteMovie255mtemp == null){
-%>
-<%=deleteMovie255mtemp %>
-<%
-}else{
-        String tempResultreturnp256 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(deleteMovie255mtemp));
-        %>
-        <%= tempResultreturnp256 %>
-        <%
-}
-break;
-case 260:
-        gotMethod = true;
-        String registration_61id=  request.getParameter("registration265");
-            java.util.Calendar registration_61idTemp = null;
-        if(!registration_61id.equals("")){
-        java.text.DateFormat dateFormatregistration265 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempregistration265  = dateFormatregistration265.parse(registration_61id);
-         registration_61idTemp = new java.util.GregorianCalendar();
-        registration_61idTemp.setTime(dateTempregistration265);
-        }
-        String password_62id=  request.getParameter("password267");
-            java.lang.String password_62idTemp = null;
-        if(!password_62id.equals("")){
-         password_62idTemp  = password_62id;
-        }
-        String lastName_63id=  request.getParameter("lastName269");
-            java.lang.String lastName_63idTemp = null;
-        if(!lastName_63id.equals("")){
-         lastName_63idTemp  = lastName_63id;
-        }
-        String firstName_64id=  request.getParameter("firstName271");
-            java.lang.String firstName_64idTemp = null;
-        if(!firstName_64id.equals("")){
-         firstName_64idTemp  = firstName_64id;
-        }
-        String last_login_65id=  request.getParameter("last_login273");
-            java.util.Calendar last_login_65idTemp = null;
-        if(!last_login_65id.equals("")){
-        java.text.DateFormat dateFormatlast_login273 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTemplast_login273  = dateFormatlast_login273.parse(last_login_65id);
-         last_login_65idTemp = new java.util.GregorianCalendar();
-        last_login_65idTemp.setTime(dateTemplast_login273);
-        }
-        String username_66id=  request.getParameter("username275");
-            java.lang.String username_66idTemp = null;
-        if(!username_66id.equals("")){
-         username_66idTemp  = username_66id;
-        }
-        String id_67id=  request.getParameter("id277");
-        int id_67idTemp  = Integer.parseInt(id_67id);
-        %>
-        <jsp:useBean id="video1dto1Person_60id" scope="session" class="video.dto.Person" />
-        <%
-        video1dto1Person_60id.setRegistration(registration_61idTemp);
-        video1dto1Person_60id.setPassword(password_62idTemp);
-        video1dto1Person_60id.setLastName(lastName_63idTemp);
-        video1dto1Person_60id.setFirstName(firstName_64idTemp);
-        video1dto1Person_60id.setLast_login(last_login_65idTemp);
-        video1dto1Person_60id.setUsername(username_66idTemp);
-        video1dto1Person_60id.setId(id_67idTemp);
-        String accountType_68id=  request.getParameter("accountType279");
-        int accountType_68idTemp  = Integer.parseInt(accountType_68id);
-        java.lang.String signUp260mtemp = sampleServiceProxyid.signUp(video1dto1Person_60id,accountType_68idTemp);
-if(signUp260mtemp == null){
-%>
-<%=signUp260mtemp %>
-<%
-}else{
-        String tempResultreturnp261 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(signUp260mtemp));
-        %>
-        <%= tempResultreturnp261 %>
-        <%
-}
-break;
-case 281:
-        gotMethod = true;
-        String id_69id=  request.getParameter("id284");
-        int id_69idTemp  = Integer.parseInt(id_69id);
-        String name_70id=  request.getParameter("name286");
-            java.lang.String name_70idTemp = null;
-        if(!name_70id.equals("")){
-         name_70idTemp  = name_70id;
-        }
-        String banner_71id=  request.getParameter("banner288");
-            java.lang.String banner_71idTemp = null;
-        if(!banner_71id.equals("")){
-         banner_71idTemp  = banner_71id;
-        }
-        String release_72id=  request.getParameter("release290");
-            java.util.Calendar release_72idTemp = null;
-        if(!release_72id.equals("")){
-        java.text.DateFormat dateFormatrelease290 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTemprelease290  = dateFormatrelease290.parse(release_72id);
-         release_72idTemp = new java.util.GregorianCalendar();
-        release_72idTemp.setTime(dateTemprelease290);
-        }
-        String rentalPrice_73id=  request.getParameter("rentalPrice292");
-        double rentalPrice_73idTemp  = Double.parseDouble(rentalPrice_73id);
-        String category_74id=  request.getParameter("category294");
-        int category_74idTemp  = Integer.parseInt(category_74id);
-        String isAvailable_75id=  request.getParameter("isAvailable296");
-        boolean isAvailable_75idTemp  = Boolean.valueOf(isAvailable_75id).booleanValue();
-        video.dto.Movie[] findMovies281mtemp = sampleServiceProxyid.findMovies(id_69idTemp,name_70idTemp,banner_71idTemp,release_72idTemp,rentalPrice_73idTemp,category_74idTemp,isAvailable_75idTemp);
-if(findMovies281mtemp == null){
-%>
-<%=findMovies281mtemp %>
-<%
-}else{
-        String tempreturnp282 = null;
-        if(findMovies281mtemp != null){
-        java.util.List listreturnp282= java.util.Arrays.asList(findMovies281mtemp);
-        tempreturnp282 = listreturnp282.toString();
-        }
-        %>
-        <%=tempreturnp282%>
-        <%
-}
-break;
-case 298:
-        gotMethod = true;
-        String personId_76id=  request.getParameter("personId329");
-        int personId_76idTemp  = Integer.parseInt(personId_76id);
-        String month_77id=  request.getParameter("month331");
-        int month_77idTemp  = Integer.parseInt(month_77id);
-        String year_78id=  request.getParameter("year333");
-        int year_78idTemp  = Integer.parseInt(year_78id);
-        video.dto.Bill generateBill298mtemp = sampleServiceProxyid.generateBill(personId_76idTemp,month_77idTemp,year_78idTemp);
-if(generateBill298mtemp == null){
-%>
-<%=generateBill298mtemp %>
+<%=generateBill139mtemp %>
 <%
 }else{
 %>
@@ -1209,9 +633,9 @@ if(generateBill298mtemp == null){
 <TD COLSPAN="2" ALIGN="LEFT">outstandingMovie:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
+if(generateBill139mtemp != null){
 %>
-<%=generateBill298mtemp.getOutstandingMovie()
+<%=generateBill139mtemp.getOutstandingMovie()
 %><%}%>
 </TD>
 <TR>
@@ -1228,17 +652,17 @@ if(generateBill298mtemp != null){
 <TD COLSPAN="0" ALIGN="LEFT">registration:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
-java.util.Calendar typeregistration307 = tebece1.getRegistration();
-        java.text.DateFormat dateFormatregistration307 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateregistration307 = typeregistration307.getTime();
-        String tempResultregistration307 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatregistration307.format(dateregistration307));
+java.util.Calendar typeregistration148 = tebece1.getRegistration();
+        java.text.DateFormat dateFormatregistration148 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateregistration148 = typeregistration148.getTime();
+        String tempResultregistration148 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatregistration148.format(dateregistration148));
         %>
-        <%= tempResultregistration307 %>
+        <%= tempResultregistration148 %>
         <%
 }}}%>
 </TD>
@@ -1249,15 +673,15 @@ java.util.Calendar typeregistration307 = tebece1.getRegistration();
 <TD COLSPAN="0" ALIGN="LEFT">password:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
-java.lang.String typepassword309 = tebece1.getPassword();
-        String tempResultpassword309 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typepassword309));
+java.lang.String typepassword150 = tebece1.getPassword();
+        String tempResultpassword150 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typepassword150));
         %>
-        <%= tempResultpassword309 %>
+        <%= tempResultpassword150 %>
         <%
 }}}%>
 </TD>
@@ -1268,15 +692,15 @@ java.lang.String typepassword309 = tebece1.getPassword();
 <TD COLSPAN="0" ALIGN="LEFT">lastName:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
-java.lang.String typelastName311 = tebece1.getLastName();
-        String tempResultlastName311 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typelastName311));
+java.lang.String typelastName152 = tebece1.getLastName();
+        String tempResultlastName152 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typelastName152));
         %>
-        <%= tempResultlastName311 %>
+        <%= tempResultlastName152 %>
         <%
 }}}%>
 </TD>
@@ -1287,15 +711,15 @@ java.lang.String typelastName311 = tebece1.getLastName();
 <TD COLSPAN="0" ALIGN="LEFT">firstName:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
-java.lang.String typefirstName313 = tebece1.getFirstName();
-        String tempResultfirstName313 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefirstName313));
+java.lang.String typefirstName154 = tebece1.getFirstName();
+        String tempResultfirstName154 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefirstName154));
         %>
-        <%= tempResultfirstName313 %>
+        <%= tempResultfirstName154 %>
         <%
 }}}%>
 </TD>
@@ -1306,17 +730,17 @@ java.lang.String typefirstName313 = tebece1.getFirstName();
 <TD COLSPAN="0" ALIGN="LEFT">last_login:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
-java.util.Calendar typelast_login315 = tebece1.getLast_login();
-        java.text.DateFormat dateFormatlast_login315 = java.text.DateFormat.getDateInstance();
-        java.util.Date datelast_login315 = typelast_login315.getTime();
-        String tempResultlast_login315 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatlast_login315.format(datelast_login315));
+java.util.Calendar typelast_login156 = tebece1.getLast_login();
+        java.text.DateFormat dateFormatlast_login156 = java.text.DateFormat.getDateInstance();
+        java.util.Date datelast_login156 = typelast_login156.getTime();
+        String tempResultlast_login156 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatlast_login156.format(datelast_login156));
         %>
-        <%= tempResultlast_login315 %>
+        <%= tempResultlast_login156 %>
         <%
 }}}%>
 </TD>
@@ -1327,15 +751,15 @@ java.util.Calendar typelast_login315 = tebece1.getLast_login();
 <TD COLSPAN="0" ALIGN="LEFT">username:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
-java.lang.String typeusername317 = tebece1.getUsername();
-        String tempResultusername317 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeusername317));
+java.lang.String typeusername158 = tebece1.getUsername();
+        String tempResultusername158 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeusername158));
         %>
-        <%= tempResultusername317 %>
+        <%= tempResultusername158 %>
         <%
 }}}%>
 </TD>
@@ -1346,8 +770,8 @@ java.lang.String typeusername317 = tebece1.getUsername();
 <TD COLSPAN="0" ALIGN="LEFT">id:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
 video.dto.Person tebece1=tebece0.getPerson();
 if(tebece1 != null){
@@ -1361,17 +785,17 @@ if(tebece1 != null){
 <TD COLSPAN="1" ALIGN="LEFT">listActualRentMovie:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
-video.dto.Movie[] typelistActualRentMovie321 = tebece0.getListActualRentMovie();
-        String templistActualRentMovie321 = null;
-        if(typelistActualRentMovie321 != null){
-        java.util.List listlistActualRentMovie321= java.util.Arrays.asList(typelistActualRentMovie321);
-        templistActualRentMovie321 = listlistActualRentMovie321.toString();
+video.dto.Movie[] typelistActualRentMovie162 = tebece0.getListActualRentMovie();
+        String templistActualRentMovie162 = null;
+        if(typelistActualRentMovie162 != null){
+        java.util.List listlistActualRentMovie162= java.util.Arrays.asList(typelistActualRentMovie162);
+        templistActualRentMovie162 = listlistActualRentMovie162.toString();
         }
         %>
-        <%=templistActualRentMovie321%>
+        <%=templistActualRentMovie162%>
         <%
 }}%>
 </TD>
@@ -1381,17 +805,17 @@ video.dto.Movie[] typelistActualRentMovie321 = tebece0.getListActualRentMovie();
 <TD COLSPAN="1" ALIGN="LEFT">listRentMovie:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
-video.dto.PersonInfo tebece0=generateBill298mtemp.getPersonInfo();
+if(generateBill139mtemp != null){
+video.dto.PersonInfo tebece0=generateBill139mtemp.getPersonInfo();
 if(tebece0 != null){
-video.dto.Movie[] typelistRentMovie323 = tebece0.getListRentMovie();
-        String templistRentMovie323 = null;
-        if(typelistRentMovie323 != null){
-        java.util.List listlistRentMovie323= java.util.Arrays.asList(typelistRentMovie323);
-        templistRentMovie323 = listlistRentMovie323.toString();
+video.dto.Movie[] typelistRentMovie164 = tebece0.getListRentMovie();
+        String templistRentMovie164 = null;
+        if(typelistRentMovie164 != null){
+        java.util.List listlistRentMovie164= java.util.Arrays.asList(typelistRentMovie164);
+        templistRentMovie164 = listlistRentMovie164.toString();
         }
         %>
-        <%=templistRentMovie323%>
+        <%=templistRentMovie164%>
         <%
 }}%>
 </TD>
@@ -1400,9 +824,9 @@ video.dto.Movie[] typelistRentMovie323 = tebece0.getListRentMovie();
 <TD COLSPAN="2" ALIGN="LEFT">month:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
+if(generateBill139mtemp != null){
 %>
-<%=generateBill298mtemp.getMonth()
+<%=generateBill139mtemp.getMonth()
 %><%}%>
 </TD>
 <TR>
@@ -1410,13 +834,643 @@ if(generateBill298mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">monthlySubscription:</TD>
 <TD>
 <%
-if(generateBill298mtemp != null){
+if(generateBill139mtemp != null){
 %>
-<%=generateBill298mtemp.getMonthlySubscription()
+<%=generateBill139mtemp.getMonthlySubscription()
 %><%}%>
 </TD>
 </TABLE>
 <%
+}
+break;
+case 176:
+        gotMethod = true;
+        String userId_34id=  request.getParameter("userId193");
+        int userId_34idTemp  = Integer.parseInt(userId_34id);
+        video.dto.Account getAccount176mtemp = sampleServiceProxyid.getAccount(userId_34idTemp);
+if(getAccount176mtemp == null){
+%>
+<%=getAccount176mtemp %>
+<%
+}else{
+%>
+<TABLE>
+<TR>
+<TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">ssn:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+java.lang.String typessn179 = getAccount176mtemp.getSsn();
+        String tempResultssn179 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typessn179));
+        %>
+        <%= tempResultssn179 %>
+        <%
+}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">outstandingMovies:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+%>
+<%=getAccount176mtemp.getOutstandingMovies()
+%><%}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">personId:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+%>
+<%=getAccount176mtemp.getPersonId()
+%><%}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">monthlyFee:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+%>
+<%=getAccount176mtemp.getMonthlyFee()
+%><%}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">balance:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+%>
+<%=getAccount176mtemp.getBalance()
+%><%}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">userType:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+%>
+<%=getAccount176mtemp.getUserType()
+%><%}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
+<TD>
+<%
+if(getAccount176mtemp != null){
+%>
+<%=getAccount176mtemp.getId()
+%><%}%>
+</TD>
+</TABLE>
+<%
+}
+break;
+case 195:
+        gotMethod = true;
+        String personId_35id=  request.getParameter("personId198");
+        int personId_35idTemp  = Integer.parseInt(personId_35id);
+        java.lang.String deletePerson195mtemp = sampleServiceProxyid.deletePerson(personId_35idTemp);
+if(deletePerson195mtemp == null){
+%>
+<%=deletePerson195mtemp %>
+<%
+}else{
+        String tempResultreturnp196 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(deletePerson195mtemp));
+        %>
+        <%= tempResultreturnp196 %>
+        <%
+}
+break;
+case 200:
+        gotMethod = true;
+        String id_36id=  request.getParameter("id203");
+        int id_36idTemp  = Integer.parseInt(id_36id);
+        String firstName_37id=  request.getParameter("firstName205");
+            java.lang.String firstName_37idTemp = null;
+        if(!firstName_37id.equals("")){
+         firstName_37idTemp  = firstName_37id;
+        }
+        String lastName_38id=  request.getParameter("lastName207");
+            java.lang.String lastName_38idTemp = null;
+        if(!lastName_38id.equals("")){
+         lastName_38idTemp  = lastName_38id;
+        }
+        String username_39id=  request.getParameter("username209");
+            java.lang.String username_39idTemp = null;
+        if(!username_39id.equals("")){
+         username_39idTemp  = username_39id;
+        }
+        String registration_40id=  request.getParameter("registration211");
+            java.util.Calendar registration_40idTemp = null;
+        if(!registration_40id.equals("")){
+        java.text.DateFormat dateFormatregistration211 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempregistration211  = dateFormatregistration211.parse(registration_40id);
+         registration_40idTemp = new java.util.GregorianCalendar();
+        registration_40idTemp.setTime(dateTempregistration211);
+        }
+        String last_Login_41id=  request.getParameter("last_Login213");
+            java.util.Calendar last_Login_41idTemp = null;
+        if(!last_Login_41id.equals("")){
+        java.text.DateFormat dateFormatlast_Login213 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemplast_Login213  = dateFormatlast_Login213.parse(last_Login_41id);
+         last_Login_41idTemp = new java.util.GregorianCalendar();
+        last_Login_41idTemp.setTime(dateTemplast_Login213);
+        }
+        video.dto.Person[] find_Persons200mtemp = sampleServiceProxyid.find_Persons(id_36idTemp,firstName_37idTemp,lastName_38idTemp,username_39idTemp,registration_40idTemp,last_Login_41idTemp);
+if(find_Persons200mtemp == null){
+%>
+<%=find_Persons200mtemp %>
+<%
+}else{
+        String tempreturnp201 = null;
+        if(find_Persons200mtemp != null){
+        java.util.List listreturnp201= java.util.Arrays.asList(find_Persons200mtemp);
+        tempreturnp201 = listreturnp201.toString();
+        }
+        %>
+        <%=tempreturnp201%>
+        <%
+}
+break;
+case 215:
+        gotMethod = true;
+        String movieId_42id=  request.getParameter("movieId234");
+        int movieId_42idTemp  = Integer.parseInt(movieId_42id);
+        video.dto.MovieInfo displayMovie215mtemp = sampleServiceProxyid.displayMovie(movieId_42idTemp);
+if(displayMovie215mtemp == null){
+%>
+<%=displayMovie215mtemp %>
+<%
+}else{
+%>
+<TABLE>
+<TR>
+<TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">movie:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="1" ALIGN="LEFT">banner:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Movie tebece0=displayMovie215mtemp.getMovie();
+if(tebece0 != null){
+java.lang.String typebanner220 = tebece0.getBanner();
+        String tempResultbanner220 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typebanner220));
+        %>
+        <%= tempResultbanner220 %>
+        <%
+}}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="1" ALIGN="LEFT">nbAvailable:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Movie tebece0=displayMovie215mtemp.getMovie();
+if(tebece0 != null){
+%>
+<%=tebece0.getNbAvailable()
+%><%}}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="1" ALIGN="LEFT">name:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Movie tebece0=displayMovie215mtemp.getMovie();
+if(tebece0 != null){
+java.lang.String typename224 = tebece0.getName();
+        String tempResultname224 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typename224));
+        %>
+        <%= tempResultname224 %>
+        <%
+}}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="1" ALIGN="LEFT">rentAmount:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Movie tebece0=displayMovie215mtemp.getMovie();
+if(tebece0 != null){
+%>
+<%=tebece0.getRentAmount()
+%><%}}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="1" ALIGN="LEFT">releaseDate:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Movie tebece0=displayMovie215mtemp.getMovie();
+if(tebece0 != null){
+java.util.Calendar typereleaseDate228 = tebece0.getReleaseDate();
+        java.text.DateFormat dateFormatreleaseDate228 = java.text.DateFormat.getDateInstance();
+        java.util.Date datereleaseDate228 = typereleaseDate228.getTime();
+        String tempResultreleaseDate228 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatreleaseDate228.format(datereleaseDate228));
+        %>
+        <%= tempResultreleaseDate228 %>
+        <%
+}}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="1" ALIGN="LEFT">id:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Movie tebece0=displayMovie215mtemp.getMovie();
+if(tebece0 != null){
+%>
+<%=tebece0.getId()
+%><%}}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">listPerson:</TD>
+<TD>
+<%
+if(displayMovie215mtemp != null){
+video.dto.Person[] typelistPerson232 = displayMovie215mtemp.getListPerson();
+        String templistPerson232 = null;
+        if(typelistPerson232 != null){
+        java.util.List listlistPerson232= java.util.Arrays.asList(typelistPerson232);
+        templistPerson232 = listlistPerson232.toString();
+        }
+        %>
+        <%=templistPerson232%>
+        <%
+}%>
+</TD>
+</TABLE>
+<%
+}
+break;
+case 236:
+        gotMethod = true;
+        String id_43id=  request.getParameter("id239");
+        int id_43idTemp  = Integer.parseInt(id_43id);
+        String name_44id=  request.getParameter("name241");
+            java.lang.String name_44idTemp = null;
+        if(!name_44id.equals("")){
+         name_44idTemp  = name_44id;
+        }
+        String banner_45id=  request.getParameter("banner243");
+            java.lang.String banner_45idTemp = null;
+        if(!banner_45id.equals("")){
+         banner_45idTemp  = banner_45id;
+        }
+        String release_46id=  request.getParameter("release245");
+            java.util.Calendar release_46idTemp = null;
+        if(!release_46id.equals("")){
+        java.text.DateFormat dateFormatrelease245 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemprelease245  = dateFormatrelease245.parse(release_46id);
+         release_46idTemp = new java.util.GregorianCalendar();
+        release_46idTemp.setTime(dateTemprelease245);
+        }
+        String rentalPrice_47id=  request.getParameter("rentalPrice247");
+        double rentalPrice_47idTemp  = Double.parseDouble(rentalPrice_47id);
+        String category_48id=  request.getParameter("category249");
+        int category_48idTemp  = Integer.parseInt(category_48id);
+        String isAvailable_49id=  request.getParameter("isAvailable251");
+        boolean isAvailable_49idTemp  = Boolean.valueOf(isAvailable_49id).booleanValue();
+        video.dto.Movie[] findMovies236mtemp = sampleServiceProxyid.findMovies(id_43idTemp,name_44idTemp,banner_45idTemp,release_46idTemp,rentalPrice_47idTemp,category_48idTemp,isAvailable_49idTemp);
+if(findMovies236mtemp == null){
+%>
+<%=findMovies236mtemp %>
+<%
+}else{
+        String tempreturnp237 = null;
+        if(findMovies236mtemp != null){
+        java.util.List listreturnp237= java.util.Arrays.asList(findMovies236mtemp);
+        tempreturnp237 = listreturnp237.toString();
+        }
+        %>
+        <%=tempreturnp237%>
+        <%
+}
+break;
+case 253:
+        gotMethod = true;
+        String movieId_50id=  request.getParameter("movieId256");
+        int movieId_50idTemp  = Integer.parseInt(movieId_50id);
+        String personId_51id=  request.getParameter("personId258");
+        int personId_51idTemp  = Integer.parseInt(personId_51id);
+        java.lang.String issueMovie253mtemp = sampleServiceProxyid.issueMovie(movieId_50idTemp,personId_51idTemp);
+if(issueMovie253mtemp == null){
+%>
+<%=issueMovie253mtemp %>
+<%
+}else{
+        String tempResultreturnp254 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(issueMovie253mtemp));
+        %>
+        <%= tempResultreturnp254 %>
+        <%
+}
+break;
+case 260:
+        gotMethod = true;
+        video.dto.Movie[] listMovies260mtemp = sampleServiceProxyid.listMovies();
+if(listMovies260mtemp == null){
+%>
+<%=listMovies260mtemp %>
+<%
+}else{
+        String tempreturnp261 = null;
+        if(listMovies260mtemp != null){
+        java.util.List listreturnp261= java.util.Arrays.asList(listMovies260mtemp);
+        tempreturnp261 = listreturnp261.toString();
+        }
+        %>
+        <%=tempreturnp261%>
+        <%
+}
+break;
+case 263:
+        gotMethod = true;
+        String movieId_52id=  request.getParameter("movieId266");
+            java.lang.String movieId_52idTemp = null;
+        if(!movieId_52id.equals("")){
+         movieId_52idTemp  = movieId_52id;
+        }
+        java.lang.String deleteMovie263mtemp = sampleServiceProxyid.deleteMovie(movieId_52idTemp);
+if(deleteMovie263mtemp == null){
+%>
+<%=deleteMovie263mtemp %>
+<%
+}else{
+        String tempResultreturnp264 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(deleteMovie263mtemp));
+        %>
+        <%= tempResultreturnp264 %>
+        <%
+}
+break;
+case 268:
+        gotMethod = true;
+        String movieId_53id=  request.getParameter("movieId271");
+        int movieId_53idTemp  = Integer.parseInt(movieId_53id);
+        String personId_54id=  request.getParameter("personId273");
+        int personId_54idTemp  = Integer.parseInt(personId_54id);
+        java.lang.String submitMovie268mtemp = sampleServiceProxyid.submitMovie(movieId_53idTemp,personId_54idTemp);
+if(submitMovie268mtemp == null){
+%>
+<%=submitMovie268mtemp %>
+<%
+}else{
+        String tempResultreturnp269 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(submitMovie268mtemp));
+        %>
+        <%= tempResultreturnp269 %>
+        <%
+}
+break;
+case 275:
+        gotMethod = true;
+        String banner_56id=  request.getParameter("banner280");
+            java.lang.String banner_56idTemp = null;
+        if(!banner_56id.equals("")){
+         banner_56idTemp  = banner_56id;
+        }
+        String nbAvailable_57id=  request.getParameter("nbAvailable282");
+        int nbAvailable_57idTemp  = Integer.parseInt(nbAvailable_57id);
+        String name_58id=  request.getParameter("name284");
+            java.lang.String name_58idTemp = null;
+        if(!name_58id.equals("")){
+         name_58idTemp  = name_58id;
+        }
+        String rentAmount_59id=  request.getParameter("rentAmount286");
+        double rentAmount_59idTemp  = Double.parseDouble(rentAmount_59id);
+        String releaseDate_60id=  request.getParameter("releaseDate288");
+            java.util.Calendar releaseDate_60idTemp = null;
+        if(!releaseDate_60id.equals("")){
+        java.text.DateFormat dateFormatreleaseDate288 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempreleaseDate288  = dateFormatreleaseDate288.parse(releaseDate_60id);
+         releaseDate_60idTemp = new java.util.GregorianCalendar();
+        releaseDate_60idTemp.setTime(dateTempreleaseDate288);
+        }
+        String id_61id=  request.getParameter("id290");
+        int id_61idTemp  = Integer.parseInt(id_61id);
+        %>
+        <jsp:useBean id="video1dto1Movie_55id" scope="session" class="video.dto.Movie" />
+        <%
+        video1dto1Movie_55id.setBanner(banner_56idTemp);
+        video1dto1Movie_55id.setNbAvailable(nbAvailable_57idTemp);
+        video1dto1Movie_55id.setName(name_58idTemp);
+        video1dto1Movie_55id.setRentAmount(rentAmount_59idTemp);
+        video1dto1Movie_55id.setReleaseDate(releaseDate_60idTemp);
+        video1dto1Movie_55id.setId(id_61idTemp);
+        java.lang.String addMovie275mtemp = sampleServiceProxyid.addMovie(video1dto1Movie_55id);
+if(addMovie275mtemp == null){
+%>
+<%=addMovie275mtemp %>
+<%
+}else{
+        String tempResultreturnp276 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(addMovie275mtemp));
+        %>
+        <%= tempResultreturnp276 %>
+        <%
+}
+break;
+case 292:
+        gotMethod = true;
+        String banner_63id=  request.getParameter("banner297");
+            java.lang.String banner_63idTemp = null;
+        if(!banner_63id.equals("")){
+         banner_63idTemp  = banner_63id;
+        }
+        String nbAvailable_64id=  request.getParameter("nbAvailable299");
+        int nbAvailable_64idTemp  = Integer.parseInt(nbAvailable_64id);
+        String name_65id=  request.getParameter("name301");
+            java.lang.String name_65idTemp = null;
+        if(!name_65id.equals("")){
+         name_65idTemp  = name_65id;
+        }
+        String rentAmount_66id=  request.getParameter("rentAmount303");
+        double rentAmount_66idTemp  = Double.parseDouble(rentAmount_66id);
+        String releaseDate_67id=  request.getParameter("releaseDate305");
+            java.util.Calendar releaseDate_67idTemp = null;
+        if(!releaseDate_67id.equals("")){
+        java.text.DateFormat dateFormatreleaseDate305 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempreleaseDate305  = dateFormatreleaseDate305.parse(releaseDate_67id);
+         releaseDate_67idTemp = new java.util.GregorianCalendar();
+        releaseDate_67idTemp.setTime(dateTempreleaseDate305);
+        }
+        String id_68id=  request.getParameter("id307");
+        int id_68idTemp  = Integer.parseInt(id_68id);
+        %>
+        <jsp:useBean id="video1dto1Movie_62id" scope="session" class="video.dto.Movie" />
+        <%
+        video1dto1Movie_62id.setBanner(banner_63idTemp);
+        video1dto1Movie_62id.setNbAvailable(nbAvailable_64idTemp);
+        video1dto1Movie_62id.setName(name_65idTemp);
+        video1dto1Movie_62id.setRentAmount(rentAmount_66idTemp);
+        video1dto1Movie_62id.setReleaseDate(releaseDate_67idTemp);
+        video1dto1Movie_62id.setId(id_68idTemp);
+        java.lang.String updateMovie292mtemp = sampleServiceProxyid.updateMovie(video1dto1Movie_62id);
+if(updateMovie292mtemp == null){
+%>
+<%=updateMovie292mtemp %>
+<%
+}else{
+        String tempResultreturnp293 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(updateMovie292mtemp));
+        %>
+        <%= tempResultreturnp293 %>
+        <%
+}
+break;
+case 309:
+        gotMethod = true;
+        String registration_70id=  request.getParameter("registration314");
+            java.util.Calendar registration_70idTemp = null;
+        if(!registration_70id.equals("")){
+        java.text.DateFormat dateFormatregistration314 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempregistration314  = dateFormatregistration314.parse(registration_70id);
+         registration_70idTemp = new java.util.GregorianCalendar();
+        registration_70idTemp.setTime(dateTempregistration314);
+        }
+        String password_71id=  request.getParameter("password316");
+            java.lang.String password_71idTemp = null;
+        if(!password_71id.equals("")){
+         password_71idTemp  = password_71id;
+        }
+        String lastName_72id=  request.getParameter("lastName318");
+            java.lang.String lastName_72idTemp = null;
+        if(!lastName_72id.equals("")){
+         lastName_72idTemp  = lastName_72id;
+        }
+        String firstName_73id=  request.getParameter("firstName320");
+            java.lang.String firstName_73idTemp = null;
+        if(!firstName_73id.equals("")){
+         firstName_73idTemp  = firstName_73id;
+        }
+        String last_login_74id=  request.getParameter("last_login322");
+            java.util.Calendar last_login_74idTemp = null;
+        if(!last_login_74id.equals("")){
+        java.text.DateFormat dateFormatlast_login322 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemplast_login322  = dateFormatlast_login322.parse(last_login_74id);
+         last_login_74idTemp = new java.util.GregorianCalendar();
+        last_login_74idTemp.setTime(dateTemplast_login322);
+        }
+        String username_75id=  request.getParameter("username324");
+            java.lang.String username_75idTemp = null;
+        if(!username_75id.equals("")){
+         username_75idTemp  = username_75id;
+        }
+        String id_76id=  request.getParameter("id326");
+        int id_76idTemp  = Integer.parseInt(id_76id);
+        %>
+        <jsp:useBean id="video1dto1Person_69id" scope="session" class="video.dto.Person" />
+        <%
+        video1dto1Person_69id.setRegistration(registration_70idTemp);
+        video1dto1Person_69id.setPassword(password_71idTemp);
+        video1dto1Person_69id.setLastName(lastName_72idTemp);
+        video1dto1Person_69id.setFirstName(firstName_73idTemp);
+        video1dto1Person_69id.setLast_login(last_login_74idTemp);
+        video1dto1Person_69id.setUsername(username_75idTemp);
+        video1dto1Person_69id.setId(id_76idTemp);
+        String accountType_77id=  request.getParameter("accountType328");
+        int accountType_77idTemp  = Integer.parseInt(accountType_77id);
+        java.lang.String signUp309mtemp = sampleServiceProxyid.signUp(video1dto1Person_69id,accountType_77idTemp);
+if(signUp309mtemp == null){
+%>
+<%=signUp309mtemp %>
+<%
+}else{
+        String tempResultreturnp310 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(signUp309mtemp));
+        %>
+        <%= tempResultreturnp310 %>
+        <%
+}
+break;
+case 330:
+        gotMethod = true;
+        String userId_78id=  request.getParameter("userId333");
+        int userId_78idTemp  = Integer.parseInt(userId_78id);
+        java.lang.String logout330mtemp = sampleServiceProxyid.logout(userId_78idTemp);
+if(logout330mtemp == null){
+%>
+<%=logout330mtemp %>
+<%
+}else{
+        String tempResultreturnp331 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(logout330mtemp));
+        %>
+        <%= tempResultreturnp331 %>
+        <%
+}
+break;
+case 335:
+        gotMethod = true;
+        video.dto.Person[] listSimpleMember335mtemp = sampleServiceProxyid.listSimpleMember();
+if(listSimpleMember335mtemp == null){
+%>
+<%=listSimpleMember335mtemp %>
+<%
+}else{
+        String tempreturnp336 = null;
+        if(listSimpleMember335mtemp != null){
+        java.util.List listreturnp336= java.util.Arrays.asList(listSimpleMember335mtemp);
+        tempreturnp336 = listreturnp336.toString();
+        }
+        %>
+        <%=tempreturnp336%>
+        <%
+}
+break;
+case 338:
+        gotMethod = true;
+        video.dto.Person[] listAllPersons338mtemp = sampleServiceProxyid.listAllPersons();
+if(listAllPersons338mtemp == null){
+%>
+<%=listAllPersons338mtemp %>
+<%
+}else{
+        String tempreturnp339 = null;
+        if(listAllPersons338mtemp != null){
+        java.util.List listreturnp339= java.util.Arrays.asList(listAllPersons338mtemp);
+        tempreturnp339 = listreturnp339.toString();
+        }
+        %>
+        <%=tempreturnp339%>
+        <%
+}
+break;
+case 341:
+        gotMethod = true;
+        video.dto.Person[] listPremiumMember341mtemp = sampleServiceProxyid.listPremiumMember();
+if(listPremiumMember341mtemp == null){
+%>
+<%=listPremiumMember341mtemp %>
+<%
+}else{
+        String tempreturnp342 = null;
+        if(listPremiumMember341mtemp != null){
+        java.util.List listreturnp342= java.util.Arrays.asList(listPremiumMember341mtemp);
+        tempreturnp342 = listreturnp342.toString();
+        }
+        %>
+        <%=tempreturnp342%>
+        <%
 }
 break;
 }
