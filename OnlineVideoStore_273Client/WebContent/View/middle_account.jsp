@@ -333,7 +333,7 @@
 
 			<input type="submit" name="submit" value=" Start Searching "
 				class="bt_login" id="SearchMovie" /> <input type="hidden"
-				name="FunctionCall" value="Logon">
+				name="FunctionCall" value="">
 			<p />
 
 		</div>
@@ -387,7 +387,7 @@
 									out.println("	<td class=\"center\">");
 									// Ok, onclikc means when you click on the button, then it calls the javascript function 
 									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Return \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Return \" onclick=\"changeHiddenValue_1('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("</tr>");
@@ -463,7 +463,7 @@
 									out.println("	<td class=\"center\">");
 									// Ok, onclikc means when you click on the button, then it calls the javascript function 
 									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
-									out.println("		<input type=\"submit\" name=\"submit\" value=\" Rent \" onclick=\"changeHiddenValue('"
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Rent \" onclick=\"changeHiddenValue_2('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
 									out.println("</tr>");
@@ -489,6 +489,6 @@
 			</form>
 		</div>
 
-		<br />
+
 
 	</div>

@@ -42,7 +42,6 @@
 		/* Init DataTables */
 		var oTable = $('#jQMovie_Return').dataTable({
 			"bJQueryUI" : true,
-			//"sPaginationType": "full_numbers",
 			"aoColumnDefs" : [ {
 				"bSortable" : false,
 				"aTargets" : [ 0 ]
@@ -52,6 +51,12 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+	function changeHiddenValue_1(new_value) {
+		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
+		document.getElementById("movieReturningForm").buttonPressed.value = new_value;
+	}
+</script>
 
 <!-- DataTable2 -->
 <script src="js/jquery.dataTables.js" type="text/javascript"></script>
@@ -60,7 +65,6 @@
 		/* Init DataTables */
 		var oTable = $('#example').dataTable({
 			"bJQueryUI" : true,
-			//"sPaginationType": "full_numbers",
 			//"aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0 ] }],
 			"aaSorting" : [ [ 0, 'asc' ], [ 1, 'asc' ] ],
 			"aLengthMenu" : [ [ 10, 25, 50, -1 ], [ 10, 25, 50, "All" ] ]
@@ -68,15 +72,9 @@
 	});
 </script>
 <script type="text/javascript">
-	function changeHiddenValue(new_value) {
+	function changeHiddenValue_2(new_value) {
 		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
 		document.getElementById("movieListingForm").buttonPressed.value = new_value;
-	}
-</script>
-<script type="text/javascript">
-	function changeHiddenValue(new_value) {
-		//these all work in most browsers, however the third option doesnt work in ALL browsers, and it is also considered bad form
-		document.getElementById("movieReturningForm").buttonPressed.value = new_value;
 	}
 </script>
 </head>

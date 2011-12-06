@@ -33,8 +33,9 @@
 <script src="js/jquery.validate.js" type="text/javascript"></script>
 <!-- DataTable -->
 <script src="js/jquery.jeditable.mini.js" type="text/javascript"></script>
+
+<!-- "jQMovie_List" -->
 <script src="js/jquery.dataTables.js" type="text/javascript"></script>
-<!-- jQTable_Movie -->
 <script type="text/javascript" charset="utf-8">
 	/* Formating function for row details */
 	function fnFormatDetails(oTable, nTr) {
@@ -57,16 +58,16 @@
 		nCloneTd.innerHTML = '<img src="images/details_open.png">';
 		nCloneTd.className = "center";
 
-		$('#jQTable_Movie thead tr').each(function() {
+		$('#jQMovie_List thead tr').each(function() {
 			this.insertBefore(nCloneTh, this.childNodes[0]);
 		});
 
-		$('#jQTable_Movie tbody tr').each(function() {
+		$('#jQMovie_List tbody tr').each(function() {
 			this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
 		});
 
 		/* Init DataTables */
-		var oTable = $('#jQTable_Movie').dataTable({
+		var oTable = $('#jQMovie_List').dataTable({
 			"bJQueryUI" : true,
 			//"sPaginationType": "full_numbers",
 			"aoColumnDefs" : [ {
@@ -75,34 +76,12 @@
 			} ],
 			"aaSorting" : [ [ 0, 'asc' ], [ 1, 'asc' ] ],
 			"aLengthMenu" : [ [ 10, 25, 50, -1 ], [ 10, 25, 50, "All" ] ]
-		//"bProcessing": true,
-		//"bServerSide": true,
-		//"sAjaxSource": "scripts/server_processing.php",
-		/*"fnDrawCallback" : function() {
-			alert('DataTables has redrawn the table');
-			/* Apply the jEditable handlers to the table */
-		/*	$('#jQTable_Movie tbody td', oTable.fnGetNodes()).editable(
-					'../examples_support/editable_ajax.php', {
-						"callback" : function(sValue, y) {
-							/* Redraw the table from the new data on the server */
-		/*				var aPos = oTable.fnGetPosition(this);
-						oTable.fnUpdate(sValue, aPos[0], aPos[1]);
-					},
-					"submitdata" : function(value, settings) {
-						return {
-							"row_id" : this.parentNode.getAttribute('id'),
-							"column" : oTable.fnGetPosition(this)[2]
-						};
-					},
-					"height" : "14px"
-				});
-		}  */
 		});
 		/* Add event listener for opening and closing details
 		 * Note that the indicator for showing which row is open is not controlled by DataTables,
 		 * rather it is done here
 		 */
-		$('#jQTable_Movie tbody td img').live('click', function() {
+		$('#jQMovie_List tbody td img').live('click', function() {
 			var nTr = this.parentNode.parentNode;
 			if (this.src.match('details_close')) {
 				/* This row is already open - close it */
@@ -117,7 +96,7 @@
 	});
 </script>
 
-<!-- JQTable_Customer -->
+<!-- simpleMember_Table -->
 <script src="js/jquery.dataTables.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
 	/* Formating function for row details */
@@ -142,18 +121,18 @@
 				nCloneTd.innerHTML = '<img src="images/details_open.png">';
 				nCloneTd.className = "center";
 
-				$('#example thead tr').each(function() {
+				$('#simpleMember_Table thead tr').each(function() {
 					this.insertBefore(nCloneTh, this.childNodes[0]);
 				});
 
-				$('#example tbody tr').each(
+				$('#simpleMember_Table tbody tr').each(
 						function() {
 							this.insertBefore(nCloneTd.cloneNode(true),
 									this.childNodes[0]);
 						});
 
 				/* Init DataTables */
-				var oTable_Customer = $('#example').dataTable(
+				var oTable_Customer = $('#simpleMember_Table').dataTable(
 						{
 							"bJQueryUI" : true,
 							//"sPaginationType": "full_numbers",
@@ -164,34 +143,147 @@
 							"aaSorting" : [ [ 0, 'asc' ], [ 1, 'asc' ] ],
 							"aLengthMenu" : [ [ 10, 25, 50, -1 ],
 									[ 10, 25, 50, "All" ] ]
-						}
-				//"fnDrawCallback" : function() {
-				//	alert('DataTables has redrawn the table');
-
-				/* Apply the jEditable handlers to the table */
-				/*	$('td_Cus', oTable_Customer.fnGetNodes()).editable(
-				 '../examples_support/editable_ajax.php', {
-				 "callback" : function(sValue, y) {
-				 var aPos = oTable_Customer.fnGetPosition(this);
-				 oTable_Customer.fnUpdate(sValue, aPos[0], aPos[1]);
-				 },
-				 "submitdata" : function(value, settings) {
-				 return {
-				 "row_id" : this.parentNode.getAttribute('id'),
-				 "column" : oTable_Customer.fnGetPosition(this)[2]
-				 };
-				 },
-				 "height" : "14px"
-				 });
-				 */
-				//}
-				//}
-				);
+						});
 				/* Add event listener for opening and closing details
 				 * Note that the indicator for showing which row is open is not controlled by DataTables,
 				 * rather it is done here
 				 */
-				$('#example tbody td img').live(
+				$('#simpleMember_Table tbody td img').live(
+						'click',
+						function() {
+							var nTr = this.parentNode.parentNode;
+							if (this.src.match('details_close')) {
+								/* This row is already open - close it */
+								this.src = "images/details_open.png";
+								oTable_Customer.fnClose(nTr);
+							} else {
+								/* Open this row */
+								this.src = "images/details_close.png";
+								oTable_Customer.fnOpen(nTr, fnFormatDetails(
+										oTable_Customer, nTr), 'details');
+							}
+						});
+			});
+</script>
+
+<!-- premiumMember_Table -->
+<script src="js/jquery.dataTables.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+	/* Formating function for row details */
+	function fnFormatDetails(oTable_Customer, nTr) {
+		var aData = oTable_Customer.fnGetData(nTr);
+		var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+		sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' '
+				+ aData[4] + '</td></tr>';
+		sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
+		sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+		sOut += '</table>';
+
+		return sOut;
+	}
+	$(document).ready(
+			function() {
+				/*
+				 * Insert a 'details' column to the table
+				 */
+				var nCloneTh = document.createElement('th');
+				var nCloneTd = document.createElement('td');
+				nCloneTd.innerHTML = '<img src="images/details_open.png">';
+				nCloneTd.className = "center";
+
+				$('#premiumMember_Table thead tr').each(function() {
+					this.insertBefore(nCloneTh, this.childNodes[0]);
+				});
+
+				$('#premiumMember_Table tbody tr').each(
+						function() {
+							this.insertBefore(nCloneTd.cloneNode(true),
+									this.childNodes[0]);
+						});
+
+				/* Init DataTables */
+				var oTable_Customer = $('#premiumMember_Table').dataTable(
+						{
+							"bJQueryUI" : true,
+							//"sPaginationType": "full_numbers",
+							"aoColumnDefs" : [ {
+								"bSortable" : false,
+								"aTargets" : [ 0 ]
+							} ],
+							"aaSorting" : [ [ 0, 'asc' ], [ 1, 'asc' ] ],
+							"aLengthMenu" : [ [ 10, 25, 50, -1 ],
+									[ 10, 25, 50, "All" ] ]
+						});
+				/* Add event listener for opening and closing details
+				 * Note that the indicator for showing which row is open is not controlled by DataTables,
+				 * rather it is done here
+				 */
+				$('#premiumMember_Table tbody td img').live(
+						'click',
+						function() {
+							var nTr = this.parentNode.parentNode;
+							if (this.src.match('details_close')) {
+								/* This row is already open - close it */
+								this.src = "images/details_open.png";
+								oTable_Customer.fnClose(nTr);
+							} else {
+								/* Open this row */
+								this.src = "images/details_close.png";
+								oTable_Customer.fnOpen(nTr, fnFormatDetails(
+										oTable_Customer, nTr), 'details');
+							}
+						});
+			});
+</script>
+
+<!-- allMember_Table -->
+<script src="js/jquery.dataTables.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+	/* Formating function for row details */
+	function fnFormatDetails(oTable_Customer, nTr) {
+		var aData = oTable_Customer.fnGetData(nTr);
+		var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+		sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' '
+				+ aData[4] + '</td></tr>';
+		sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
+		sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+		sOut += '</table>';
+
+		return sOut;
+	}
+	$(document).ready(
+			function() {
+				/*
+				 * Insert a 'details' column to the table
+				 */
+				var nCloneTh = document.createElement('th');
+				var nCloneTd = document.createElement('td');
+				nCloneTd.innerHTML = '<img src="images/details_open.png">';
+				nCloneTd.className = "center";
+
+				$('#allMember_Table thead tr').each(function() {
+					this.insertBefore(nCloneTh, this.childNodes[0]);
+				});
+
+				$('#allMember_Table tbody tr').each(
+						function() {
+							this.insertBefore(nCloneTd.cloneNode(true),
+									this.childNodes[0]);
+						});
+
+				/* Init DataTables */
+				var oTable_Customer = $('#allMember_Table').dataTable(
+						{
+							"bJQueryUI" : true,
+							"aoColumnDefs" : [ {"bSortable" : false,"aTargets" : [ 0 ]} ],
+							"aaSorting" : [ [ 0, 'asc' ], [ 1, 'asc' ] ]
+							//"aLengthMenu" : [ [ 10, 25, 50, -1 ],[ 10, 25, 50, "All" ] ]
+						});
+				/* Add event listener for opening and closing details
+				 * Note that the indicator for showing which row is open is not controlled by DataTables,
+				 * rather it is done here
+				 */
+				$('#allMember_Table tbody td img').live(
 						'click',
 						function() {
 							var nTr = this.parentNode.parentNode;
