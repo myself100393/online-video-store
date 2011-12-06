@@ -30,19 +30,31 @@ OnlineVideo omp = new OnlineVideo();
 
 	
 	public Movie[] listMovies() {
-		//SearchMovieManager smm = new SearchMovieManager();
 		return omp.listMovies();
 	}
 
+	public Person[] listAllPersons() {
+     	return omp.listAllPersons(0);
+	}
+
+	public Person[] listSimpleMember() {
+
+		return omp.listAllPersons(1);
+	}
 	
+	public Person[] listPremiumMember() {
+
+		return omp.listAllPersons(2);
+	}
+
 	public String issueMovie(int movieId, int personId) {
-		//SearchMovieManager smm = new SearchMovieManager();
+
 		return omp.issueMovie(movieId, personId);
 	}
 
 	
 	public String submitMovie(int movieId, int personId) {
-		//SearchMovieManager smm = new SearchMovieManager();
+
 		return omp.submitMovie(movieId, personId);
 	}
 	
