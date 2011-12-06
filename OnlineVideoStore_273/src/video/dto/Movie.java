@@ -7,7 +7,7 @@ public class Movie {
 	private int id;
 	private String name;
 	private String banner;
-	private Date releaseDate;
+	private Date releaseDate; 
 	private double rentAmount;
 	private int nbAvailable;
 	
