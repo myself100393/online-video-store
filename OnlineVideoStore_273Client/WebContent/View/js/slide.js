@@ -24,12 +24,15 @@ $(document).ready(function() {
 
 	
 	// Add Adver Form Validation
-	$("#advertForm").validate();
+	$("#userInfoForm").validate();
+	$("#accInfoForm").validate();
+	$("#addressInfoForm").validate();
+
 	 
 	
  
 	
 
-	$('#jQList').dataTable();
-		
+//	$('#example').dataTable();
+	
 });

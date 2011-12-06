@@ -3,6 +3,7 @@
 <%@ page import="video.dto.Movie"%>
 <%@ page import="video.dto.Address"%>
 <%@ page import="java.util.Locale"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page import="java.util.UUID"%>
 <%@ page import="java.util.LinkedHashMap"%>
 <%@ page import="video.util.CountryHelper"%>
@@ -22,6 +23,12 @@
 	LinkedHashMap<String, String> movies = (LinkedHashMap<String, String>) MovieSearchHelper.states;
 	
 	String successMessage = (String)session.getAttribute("success");
+	
+	Movie[] movieList = (Movie[]) request.getAttribute("movieList");
+	Person[] personList_SimpleM = (Person[]) request.getAttribute("personList_SimpleM");
+	Person[] personList_PremiumM = (Person[]) request.getAttribute("personList_PremiumM");
+	Person[] personList_All_Person = (Person[]) request.getAttribute("personList_All_Person");
+
 %>
 
 
@@ -39,8 +46,10 @@
 				<li><a href="#tabs-2">Movie Searching</a></li>
 				<li><a href="#tabs-3">Movie Listing</a></li>
 				<li><a href="#tabs-4">Customer Searching</a></li>
-				<li><a href="#tabs-5">Customer Listing</a></li>
-				<li><a href="#tabs-6">Bill Generating</a></li>
+				<li><a href="#tabs-5">Simple Customers</a></li>
+				<li><a href="#tabs-6">Premium Customers</a></li>
+				<li><a href="#tabs-7">All Customers</a></li>
+				<li><a href="#tabs-8">Bill Generating</a></li>
 			</ul>
 			<div id="tabs-1">
 
@@ -154,9 +163,15 @@
 
 			</div>
 			<div id="tabs-3">
-<form id="adminForm2" action="Admin" method="post">
+			<form id="movieListingForm" action="" method="post">
+				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
+					type="hidden" name="FunctionCall" value="deleteMovie" />
+
+				<input id='btnP' type="hidden" name="buttonPressed_Update" value="" /> <input
+					type="hidden" name="FunctionCall" value="updateMovie" />
+
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
-					id="jQTable_Movie" style="width: 940px">
+					id="jQMovie_List">
 					<thead>
 						<tr>
 							<th>Movie ID</th>
@@ -164,122 +179,63 @@
 							<th>Banner</th>
 							<th>Release Date</th>
 							<th>Rent Amount</th>
-							<th>Availability</th>
+							<th>Available Number</th>
 							<th>Option</th>
+                            <th>Option</th>
 						</tr>
 					</thead>
 					<tbody>
+
 						<%
-							/*			if (personList != null) {
+							if (movieList != null) {
 
-											boolean isOdd = true;
-											String evenOdd = "odd";
+								boolean isOdd = true;
+								String evenOdd = "odd";
 
-											int j = 1;   */
+								int j = 1;
 
-							// you should be loop all your data out here
-							/*		for (Person p : personList) {
+								// you should be loop all your data out here
+								for (Movie p : movieList) {
 
-										long id = p.getId();
-										String fname = p.getFirstName();
-										String lname = p.getLastName();
-										String uname = p.getUsername();   */
-							// other attributes here...............		
+									int id = p.getId();
+									String moviName = p.getName();
+									String movieBanner = p.getBanner();
+									Calendar releaseDate_Calendar = p.getReleaseDate();
+									Double movieRentAmount = p.getRentAmount();
+									int nb_Aailable = p.getNbAvailable();
+									// other attributes here...............		
 
-							/*		out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+									out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
 											+ " gradeA\">");
-									out.println("	<td>" + fname + "</td>");
-									out.println("	<td>" + lname + "</td>");
-									out.println("	<td>" + uname + "</td>");
-									out.println("	<td class=\"center\">");  */
-							// Ok, onclikc means when you click on the button, then it calls the javascript function 
-							// to change the hidden value ( the person id), then the servlet knows which person to delete!!
-							/*		out.println("		<input type=\"submit\" name=\"submit\" value=\"Rent\" onclick=\"changeHiddenValue('"
+									out.println("	<td class=mycolor>" + id + "</td>");
+									out.println("	<td class=mycolor>" + moviName + "</td>");
+									out.println("	<td class=mycolor>" + movieBanner + "</td>");
+									out.println("	<td class=mycolor>"
+											+ releaseDate_Calendar.get(Calendar.YEAR) + "</td>");
+									out.println("	<td class=mycolor>" + movieRentAmount
+											+ "</td>");
+									out.println("	<td class=mycolor>" + nb_Aailable + "</td>");
+									out.println("	<td class=\"center\">");
+									// Ok, onclikc means when you click on the button, then it calls the javascript function 
+									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
 											+ id + "');\"  class=\"bt_advert\" />");
 									out.println("	</td>");
-									out.println("</tr>");     */
-							//toggle					
-							//		isOdd = !isOdd;
-							//		}
-							//	}
+									out.println("	<td class=\"center\">");
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Update \" onclick=\"changeHiddenValue('"
+											+ id + "');\"  class=\"bt_advert\" />");
+									out.println("	</td>");
+									out.println("</tr>");
+									//toggle					
+									isOdd = !isOdd;
+								}
+							}
 						%>
 
-
-						<tr class="yes">
-							<td>01234</td>
-							<td>Rise of the Planet of the Apes</td>
-							<td>Monkey Story</td>
-							<td>2011</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="yes">
-							<td>45345</td>
-							<td>Awake</td>
-							<td>Holloween Movie</td>
-							<td>2010</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="yes">
-							<td>56456</td>
-							<td>Smurf</td>
-							<td>Animation</td>
-							<td>2011</td>
-							<td>10</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="yes">
-							<td>56576</td>
-							<td>American Captain</td>
-							<td>Marvel</td>
-							<td>2011</td>
-							<td>5</td>
-							<td class="yes">Yes</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-						<tr class="no">
-							<td>01234</td>
-							<td>Resident Evil V</td>
-							<td>Game,Action</td>
-							<td>2013</td>
-							<td>0</td>
-							<td class="no">No</td>
-							<td><input id='btnP' type="hidden" name="buttonPressed"
-								value="" /> <input type="hidden" name="FunctionCall"
-								value="deletePerson" /> <input type="submit" name="submit"
-								value="Delete" onclick="changeHiddenValue(id)" class="bt_advert" />
-							</td>
-
-						</tr>
-
 					</tbody>
-				</table>
 
+				</table>
+			</form>
 			</div>
 
 			<div id="tabs-4">
@@ -331,103 +287,206 @@
 			</div>
 
 			<div id="tabs-5">
-			<form id="adminForm4" action="Admin" method="post">
+			<form id="simpleMListingForm" action="" method="post">
+				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
+					type="hidden" name="FunctionCall" value="deleteMember" />
+
 				<table cellpadding="0" cellspacing="0" border="0" class="display"
-					id="example" style="width: 940px">
+					id="simpleMember_Table">
 					<thead>
 						<tr>
 							<th>Customer ID</th>
 							<th>First Name</th>
 							<th>Last Name</th>
 							<th>User Name</th>
-							<th>Date of Registration</th>
-							<!-- <th>Last Time Login</th>--->
+							<th>Registration Date</th>
+							<th>Last Time Logged In</th>
+							<th>Option</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="gradeX">
-							<td>Trident</td>
-							<td>Internet Explorer 4.0</td>
-							<td>Win 95+</td>
-							<td class="center">4</td>
-							<td class="center">X</td>
-						</tr>
-						<tr class="gradeC">
-							<td>Trident</td>
-							<td>Internet Explorer 5.0</td>
-							<td>Win 95+</td>
-							<td class="center">5</td>
-							<td class="center">C</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Trident</td>
-							<td>Internet Explorer 5.5</td>
-							<td>Win 95+</td>
-							<td class="center">5.5</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Trident</td>
-							<td>Internet Explorer 6</td>
-							<td>Win 98+</td>
-							<td class="center">6</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Trident</td>
-							<td>Internet Explorer 7</td>
-							<td>Win XP SP2+</td>
-							<td class="center">7</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Trident</td>
-							<td>AOL browser (AOL desktop)</td>
-							<td>Win XP</td>
-							<td class="center">6</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Gecko</td>
-							<td>Firefox 1.0</td>
-							<td>Win 98+ / OSX.2+</td>
-							<td class="center">1.7</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Gecko</td>
-							<td>Firefox 1.5</td>
-							<td>Win 98+ / OSX.2+</td>
-							<td class="center">1.8</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Gecko</td>
-							<td>Firefox 2.0</td>
-							<td>Win 98+ / OSX.2+</td>
-							<td class="center">1.8</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Gecko</td>
-							<td>Firefox 3.0</td>
-							<td>Win 2k+ / OSX.3+</td>
-							<td class="center">1.9</td>
-							<td class="center">A</td>
-						</tr>
-						<tr class="gradeA">
-							<td>Gecko</td>
-							<td>Camino 1.0</td>
-							<td>OSX.2+</td>
-							<td class="center">1.8</td>
-							<td class="center">A</td>
-						</tr>
+
+						<%
+							if (personList_SimpleM != null) {
+
+								boolean isOdd = true;
+								String evenOdd = "odd";
+
+								int j = 1;
+
+								// you should be loop all your data out here
+								for (Person p : personList_SimpleM) {
+
+									int id = p.getId();
+									String fName = p.getFirstName();
+									String lName = p.getLastName();
+									String userName = p.getUsername();
+									Calendar reg_Calendar = p.getRegistration();
+									Calendar lastLogIn_Calendar = p.getLast_login();
+									// other attributes here...............		
+
+									out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+											+ " gradeA\">");
+									out.println("	<td class=mycolor>" + id + "</td>");
+									out.println("	<td class=mycolor>" + fName + "</td>");
+									out.println("	<td class=mycolor>" + lName + "</td>");
+									out.println("	<td class=mycolor>" + userName + "</td>");
+									out.println("	<td class=mycolor>"
+											+ reg_Calendar.get(Calendar.YEAR)+"-"+(reg_Calendar.get(Calendar.MONTH)+1)+"-"+ reg_Calendar.get(Calendar.DAY_OF_MONTH)+ "</td>");
+									out.println("	<td class=mycolor>"
+											+ lastLogIn_Calendar.get(Calendar.YEAR)+"-"+(lastLogIn_Calendar.get(Calendar.MONTH)+1)+"-"+ lastLogIn_Calendar.get(Calendar.DAY_OF_MONTH)+ "</td>");
+									out.println("	<td class=\"center\">");
+									// Ok, onclikc means when you click on the button, then it calls the javascript function 
+									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+											+ id + "');\"  class=\"bt_advert\" />");
+									out.println("	</td>");
+									out.println("</tr>");
+									//toggle					
+									isOdd = !isOdd;
+								}
+							}
+						%>
 
 					</tbody>
 				</table>
+			</form>
 			</div>
-			<form id="adminForm5" action="Admin" method="post">
 			<div id="tabs-6">
+			<form id="premiumMListingForm" action="" method="post">
+				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
+					type="hidden" name="FunctionCall" value="deleteMember" />
+
+				<table cellpadding="0" cellspacing="0" border="0" class="display"
+					id="premiumMember_Table">
+					<thead>
+						<tr>
+							<th>Customer ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>User Name</th>
+							<th>Registration Date</th>
+							<th>Last Time Logged In</th>
+							<th>Option</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<%
+							if (personList_PremiumM != null) {
+
+								boolean isOdd = true;
+								String evenOdd = "odd";
+
+								int j = 1;
+
+								// you should be loop all your data out here
+								for (Person p : personList_PremiumM) {
+
+									int id = p.getId();
+									String fName = p.getFirstName();
+									String lName = p.getLastName();
+									String userName = p.getUsername();
+									Calendar reg_Calendar = p.getRegistration();
+									Calendar lastLogIn_Calendar = p.getLast_login();
+									// other attributes here...............		
+
+									out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+											+ " gradeA\">");
+									out.println("	<td class=mycolor>" + id + "</td>");
+									out.println("	<td class=mycolor>" + fName + "</td>");
+									out.println("	<td class=mycolor>" + lName + "</td>");
+									out.println("	<td class=mycolor>" + userName + "</td>");
+									out.println("	<td class=mycolor>"
+											+ reg_Calendar.get(Calendar.YEAR)+"-"+(reg_Calendar.get(Calendar.MONTH)+1)+"-"+ reg_Calendar.get(Calendar.DAY_OF_MONTH)+ "</td>");
+									out.println("	<td class=mycolor>"
+											+ lastLogIn_Calendar.get(Calendar.YEAR)+"-"+(lastLogIn_Calendar.get(Calendar.MONTH)+1)+"-"+ lastLogIn_Calendar.get(Calendar.DAY_OF_MONTH)+ "</td>");
+									out.println("	<td class=\"center\">");
+									// Ok, onclikc means when you click on the button, then it calls the javascript function 
+									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+											+ id + "');\"  class=\"bt_advert\" />");
+									out.println("	</td>");
+									out.println("</tr>");
+									//toggle					
+									isOdd = !isOdd;
+								}
+							}
+						%>
+
+					</tbody>
+				</table>
+			</form>
+			</div>
+			
+            <div id="tabs-7">
+			<form id="allMListingForm" action="" method="post">
+				<input id='btnP' type="hidden" name="buttonPressed_Delete" value="" /> <input
+					type="hidden" name="FunctionCall" value="deleteMember" />
+
+					<table cellpadding="0" cellspacing="0" border="0" class="display"
+						id="allMember_Table">
+						<thead>
+							<tr>
+								<th>Customer ID</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>User Name</th>
+								<th>Registration Date</th>
+								<th>Last Time Logged In</th>
+								<th>Option</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<%
+							if (personList_PremiumM != null) {
+
+								boolean isOdd = true;
+								String evenOdd = "odd";
+
+								int j = 1;
+
+								// you should be loop all your data out here
+								for (Person p : personList_PremiumM) {
+
+									int id = p.getId();
+									String fName = p.getFirstName();
+									String lName = p.getLastName();
+									String userName = p.getUsername();
+									Calendar reg_Calendar = p.getRegistration();
+									Calendar lastLogIn_Calendar = p.getLast_login();
+									// other attributes here...............		
+
+									out.println("<tr class=\"" + ((isOdd) ? "odd" : "even")
+											+ " gradeA\">");
+									out.println("	<td class=mycolor>" + id + "</td>");
+									out.println("	<td class=mycolor>" + fName + "</td>");
+									out.println("	<td class=mycolor>" + lName + "</td>");
+									out.println("	<td class=mycolor>" + userName + "</td>");
+									out.println("	<td class=mycolor>"
+											+ reg_Calendar.get(Calendar.YEAR)+"-"+(reg_Calendar.get(Calendar.MONTH)+1)+"-"+ reg_Calendar.get(Calendar.DAY_OF_MONTH)+ "</td>");
+									out.println("	<td class=mycolor>"
+											+ lastLogIn_Calendar.get(Calendar.YEAR)+"-"+(lastLogIn_Calendar.get(Calendar.MONTH)+1)+"-"+ lastLogIn_Calendar.get(Calendar.DAY_OF_MONTH)+ "</td>");
+									out.println("	<td class=\"center\">");
+									// Ok, onclikc means when you click on the button, then it calls the javascript function 
+									// to change the hidden value ( the movie id), then the servlet knows which movie to rent!!
+									out.println("		<input type=\"submit\" name=\"submit\" value=\" Delete \" onclick=\"changeHiddenValue('"
+											+ id + "');\"  class=\"bt_advert\" />");
+									out.println("	</td>");
+									out.println("</tr>");
+									//toggle					
+									isOdd = !isOdd;
+								}
+							}
+						%>
+
+						</tbody>
+					</table>
+				</form>
+			            </div>
+
+			<div id="tabs-8">
 				<br />
 				<p>
 				<h2 class="accountX">Generate Bill for Premium Member</h2>
